@@ -1,0 +1,143 @@
+.contactsPage {
+  padding: 120px 0 100px;
+  min-height: 100vh;
+  background-color: #0a0a0a;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 300;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 80px;
+  letter-spacing: 3px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  text-align: center;
+}
+
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.contactLabel {
+  font-size: 14px;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.contactValue {
+  font-size: 24px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.contactValue:hover {
+  opacity: 0.6;
+}
+
+.formSection {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.formTitle {
+  font-size: 24px;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.input,
+.textarea {
+  background-color: transparent;
+  border: 1px solid #333333;
+  color: #ffffff;
+  padding: 15px;
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #ffffff;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #666666;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitBtn {
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  padding: 15px 40px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: center;
+}
+
+.submitBtn:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .title {
+    font-size: 36px;
+    margin-bottom: 60px;
+  }
+
+  .contactValue {
+    font-size: 18px;
+  }
+}

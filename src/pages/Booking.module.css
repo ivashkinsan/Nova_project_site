@@ -1,0 +1,146 @@
+.bookingPage {
+  padding: 120px 0 100px;
+  min-height: 100vh;
+  background-color: #0a0a0a;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 300;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 60px;
+  letter-spacing: 3px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  font-size: 14px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.radioGroup {
+  display: flex;
+  gap: 30px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: #cccccc;
+  font-size: 16px;
+}
+
+.radio {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+}
+
+.radio:checked {
+  background-color: #ffffff;
+}
+
+.radio:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: #000000;
+  border-radius: 50%;
+}
+
+.select,
+.input,
+.textarea {
+  background-color: transparent;
+  border: 1px solid #333333;
+  color: #ffffff;
+  padding: 15px;
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.select:focus,
+.input:focus,
+.textarea:focus {
+  border-color: #ffffff;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #666666;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitBtn {
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  padding: 15px 40px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.submitBtn:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .radioGroup {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
