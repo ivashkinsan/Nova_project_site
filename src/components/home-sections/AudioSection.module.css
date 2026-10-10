@@ -1,0 +1,346 @@
+.audio {
+  padding: var(--section-padding) 0;
+  background-color: #0a0a0a;
+  color: #ffffff;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ===== Фото-колонка =====
+   Без position: sticky — колонка задаёт высоту строки грида, хода нет. */
+.visual {
+  min-width: 0;
+}
+
+/* ===== Плеер ===== */
+.player {
+  min-width: 0;
+}
+
+.playerBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.playerState {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: #cccccc;
+}
+
+.pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  animation: pulseFade 1.6s ease-in-out infinite;
+}
+
+@keyframes pulseFade {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.playerCount {
+  font-size: var(--font-size-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: #666666;
+  white-space: nowrap;
+}
+
+.trackList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ===== Строка трека ===== */
+.track {
+  display: grid;
+  grid-template-columns: 40px 46px minmax(0, 1fr) minmax(0, 1.6fr) 54px;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 24px 16px 24px 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--hairline-soft);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.4s ease, padding-left 0.5s var(--ease-out-expo);
+}
+
+.track:hover {
+  background-color: #111111;
+  padding-left: 16px;
+}
+
+.trackActive {
+  background-color: #111111;
+  padding-left: 16px;
+}
+
+.trackIndex {
+  font-size: var(--font-size-micro);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: #666666;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
+}
+
+.track:hover .trackIndex,
+.trackActive .trackIndex {
+  color: #ffffff;
+}
+
+/* Кнопка play / pause внутри строки */
+.trackIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #333333;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background-color 0.35s ease, border-color 0.35s ease,
+    transform 0.4s var(--ease-out-expo);
+}
+
+.track:hover .trackIcon {
+  border-color: #ffffff;
+  transform: scale(1.06);
+}
+
+.trackActive .trackIcon {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.playArrow {
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 10px;
+  border-color: transparent transparent transparent #ffffff;
+  margin-left: 3px;
+  transition: border-color 0.3s ease;
+}
+
+.trackActive .playArrow {
+  border-left-color: #0a0a0a;
+}
+
+.pauseBar {
+  display: block;
+  width: 3px;
+  height: 14px;
+  background-color: #0a0a0a;
+}
+
+.trackInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.trackTitle {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trackArtist {
+  font-size: var(--font-size-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: #666666;
+}
+
+/* ===== Волновая форма ===== */
+.waveform {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  height: 42px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.waveBar {
+  flex: 1 1 0;
+  min-width: 0;
+  background-color: #333333;
+  border-radius: 1px;
+  transform-origin: center;
+  transition: background-color 0.4s ease;
+}
+
+.track:hover .waveBar {
+  background-color: #444444;
+}
+
+.waveBarActive {
+  background-color: #ffffff;
+  animation: equalize 1.1s ease-in-out infinite alternate;
+}
+
+.trackActive .waveBar {
+  background-color: #ffffff;
+}
+
+@keyframes equalize {
+  from {
+    transform: scaleY(0.35);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.trackDuration {
+  font-size: var(--font-size-xs);
+  color: #666666;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  transition: color 0.3s ease;
+}
+
+.trackActive .trackDuration {
+  color: #cccccc;
+}
+
+/* ===== Средние экраны: плеер и волна делят место, название не обрезается =====
+   Работает только пока плеер стоит в узкой колонке рядом с фото (1025–1200px). */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .track {
+    grid-template-columns: 32px 44px minmax(0, 1.3fr) minmax(0, 1.2fr) 50px;
+    gap: 16px;
+  }
+
+  .trackTitle {
+    font-size: 17px;
+  }
+
+  /* Реже штрихи — волна читается как рисунок, а не сливается в пятно */
+  .waveBar:nth-child(even) {
+    display: none;
+  }
+}
+
+/* ===== Планшет ===== */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .visual {
+    position: static;
+  }
+
+  /* Фото становится широкой полосой над списком */
+  .visual figure {
+    aspect-ratio: 21 / 9;
+  }
+
+  .track {
+    grid-template-columns: 34px 44px minmax(0, 1fr) minmax(0, 1.1fr) 48px;
+    gap: 16px;
+  }
+}
+
+/* ===== Мобильный ===== */
+@media (max-width: 768px) {
+  .track {
+    grid-template-columns: 30px 40px minmax(0, 1fr);
+    grid-template-areas:
+      'idx icon info'
+      'wave wave wave'
+      'dur dur dur';
+    gap: 12px;
+    padding: 18px 12px 18px 0;
+  }
+
+  .track:hover,
+  .trackActive {
+    padding-left: 12px;
+  }
+
+  .trackIndex {
+    grid-area: idx;
+  }
+
+  .trackIcon {
+    grid-area: icon;
+    width: 40px;
+    height: 40px;
+  }
+
+  .trackInfo {
+    grid-area: info;
+  }
+
+  .waveform {
+    grid-area: wave;
+    height: 30px;
+  }
+
+  .trackDuration {
+    grid-area: dur;
+    text-align: left;
+    font-size: var(--font-size-micro);
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .trackTitle {
+    font-size: 16px;
+  }
+
+  .playerBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .visual figure {
+    aspect-ratio: 4 / 3;
+  }
+}

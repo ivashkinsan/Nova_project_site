@@ -8,7 +8,7 @@ import styles from './AnimatedSection.module.css';
 interface AnimatedSectionProps {
   children: React.ReactNode;
   className?: string;
-  animation?: 'fade-up' | 'fade-in' | 'slide-left' | 'slide-right';
+  animation?: 'fade-up' | 'fade-in' | 'slide-left' | 'slide-right' | 'reveal' | 'zoom';
   delay?: number;
 }
 
@@ -23,6 +23,13 @@ export default function AnimatedSection({
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
+
+    // Без IntersectionObserver (или без JS-анимации в принципе) секция
+    // должна остаться видимой, а не «застрять» в opacity: 0.
+    if (typeof IntersectionObserver === 'undefined') {
+      element.classList.add(styles.animated);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {

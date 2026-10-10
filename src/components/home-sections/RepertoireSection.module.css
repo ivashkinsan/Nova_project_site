@@ -1,124 +1,278 @@
 .repertoire {
-  padding: 120px 0;
+  padding: var(--section-padding) 0;
   background-color: #0a0a0a;
   color: #ffffff;
 }
 
 .container {
-  max-width: 1400px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 var(--container-padding);
 }
 
-.sectionTitle {
-  font-size: clamp(36px, 5vw, 64px);
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 60px;
-  letter-spacing: -0.03em;
-  font-weight: 700;
-}
-
-.repertoireGrid {
+/* ===== Мозаика: 3 × 3, линии сетки — хайрлайны ===== */
+.mosaic {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-auto-rows: minmax(250px, auto);
+  gap: 1px;
+  background-color: var(--hairline);
+  border: 1px solid var(--hairline);
 }
 
-.repertoireItem {
-  background: #111111;
-  padding: 40px 30px;
-  border: 1px solid #222222;
-  transition: all 0.3s ease;
+/* ===== Карточка программы ===== */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 36px 32px;
+  background-color: #0a0a0a;
+  overflow: hidden;
+  transition: background-color 0.45s ease;
 }
 
-.repertoireItem:hover {
-  transform: translateY(-5px);
-  border-color: #444444;
+/* Тонкая подсветка по верхней грани — «активная» карточка */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #ffffff;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.6s var(--ease-out-expo);
 }
 
-.repertoireTitle {
-  font-size: 24px;
+.card:hover {
+  background-color: #111111;
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.cardIndex {
+  position: absolute;
+  top: 30px;
+  left: 32px;
+  font-size: var(--font-size-micro);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: #666666;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.35s ease;
+}
+
+.card:hover .cardIndex {
   color: #ffffff;
-  margin-bottom: 15px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 22px;
   font-weight: 600;
   letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #ffffff;
+  max-width: 22ch;
 }
 
-.repertoireDesc {
-  font-size: 16px;
-  color: #888888;
+.cardDesc {
+  margin: 0;
+  font-size: 15px;
   line-height: 1.6;
+  color: #666666;
+  max-width: 34ch;
+  transition: color 0.35s ease;
 }
 
-.repertoireNote {
-  text-align: center;
-  margin-top: 60px;
+.card:hover .cardDesc {
+  color: #888888;
+}
+
+.cardMark {
+  position: absolute;
+  right: 30px;
+  bottom: 34px;
   font-size: 16px;
   color: #666666;
+  opacity: 0;
+  transform: translate(-6px, 6px);
+  transition: opacity 0.4s ease, transform 0.5s var(--ease-out-expo), color 0.4s ease;
+}
+
+.card:hover .cardMark {
+  opacity: 1;
+  transform: translate(0, 0);
+  color: #ffffff;
+}
+
+/* ===== Фотографии в мозаике ===== */
+/* Фото выведено из потока: высоту ячейки задаёт сетка, а не натуральные
+   пропорции снимка — иначе `height: 100%` внутри auto-строки не разрешается. */
+.photoCell {
+  position: relative;
+  overflow: hidden;
+  background-color: #111111;
+}
+
+.photoCell figure {
+  position: absolute;
+  inset: 0;
+  height: auto;
+}
+
+/* ===== Позиции ячеек (десктоп) ===== */
+.cell1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.cell2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.cell3 {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+.cell4 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.cell5 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.cell6 {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.cell7 {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.cell8 {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+/* ===== Примечание ===== */
+.note {
+  max-width: 620px;
+  margin: 44px auto 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--hairline);
+  text-align: center;
+  font-size: 15px;
   font-style: italic;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
+  line-height: 1.7;
+  color: #666666;
 }
 
-/* Tablet styles */
+/* ===== Планшет ===== */
 @media (max-width: 1024px) {
-  .repertoireGrid {
+  .mosaic {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-auto-rows: minmax(220px, auto);
   }
-  
-  .repertoireItem {
-    padding: 30px 20px;
+
+  .cell1,
+  .cell2,
+  .cell3,
+  .cell4,
+  .cell5,
+  .cell6,
+  .cell7,
+  .cell8 {
+    grid-column: auto;
+    grid-row: auto;
   }
-  
-  .repertoireTitle {
-    font-size: 20px;
+
+  /* Фото выше остальных ячеек */
+  .cell3 {
+    grid-row: span 2;
+  }
+
+  .cell8 {
+    grid-column: span 2;
+  }
+
+  .card {
+    padding: 30px 24px;
+  }
+
+  .cardIndex {
+    top: 24px;
+    left: 24px;
   }
 }
 
-/* Mobile styles */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
-  }
-  
-  .repertoire {
-    padding: 80px 0;
-  }
-  
-  .sectionTitle {
-    margin-bottom: 40px;
-  }
-  
-  .repertoireGrid {
+/* ===== Мобильный ===== */
+@media (max-width: 640px) {
+  .mosaic {
     grid-template-columns: 1fr;
-    gap: 20px;
+    grid-auto-rows: minmax(0, auto);
   }
-  
-  .repertoireItem {
-    padding: 25px 15px;
-  }
-  
-  .repertoireTitle {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .repertoireDesc {
-    font-size: 15px;
-  }
-}
 
-/* Small mobile */
-@media (max-width: 480px) {
-  .repertoire {
-    padding: 60px 0;
+  .cell1,
+  .cell2,
+  .cell3,
+  .cell4,
+  .cell5,
+  .cell6,
+  .cell7,
+  .cell8 {
+    grid-column: auto;
+    grid-row: auto;
   }
-  
-  .container {
-    padding: 0 15px;
+
+  .card {
+    padding: 28px 22px 30px;
+  }
+
+  .cardIndex {
+    position: static;
+    margin-bottom: 6px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+    max-width: none;
+  }
+
+  .cardDesc {
+    max-width: none;
+  }
+
+  .cardMark {
+    display: none;
+  }
+
+  .photoCell {
+    min-height: 260px;
+  }
+
+  /* Фото занимают фиксированную высоту строки */
+  .cell3,
+  .cell8 {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+  }
+
+  .note {
+    margin-top: 32px;
+    padding-top: 22px;
+    font-size: 14px;
   }
 }

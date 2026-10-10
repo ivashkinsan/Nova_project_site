@@ -9,7 +9,7 @@ export const eventTypes: EventType[] = [
   { value: 'corporate', label: 'Корпоратив' },
   { value: 'banquet', label: 'Банкет' },
   { value: 'wedding', label: 'Свадьба' },
-  { value: 'reception', label: 'Закрытый приём' },
+  { value: 'reception', label: 'Частный вечер' },
   { value: 'festival', label: 'Фестиваль' },
   { value: 'presentation', label: 'Презентация / выставка' },
   { value: 'other', label: 'Другое' },
@@ -21,8 +21,8 @@ export interface FormatOption {
 }
 
 export const formatOptions: FormatOption[] = [
-  { value: 'main', label: 'Основная программа (2 отделения по 30 минут)' },
-  { value: 'background', label: 'Фоновый сет (до 60 минут)' },
+  { value: 'main', label: 'Концертная программа (2 отделения)' },
+  { value: 'background', label: 'Атмосферный сет (до 60 минут)' },
 ];
 
 export interface BookingFormFields {

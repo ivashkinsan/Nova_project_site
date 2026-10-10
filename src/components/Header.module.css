@@ -3,78 +3,115 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
-  background-color: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  transition: background-color 0.3s ease;
+  z-index: var(--z-header);
+  background-color: rgba(10, 10, 10, 0);
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.4s ease, border-color 0.4s ease,
+    backdrop-filter 0.4s ease;
 }
 
-/* Header height for mobile dropdown positioning */
-:root {
-  --header-height: 62px;
+/* Хедер «уплотняется», когда страница прокручена */
+.scrolled {
+  background-color: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: var(--hairline-soft);
 }
 
 .container {
-  max-width: 1400px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 20px 40px;
+  height: var(--header-height);
+  padding: 0 var(--container-padding);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 28px;
 }
 
+/* ===== Лого ===== */
 .logo {
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  color: #ffffff;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
   cursor: pointer;
-  text-transform: uppercase;
+  flex-shrink: 0;
   transition: opacity 0.3s ease;
 }
 
 .logo:hover {
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
-/* ===== Desktop Navigation ===== */
+.logoMark {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.logoProject {
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  color: #666666;
+  text-transform: uppercase;
+}
+
+/* Подпись рядом с лого — только на широких экранах */
+.tagline {
+  margin: 0;
+  padding-left: 28px;
+  border-left: 1px solid var(--hairline);
+  font-size: var(--font-size-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: #666666;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ===== Десктопная навигация ===== */
 .desktopNav {
   display: flex;
+  margin-left: auto;
 }
 
 .desktopNavList {
   display: flex;
   list-style: none;
-  gap: 40px;
+  gap: 32px;
   margin: 0;
   padding: 0;
 }
 
 .desktopNavLink {
+  position: relative;
   background: none;
   border: none;
-  font-size: 14px;
+  padding: 0;
+  font-size: var(--font-size-xs);
   font-weight: 500;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: #888888;
   cursor: pointer;
-  padding: 0;
   transition: color 0.3s ease;
-  position: relative;
 }
 
 .desktopNavLink::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -6px;
   left: 0;
   width: 0;
   height: 1px;
   background-color: #ffffff;
-  transition: width 0.3s ease;
+  transition: width 0.35s var(--ease-out-expo);
 }
 
 .desktopNavLink:hover {
@@ -85,7 +122,67 @@
   width: 100%;
 }
 
-/* ===== Mobile Dropdown Navigation ===== */
+/* ===== Действия справа ===== */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: var(--font-size-micro);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.cta:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #0a0a0a;
+}
+
+.ctaArrow {
+  font-size: 13px;
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.cta:hover .ctaArrow {
+  transform: translateX(3px);
+}
+
+/* ===== Индикатор прокрутки ===== */
+.progressTrack {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background-color: var(--hairline-soft);
+  overflow: hidden;
+}
+
+.progressBar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left center;
+  transition: transform 0.15s linear;
+}
+
+/* ===== Мобильное выпадающее меню ===== */
 .nav {
   display: none;
 }
@@ -93,47 +190,71 @@
 .navList {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 0;
   margin: 0;
-  padding: 15px 0;
+  padding: 8px 20px 0;
   list-style: none;
 }
 
 .navLink {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 15px 0;
   background: none;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  font-size: 18px;
+  border-bottom: 1px solid var(--hairline-soft);
+  font-size: 16px;
   font-weight: 300;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #ffffff;
+  text-align: left;
   cursor: pointer;
-  padding: 15px 0;
-  width: 100%;
-  text-align: center;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, padding-left 0.3s var(--ease-out-expo);
 }
 
 .navLink:hover {
   color: #cccccc;
+  padding-left: 6px;
 }
 
-.navLink:last-child {
-  border-bottom: none;
+.navIndex {
+  font-size: var(--font-size-micro);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: #666666;
+  font-variant-numeric: tabular-nums;
 }
 
-/* ===== Hamburger Toggle ===== */
+.navCta {
+  display: block;
+  width: calc(100% - 40px);
+  margin: 18px 20px 22px;
+  padding: 15px 0;
+  background-color: #ffffff;
+  border: none;
+  color: #0a0a0a;
+  font-size: var(--font-size-micro);
+  font-weight: 700;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* ===== Гамбургер ===== */
 .menuToggle {
   display: none;
   position: relative;
   width: 28px;
-  height: 24px;
+  height: 22px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
+  flex-shrink: 0;
 }
 
 .menuToggle span {
@@ -151,16 +272,16 @@
 }
 
 .menuToggle span:nth-child(2) {
-  top: 11px;
+  top: 10px;
 }
 
 .menuToggle span:nth-child(3) {
-  top: 22px;
+  top: 20px;
 }
 
 /* Open: burger becomes X */
 .menuToggle.open span:nth-child(1) {
-  transform: translateY(11px) rotate(45deg);
+  transform: translateY(10px) rotate(45deg);
 }
 
 .menuToggle.open span:nth-child(2) {
@@ -168,45 +289,41 @@
 }
 
 .menuToggle.open span:nth-child(3) {
-  transform: translateY(-11px) rotate(-45deg);
+  transform: translateY(-10px) rotate(-45deg);
 }
 
-/* ===== Tablet ===== */
-@media (max-width: 1024px) {
+/* ===== Планшет ===== */
+@media (max-width: 1280px) {
+  .tagline {
+    display: none;
+  }
+}
+
+@media (max-width: 1100px) {
   .container {
-    padding: 15px 30px;
+    gap: 20px;
   }
 
   .desktopNavList {
-    gap: 25px;
+    gap: 22px;
+  }
+
+  .cta {
+    padding: 11px 16px;
   }
 }
 
-/* ===== Mobile ===== */
-@media (max-width: 768px) {
-  :root {
-    --header-height: 57px;
-  }
-
-  .header {
-    height: var(--header-height);
-  }
-
-  .container {
-    padding: 15px 20px;
-    height: 100%;
-  }
-
-  .logo {
-    font-size: 20px;
-  }
-
-  /* Hide desktop nav on mobile */
-  .desktopNav {
+/* ===== Мобильный ===== */
+@media (max-width: 900px) {
+  .desktopNav,
+  .cta {
     display: none;
   }
 
-  /* Dropdown menu */
+  .actions {
+    margin-left: auto;
+  }
+
   .nav {
     display: block;
     position: fixed;
@@ -214,31 +331,32 @@
     left: 0;
     right: 0;
     background: rgba(10, 10, 10, 0.98);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    z-index: 150;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--hairline-soft);
+    z-index: var(--z-mobile-nav);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 0.45s var(--ease-out-expo);
   }
 
   .nav.open {
-    max-height: 200px;
+    max-height: 460px;
   }
 
   .menuToggle {
-    display: flex;
-    z-index: 160;
+    display: block;
   }
 }
 
-/* ===== Small Mobile ===== */
 @media (max-width: 480px) {
-  .logo {
+  .logoMark,
+  .logoProject {
     font-size: 18px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
   }
 
-  .nav .navLink {
-    font-size: 16px;
+  .navLink {
+    font-size: 15px;
   }
 }

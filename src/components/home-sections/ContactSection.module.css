@@ -1,78 +1,161 @@
 .contact {
-  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+  padding: var(--section-padding) 0;
   background-color: #0a0a0a;
   color: #ffffff;
 }
 
+/* ===== Фон ===== */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.backdropImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08) brightness(0.38);
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      #0a0a0a 0%,
+      rgba(10, 10, 10, 0.72) 22%,
+      rgba(10, 10, 10, 0.8) 70%,
+      #0a0a0a 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(10, 10, 10, 0.9) 0%,
+      rgba(10, 10, 10, 0.35) 55%,
+      rgba(10, 10, 10, 0.8) 100%
+    );
+}
+
+/* ===== Контент ===== */
 .container {
-  max-width: 800px;
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 40px;
-  text-align: center;
+  padding: 0 var(--container-padding);
 }
 
-.sectionTitle {
-  font-size: clamp(36px, 5vw, 64px);
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 20px;
-  letter-spacing: -0.03em;
-  font-weight: 700;
-}
-
-.contactIntro {
-  font-size: 16px;
-  color: #888888;
-  margin-bottom: 60px;
-  line-height: 1.6;
-}
-
-.contactCards {
+/* ===== Карточки связи ===== */
+.cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
-.contactCard {
-  padding: 50px 40px;
-  background-color: #111111;
-  border: 1px solid #222222;
-  transition: all 0.3s ease;
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 34px 30px;
+  border: 1px solid var(--hairline);
+  background-color: rgba(10, 10, 10, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: border-color 0.4s ease, transform 0.5s var(--ease-out-expo),
+    background-color 0.4s ease;
 }
 
-.contactCard:hover {
-  background-color: #1a1a1a;
-  border-color: #444444;
+.card:hover {
+  border-color: var(--hairline-strong);
+  background-color: rgba(17, 17, 17, 0.72);
+  transform: translateY(-4px);
 }
 
-.contactCardTitle {
-  font-size: 14px;
-  color: #888888;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+.cardLabel {
+  font-size: var(--font-size-micro);
   font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: #666666;
 }
 
-.contactLink {
-  font-size: 24px;
-  color: #ffffff;
-  text-decoration: none;
+.cardValue {
+  font-size: clamp(20px, 2.2vw, 26px);
   font-weight: 600;
   letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #ffffff;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.cardValue:hover {
+  border-bottom-color: #ffffff;
+}
+
+.cardButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  cursor: pointer;
   transition: opacity 0.3s ease;
 }
 
-.contactLink:hover {
-  opacity: 0.7;
+.cardButton:hover {
+  opacity: 0.72;
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
+.cardArrow {
+  font-size: 18px;
+  transition: transform 0.35s var(--ease-out-expo);
+}
+
+.cardButton:hover .cardArrow {
+  transform: translateX(5px);
+}
+
+.cardMeta {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #666666;
+}
+
+/* ===== Планшет ===== */
+@media (max-width: 1024px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
   }
-  
-  .contactCards {
+
+  /* Третья карточка занимает всю ширину */
+  .card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===== Мобильный ===== */
+@media (max-width: 768px) {
+  .cards {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    padding: 26px 22px;
+  }
+
+  .cardMeta {
+    font-size: 13px;
   }
 }

@@ -1,73 +1,161 @@
 .format {
-  padding: 120px 0;
+  padding: var(--section-padding) 0;
   background-color: #0a0a0a;
   color: #ffffff;
 }
 
 .container {
-  max-width: 1400px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 var(--container-padding);
 }
 
-.sectionTitle {
-  font-size: clamp(36px, 5vw, 64px);
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 80px;
-  letter-spacing: -0.03em;
-  font-weight: 700;
+.blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
 }
 
-.formatOptions {
+/* ===== Блок формата: фото + текст, с чередованием сторон ===== */
+.block {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 64px;
+  align-items: center;
 }
 
-.formatCard {
-  padding: 60px 50px;
-  background-color: #111111;
-  border: 1px solid #222222;
-  transition: all 0.4s ease;
+.blockReversed .blockVisual {
+  order: 2;
 }
 
-.formatCard:hover {
-  background-color: #1a1a1a;
-  border-color: #333333;
+.blockReversed .blockBody {
+  order: 1;
 }
 
-.formatCardTitle {
-  font-size: 28px;
-  color: #ffffff;
-  margin-bottom: 15px;
+.blockVisual {
+  min-width: 0;
+}
+
+.blockBody {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ===== Шапка блока ===== */
+.blockMeta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.blockIndex {
+  font-size: var(--font-size-micro);
   font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-.formatCardDesc {
-  font-size: 16px;
-  color: #cccccc;
-  line-height: 1.6;
-  margin-bottom: 10px;
-}
-
-.formatCardNote {
-  font-size: 14px;
+  letter-spacing: var(--tracking-eyebrow);
   color: #666666;
-  font-style: italic;
+  font-variant-numeric: tabular-nums;
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
+.blockDuration {
+  padding-left: 14px;
+  border-left: 1px solid var(--hairline);
+  font-size: var(--font-size-micro);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: #cccccc;
+}
+
+.blockTitle {
+  margin: 0 0 14px;
+  font-size: clamp(26px, 2.6vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.blockDesc {
+  margin: 0 0 26px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: #888888;
+  max-width: 44ch;
+}
+
+/* ===== Список деталей ===== */
+.blockList {
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hairline);
+}
+
+.blockItem {
+  position: relative;
+  padding: 13px 0 13px 22px;
+  border-bottom: 1px solid var(--hairline-soft);
+  font-size: 15px;
+  line-height: 1.55;
+  color: #cccccc;
+}
+
+.blockItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 21px;
+  width: 10px;
+  height: 1px;
+  background-color: #666666;
+}
+
+.blockNote {
+  margin: 0;
+  padding-left: 16px;
+  border-left: 1px solid #333333;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.65;
+  color: #666666;
+}
+
+/* ===== Планшет ===== */
+@media (max-width: 1024px) {
+  .block {
+    gap: 40px;
   }
-  
-  .formatOptions {
+
+  .blocks {
+    gap: 72px;
+  }
+}
+
+/* ===== Мобильный ===== */
+@media (max-width: 860px) {
+  .block {
     grid-template-columns: 1fr;
+    gap: 28px;
   }
-  
-  .formatCard {
-    padding: 40px 30px;
+
+  /* На мобильном фото всегда сверху */
+  .blockReversed .blockVisual,
+  .blockReversed .blockBody {
+    order: initial;
+  }
+
+  .blocks {
+    gap: 56px;
+  }
+
+  .blockDesc {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .blockItem {
+    font-size: 14px;
   }
 }

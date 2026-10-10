@@ -1,35 +1,65 @@
 .animatedSection {
   opacity: 0;
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.9s var(--ease-soft),
+              transform 0.9s var(--ease-out-expo),
+              clip-path 0.9s var(--ease-out-expo);
+  /* Задержка появления через CSS-переменную */
+  transition-delay: var(--delay, 0ms);
+  will-change: opacity, transform;
 }
 
-.animated {
-  opacity: 1;
-  transform: translateY(0) translateX(0);
-}
-
-/* Fade up animation */
+/* ===== Исходное (скрытое) состояние конкретной анимации ===== */
 .fade-up {
-  transform: translateY(40px);
+  transform: translateY(48px);
 }
 
-/* Fade in animation */
 .fade-in {
   transform: none;
 }
 
-/* Slide left animation */
 .slide-left {
-  transform: translateX(-40px);
+  transform: translateX(-48px);
 }
 
-/* Slide right animation */
 .slide-right {
-  transform: translateX(40px);
+  transform: translateX(48px);
 }
 
-/* Apply animation delay using CSS variable */
-.animatedSection {
-  transition-delay: var(--delay, 0ms);
+/* Reveal — раскрытие по маске сверху вниз */
+.reveal {
+  transform: none;
+  clip-path: inset(12% 0 0 0);
+}
+
+/* Zoom — мягкое приближение */
+.zoom {
+  transform: scale(0.97);
+}
+
+/* ===== Показанное состояние =====
+   Селектор намеренно из двух классов, то есть специфичнее классов анимаций
+   выше. При равной специфичности побеждал бы тот, кто ниже в файле, и секция
+   навсегда осталась бы смещённой на 48px, уменьшенной или обрезанной. */
+.animatedSection.animated {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+  clip-path: inset(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animatedSection {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+}
+
+/* Печать и экспорт в PDF: секции всегда видны */
+@media print {
+  .animatedSection {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
 }

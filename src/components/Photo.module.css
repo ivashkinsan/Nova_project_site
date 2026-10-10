@@ -1,0 +1,94 @@
+.photo {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background-color: #111111;
+  border: 1px solid var(--hairline-soft);
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: var(--photo-filter);
+  transform: scale(1.01);
+  transition: filter 0.6s ease, transform var(--transition-image);
+}
+
+.photo:hover .img {
+  filter: var(--photo-filter-active);
+  transform: scale(1.06);
+}
+
+/* Пропорции */
+.portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.tall {
+  aspect-ratio: 2 / 3;
+}
+
+.wide {
+  aspect-ratio: 16 / 9;
+}
+
+.square {
+  aspect-ratio: 1 / 1;
+}
+
+.fill {
+  height: 100%;
+  width: 100%;
+}
+
+/* Подпись */
+.caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.88) 100%
+  );
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s ease, transform 0.45s var(--ease-out-expo);
+}
+
+.photo:hover .caption,
+.photo:focus-within .caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.captionTitle {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.captionMeta {
+  font-size: var(--font-size-micro);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: #888888;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .caption {
+    opacity: 1;
+    transform: none;
+    padding: 14px 16px;
+  }
+}

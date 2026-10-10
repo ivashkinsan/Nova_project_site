@@ -1,95 +1,182 @@
 .pricing {
-  padding: 120px 0;
+  padding: var(--section-padding) 0;
   background-color: #0a0a0a;
   color: #ffffff;
 }
 
 .container {
-  max-width: 800px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 var(--container-padding);
 }
 
-.sectionTitle {
-  font-size: clamp(36px, 5vw, 64px);
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 60px;
-  letter-spacing: -0.03em;
-  font-weight: 700;
+.grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 72px;
+  align-items: start;
 }
 
-.pricingCard {
-  padding: 80px 60px;
-  background-color: #111111;
-  border: 1px solid #1a1a1a;
-  text-align: center;
-  margin-bottom: 60px;
+/* Без position: sticky — колонка задаёт высоту строки грида, хода нет. */
+.visual {
+  min-width: 0;
 }
 
-.priceAmount {
-  font-size: clamp(48px, 8vw, 80px);
-  color: #ffffff;
+.body {
+  min-width: 0;
+}
+
+/* ===== Цена ===== */
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: 26px;
+}
+
+.price {
+  font-size: clamp(44px, 6vw, 78px);
   font-weight: 800;
-  margin-bottom: 15px;
   letter-spacing: -0.04em;
+  line-height: 1;
+  color: #ffffff;
 }
 
 .priceLocation {
-  font-size: 16px;
-  color: #888888;
-  margin-bottom: 15px;
-  line-height: 1.6;
-}
-
-.priceNote {
-  font-size: 14px;
-  color: #666666;
-  line-height: 1.6;
-}
-
-.included {
-  text-align: center;
-}
-
-.includedTitle {
-  font-size: 24px;
-  color: #ffffff;
-  margin-bottom: 30px;
+  font-size: var(--font-size-micro);
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: #888888;
 }
 
-.includedList {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 30px 0;
+.notes {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
+  margin-bottom: 44px;
 }
 
-.includedList li {
+.note {
+  margin: 0;
   font-size: 15px;
-  color: #cccccc;
-  line-height: 1.5;
-}
-
-.riderNote {
-  font-size: 14px;
+  line-height: 1.7;
   color: #666666;
-  font-style: italic;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
+  max-width: 56ch;
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
+/* ===== Список «что входит» ===== */
+.listTitle {
+  margin: 0 0 20px;
+  font-size: var(--font-size-micro);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: #888888;
+}
+
+.list {
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hairline);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  align-items: baseline;
+  gap: 18px;
+  padding: 16px 12px 16px 0;
+  border-bottom: 1px solid var(--hairline-soft);
+  transition: background-color 0.35s ease, padding-left 0.4s var(--ease-out-expo);
+}
+
+.item:hover {
+  background-color: #111111;
+  padding-left: 12px;
+}
+
+.itemIndex {
+  font-size: var(--font-size-micro);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: #666666;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
+}
+
+.item:hover .itemIndex {
+  color: #ffffff;
+}
+
+.itemText {
+  font-size: 16px;
+  line-height: 1.55;
+  color: #cccccc;
+}
+
+.rider {
+  margin: 0;
+  padding-left: 16px;
+  border-left: 1px solid #333333;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.65;
+  color: #666666;
+  max-width: 56ch;
+}
+
+/* ===== Планшет ===== */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
-  
-  .pricingCard {
-    padding: 60px 30px;
+
+  .visual {
+    position: static;
+  }
+
+  /* Фото — широкая полоса над ценой */
+  .visual figure {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+/* ===== Мобильный ===== */
+@media (max-width: 768px) {
+  .priceRow {
+    gap: 14px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  .notes {
+    margin-bottom: 32px;
+  }
+
+  .item {
+    grid-template-columns: 32px 1fr;
+    gap: 12px;
+    padding: 14px 0;
+  }
+
+  .item:hover {
+    padding-left: 0;
+    background-color: transparent;
+  }
+
+  .itemText {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .visual figure {
+    aspect-ratio: 4 / 3;
   }
 }

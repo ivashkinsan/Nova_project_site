@@ -2,12 +2,14 @@
   min-height: 100vh;
 }
 
-/* Smooth transitions for all interactive elements */
-a, button {
-  transition: all 0.3s ease;
+/* Единая физика для всех интерактивных элементов */
+a,
+button {
+  transition: color var(--transition-normal), background-color var(--transition-normal),
+    border-color var(--transition-normal), opacity var(--transition-normal);
 }
 
-/* Fade-in animation for page load */
+/* Общие кейфреймы страницы */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -19,7 +21,6 @@ a, button {
   }
 }
 
-/* Subtle pulse animation */
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
@@ -29,7 +30,6 @@ a, button {
   }
 }
 
-/* Slide-in animation */
 @keyframes slideIn {
   from {
     transform: translateX(-100%);
@@ -44,9 +44,4 @@ a, button {
 /* Smooth scroll for the whole page */
 html {
   scroll-behavior: smooth;
-}
-
-/* Landing page sections fade in on scroll */
-section {
-  animation: fadeIn 0.6s ease-out;
 }

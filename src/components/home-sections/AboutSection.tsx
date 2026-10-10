@@ -1,34 +1,72 @@
-import { homeBandMembers } from '../../data';
-import styles from './AboutSection.module.css';
+import { homeBandMembers, aboutPhotos } from "../../data";
+import SectionHeading from "../SectionHeading";
+import Photo from "../Photo";
+import styles from "./AboutSection.module.css";
 
-export default function AboutSection({ id = 'about' }: { id?: string }) {
+export default function AboutSection({ id = "about" }: { id?: string }) {
   return (
     <section className={styles.about} id={id}>
       <div className={styles.container}>
-        <h2 className={styles.sectionTitle}>О коллективе</h2>
-        <div className={styles.aboutContent}>
-          <p className={styles.aboutText}>
-            NOVA PROJECT — это пять музыкантов, объединённых любовью к живому звуку и эстетике джаза. 
-            Мы работаем на мероприятиях любого формата: корпоративы, банкеты, свадьбы, закрытые приёмы, 
-            фестивали, фоновая музыка для презентаций и выставок.
-          </p>
-          <p className={styles.aboutText}>
-            Наш состав: вокал, саксофон, фортепиано, бас гитара, ударные. 
-            Каждый из нас — профессиональный музыкант с многолетним опытом концертной деятельности.
-          </p>
-          <p className={styles.aboutText}>
-            Мы играем всё: от классики джаза до фьюжна. В нашем репертуаре — стандарты, 
-            свинг, мейнстрим, мировые хиты в джазовых аранжировках, авторские композиции 
-            и русская джазовая программа.
-          </p>
-          <div className={styles.bandMembers}>
-            {homeBandMembers.map((member) => (
-              <div key={member.name} className={styles.memberCard}>
-                <div className={styles.memberIcon}>{member.icon}</div>
-                <h3 className={styles.memberName}>{member.name}</h3>
-                <p className={styles.memberDesc}>{member.description}</p>
-              </div>
-            ))}
+        <div className={styles.grid}>
+          {/* Левая колонка — фотографии */}
+          <div className={styles.visual}>
+            <Photo
+              src={aboutPhotos.primary.src}
+              alt={aboutPhotos.primary.alt}
+              shape="tall"
+              caption={aboutPhotos.primary.caption}
+              meta={aboutPhotos.primary.meta}
+            />
+            <Photo
+              src={aboutPhotos.secondary.src}
+              alt={aboutPhotos.secondary.alt}
+              shape="wide"
+              caption={aboutPhotos.secondary.caption}
+              meta={aboutPhotos.secondary.meta}
+            />
+          </div>
+
+          {/* Правая колонка — текст и состав */}
+          <div className={styles.body}>
+            <SectionHeading
+              index="01"
+              eyebrow="О коллективе"
+              title="Пять музыкантов. Один путь."
+            />
+
+            <div className={styles.text}>
+              <p className={styles.paragraph}>
+                NOVA PROJECT — это не просто группа. Это пространство, где
+                встречаются традиции джазовой музыки и современный
+                художественный поиск. Каждая интерпретация — новая.
+              </p>
+              <p className={styles.paragraph}>
+                Наш репертуар — не набор хитов, а тщательно выстроенная
+                программа, где классика джаза соседствует с авторскими
+                композициями, а знакомые мелодии обретают новое звучание.
+              </p>
+            </div>
+
+            <blockquote className={styles.quote}>
+              Мы верим, что музыка способна трансформировать пространство и
+              время. Наша задача — создавать атмосферу, в которой каждая нота
+              становится частью истории.
+            </blockquote>
+
+            {/* Состав: типографический список вместо иконок */}
+            <ul className={styles.roster}>
+              {homeBandMembers.map((member, i) => (
+                <li key={member.name} className={styles.rosterItem}>
+                  <span className={styles.rosterIndex}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className={styles.rosterName}>{member.name}</span>
+                  <span className={styles.rosterDesc}>
+                    {member.description}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
