@@ -1,9 +1,9 @@
 import { contactInfo } from '../../data';
 import styles from './ContactSection.module.css';
 
-export default function ContactSection() {
+export default function ContactSection({ id = 'contact' }: { id?: string }) {
   return (
-    <section className={styles.contact}>
+    <section className={styles.contact} id={id}>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>Связаться с нами</h2>
         <p className={styles.contactIntro}>

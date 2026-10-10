@@ -1,9 +1,9 @@
 import { pricing, includedItems, riderNote } from '../../data';
 import styles from './PricingSection.module.css';
 
-export default function PricingSection() {
+export default function PricingSection({ id = 'pricing' }: { id?: string }) {
   return (
-    <section className={styles.pricing}>
+    <section className={styles.pricing} id={id}>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>Стоимость</h2>
         <div className={styles.pricingCard}>

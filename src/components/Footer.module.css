@@ -2,6 +2,7 @@
   background-color: #0a0a0a;
   color: #ffffff;
   padding: 80px 40px 40px;
+  border-top: 1px solid #1a1a1a;
 }
 
 .container {
@@ -21,7 +22,7 @@
 .link {
   background: none;
   border: none;
-  color: #888888;
+  color: #666666;
   font-size: 14px;
   letter-spacing: 0.05em;
   cursor: pointer;
@@ -60,16 +61,49 @@
   border-color: #ffffff;
 }
 
+/* Tablet styles */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 60px 30px 30px;
+  }
+}
+
+/* Mobile styles */
 @media (max-width: 768px) {
   .footer {
-    padding: 60px 20px 30px;
+    padding: 50px 20px 25px;
   }
 
   .links {
     gap: 20px;
+    flex-wrap: wrap;
   }
 
   .link {
     font-size: 12px;
+  }
+
+  .copyright {
+    font-size: 12px;
+  }
+
+  .backToTop {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .footer {
+    padding: 40px 15px 20px;
+  }
+
+  .links {
+    gap: 15px;
+  }
+
+  .link {
+    font-size: 11px;
   }
 }

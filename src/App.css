@@ -40,3 +40,13 @@ a, button {
     opacity: 1;
   }
 }
+
+/* Smooth scroll for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Landing page sections fade in on scroll */
+section {
+  animation: fadeIn 0.6s ease-out;
+}

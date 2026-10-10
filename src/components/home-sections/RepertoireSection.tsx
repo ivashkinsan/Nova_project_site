@@ -1,9 +1,9 @@
 import { repertoire } from '../../data';
 import styles from './RepertoireSection.module.css';
 
-export default function RepertoireSection() {
+export default function RepertoireSection({ id = 'repertoire' }: { id?: string }) {
   return (
-    <section className={styles.repertoire}>
+    <section className={styles.repertoire} id={id}>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>Репертуар</h2>
         <div className={styles.repertoireGrid}>

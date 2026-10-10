@@ -1,9 +1,7 @@
-import { useAppStore } from '../../store/store';
 import styles from './HeroSection.module.css';
+import heroImage from '../../assets/1.jpg';
 
 export default function HeroSection() {
-  const setCurrentPage = useAppStore((state) => state.setCurrentPage);
-
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -12,7 +10,11 @@ export default function HeroSection() {
   };
 
   return (
-    <section className={styles.hero} id="hero">
+    <section
+      className={styles.hero}
+      id="hero"
+      style={{ backgroundImage: `url(${heroImage})` }}
+    >
       <div className={styles.heroOverlay}></div>
       <div className={styles.heroContent}>
         <div className={styles.heroTitleWrapper}>

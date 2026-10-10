@@ -14,7 +14,7 @@
   font-size: clamp(36px, 5vw, 64px);
   color: #ffffff;
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
   letter-spacing: -0.03em;
   font-weight: 700;
 }
@@ -22,79 +22,103 @@
 .repertoireGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  margin-bottom: 60px;
+  gap: 30px;
 }
 
 .repertoireItem {
-  padding: 50px 40px;
-  background-color: #111111;
-  border: 1px solid #1a1a1a;
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.repertoireItem::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.03) 0%,
-    transparent 100%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.repertoireItem:hover::before {
-  opacity: 1;
+  background: #111111;
+  padding: 40px 30px;
+  border: 1px solid #222222;
+  transition: all 0.3s ease;
 }
 
 .repertoireItem:hover {
-  border-color: #333333;
+  transform: translateY(-5px);
+  border-color: #444444;
 }
 
 .repertoireTitle {
-  font-size: 22px;
+  font-size: 24px;
   color: #ffffff;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
 
 .repertoireDesc {
-  font-size: 15px;
-  color: #666666;
+  font-size: 16px;
+  color: #888888;
   line-height: 1.6;
-  margin: 0;
 }
 
 .repertoireNote {
   text-align: center;
+  margin-top: 60px;
   font-size: 16px;
-  color: #888888;
+  color: #666666;
+  font-style: italic;
   max-width: 600px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 1.6;
 }
 
+/* Tablet styles */
 @media (max-width: 1024px) {
   .repertoireGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .repertoireItem {
+    padding: 30px 20px;
+  }
+  
+  .repertoireTitle {
+    font-size: 20px;
   }
 }
 
+/* Mobile styles */
 @media (max-width: 768px) {
   .container {
     padding: 0 20px;
   }
   
+  .repertoire {
+    padding: 80px 0;
+  }
+  
+  .sectionTitle {
+    margin-bottom: 40px;
+  }
+  
   .repertoireGrid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .repertoireItem {
+    padding: 25px 15px;
+  }
+  
+  .repertoireTitle {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .repertoireDesc {
+    font-size: 15px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .repertoire {
+    padding: 60px 0;
+  }
+  
+  .container {
+    padding: 0 15px;
   }
 }

@@ -1,9 +1,9 @@
 import { homeFormatOptions } from '../../data';
 import styles from './FormatSection.module.css';
 
-export default function FormatSection() {
+export default function FormatSection({ id = 'format' }: { id?: string }) {
   return (
-    <section className={styles.format}>
+    <section className={styles.format} id={id}>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>Формат выступления</h2>
         <div className={styles.formatOptions}>

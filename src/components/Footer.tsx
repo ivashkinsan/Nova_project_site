@@ -1,26 +1,27 @@
-import { useAppStore } from '../store/store';
 import styles from './Footer.module.css';
 
 type FooterLink = {
   label: string;
-  page: 'artists' | 'booking' | 'about' | 'contacts' | 'home' | null;
+  sectionId: string | null;
 };
 
 const footerLinks: FooterLink[] = [
-  { label: 'Главная', page: 'home' },
-  { label: 'О нас', page: 'about' },
-  { label: 'Коллектив', page: 'artists' },
-  { label: 'Бронирование', page: 'booking' },
-  { label: 'Контакты', page: 'contacts' },
+  { label: 'Главная', sectionId: null },
+  { label: 'О нас', sectionId: 'about' },
+  { label: 'Репертуар', sectionId: 'repertoire' },
+  { label: 'Бронирование', sectionId: 'booking' },
+  { label: 'Контакты', sectionId: 'contact' },
 ];
 
 export default function Footer() {
-  const setCurrentPage = useAppStore((state) => state.setCurrentPage);
-
-  const handleLinkClick = (page: string | null) => {
-    if (page) {
-      setCurrentPage(page as any);
-      window.scrollTo(0, 0);
+  const scrollToSection = (sectionId: string | null) => {
+    if (!sectionId) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -32,7 +33,7 @@ export default function Footer() {
             <button
               key={link.label}
               className={styles.link}
-              onClick={() => handleLinkClick(link.page)}
+              onClick={() => scrollToSection(link.sectionId)}
             >
               {link.label}
             </button>
@@ -43,7 +44,7 @@ export default function Footer() {
         </div>
         <button
           className={styles.backToTop}
-          onClick={() => window.scrollTo(0, 0)}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           Наверх
         </button>
