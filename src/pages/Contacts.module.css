@@ -1,22 +1,30 @@
 .contactsPage {
-  padding: 120px 0 100px;
+  padding: 120px 40px 100px;
   min-height: 100vh;
   background-color: #0a0a0a;
 }
 
 .container {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 0 40px;
 }
 
 .title {
-  font-size: 48px;
-  font-weight: 300;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
   color: #ffffff;
   text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: #666666;
   margin-bottom: 80px;
-  letter-spacing: 3px;
+  line-height: 1.6;
 }
 
 .content {
@@ -28,33 +36,36 @@
 .contactInfo {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 50px;
   text-align: center;
 }
 
 .contactItem {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
 }
 
 .contactLabel {
-  font-size: 14px;
+  font-size: 12px;
   color: #888888;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.15em;
+  font-weight: 600;
 }
 
 .contactValue {
-  font-size: 24px;
+  font-size: 28px;
   color: #ffffff;
   text-decoration: none;
   transition: opacity 0.3s ease;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .contactValue:hover {
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .formSection {
@@ -65,21 +76,30 @@
 
 .formTitle {
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 600;
   color: #ffffff;
   text-align: center;
-  letter-spacing: 2px;
+  letter-spacing: -0.02em;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
 }
 
 .formGroup {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  font-size: 12px;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
 }
 
 .input,
@@ -87,7 +107,7 @@
   background-color: transparent;
   border: 1px solid #333333;
   color: #ffffff;
-  padding: 15px;
+  padding: 18px 20px;
   font-size: 16px;
   font-family: inherit;
   outline: none;
@@ -101,30 +121,31 @@
 
 .input::placeholder,
 .textarea::placeholder {
-  color: #666666;
+  color: #444444;
 }
 
 .textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 150px;
 }
 
 .submitBtn {
   background: transparent;
-  border: 2px solid #ffffff;
+  border: 1px solid #ffffff;
   color: #ffffff;
-  padding: 15px 40px;
+  padding: 18px 40px;
   font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 0.1em;
   cursor: pointer;
   transition: all 0.3s ease;
   align-self: center;
+  font-weight: 600;
 }
 
 .submitBtn:hover {
   background: #ffffff;
-  color: #000000;
+  color: #0a0a0a;
 }
 
 @media (max-width: 768px) {
@@ -134,10 +155,14 @@
 
   .title {
     font-size: 36px;
-    margin-bottom: 60px;
+    margin-bottom: 15px;
+  }
+
+  .subtitle {
+    margin-bottom: 50px;
   }
 
   .contactValue {
-    font-size: 18px;
+    font-size: 22px;
   }
 }

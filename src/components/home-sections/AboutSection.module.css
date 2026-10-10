@@ -1,0 +1,85 @@
+.about {
+  padding: 120px 0;
+  background-color: #ffffff;
+  color: #0a0a0a;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.sectionTitle {
+  font-size: clamp(36px, 5vw, 64px);
+  color: #0a0a0a;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.aboutContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.aboutText {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #444444;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.bandMembers {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.memberCard {
+  text-align: center;
+  padding: 30px 20px;
+  transition: all 0.3s ease;
+}
+
+.memberCard:hover {
+  transform: translateY(-5px);
+}
+
+.memberIcon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.memberName {
+  font-size: 18px;
+  color: #0a0a0a;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.memberDesc {
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .bandMembers {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .bandMembers {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}

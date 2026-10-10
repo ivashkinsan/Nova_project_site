@@ -3,18 +3,15 @@ import styles from './Footer.module.css';
 
 type FooterLink = {
   label: string;
-  page: 'artists' | 'booking' | 'about' | 'contacts' | null;
+  page: 'artists' | 'booking' | 'about' | 'contacts' | 'home' | null;
 };
 
 const footerLinks: FooterLink[] = [
-  { label: 'artists', page: 'artists' },
-  { label: 'booking', page: 'booking' },
-  { label: 'about us', page: 'about' },
-  { label: 'contacts', page: 'contacts' },
-  { label: 'privacy policy', page: null },
-  { label: 'terms & conditions', page: null },
-  { label: 'disclaimer', page: null },
-  { label: 'instagram', page: null },
+  { label: 'Главная', page: 'home' },
+  { label: 'О нас', page: 'about' },
+  { label: 'Коллектив', page: 'artists' },
+  { label: 'Бронирование', page: 'booking' },
+  { label: 'Контакты', page: 'contacts' },
 ];
 
 export default function Footer() {
@@ -42,16 +39,13 @@ export default function Footer() {
           ))}
         </div>
         <div className={styles.copyright}>
-          avantgarde artists agency &copy; 2024
-        </div>
-        <div className={styles.design}>
-          design by uprock
+          NOVA PROJECT &copy; {new Date().getFullYear()}
         </div>
         <button
           className={styles.backToTop}
           onClick={() => window.scrollTo(0, 0)}
         >
-          back to top
+          Наверх
         </button>
       </div>
     </footer>

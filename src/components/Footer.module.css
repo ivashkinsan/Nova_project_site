@@ -1,74 +1,75 @@
 .footer {
-  background-color: #000000;
+  background-color: #0a0a0a;
   color: #ffffff;
-  padding: 60px 40px 40px;
+  padding: 80px 40px 40px;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 40px;
 }
 
 .links {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 40px;
 }
 
 .link {
   background: none;
   border: none;
-  color: #ffffff;
+  color: #888888;
   font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.05em;
   cursor: pointer;
-  transition: opacity 0.3s ease;
+  transition: color 0.3s ease;
   padding: 0;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 .link:hover {
-  opacity: 0.6;
+  color: #ffffff;
 }
 
 .copyright {
   font-size: 14px;
-  color: #888888;
-  letter-spacing: 1px;
-}
-
-.design {
-  font-size: 12px;
   color: #666666;
-  letter-spacing: 1px;
+  letter-spacing: 0.05em;
 }
 
 .backToTop {
   background: none;
-  border: none;
+  border: 1px solid #333333;
   color: #ffffff;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
   cursor: pointer;
-  padding: 0;
+  padding: 12px 24px;
   align-self: flex-start;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
 }
 
 .backToTop:hover {
-  opacity: 0.6;
+  background-color: #ffffff;
+  color: #0a0a0a;
+  border-color: #ffffff;
 }
 
 @media (max-width: 768px) {
   .footer {
-    padding: 40px 20px;
+    padding: 60px 20px 30px;
   }
 
   .links {
     gap: 20px;
+  }
+
+  .link {
+    font-size: 12px;
   }
 }

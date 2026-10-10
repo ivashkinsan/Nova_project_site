@@ -4,19 +4,26 @@ export default function About() {
   return (
     <section className={styles.aboutPage}>
       <div className={styles.container}>
-        <h1 className={styles.title}>About Us</h1>
+        <h1 className={styles.title}>О коллективе</h1>
         <div className={styles.content}>
           <p className={styles.text}>
-            We are a London based booking & management agency dedicated to developing the careers of unique electronic music artists.
+            NOVA PROJECT — это пять музыкантов, объединённых любовью к живому звуку и эстетике джаза. 
+            Мы работаем на мероприятиях любого формата: корпоративы, банкеты, свадьбы, закрытые приёмы, 
+            фестивали, фоновая музыка для презентаций и выставок.
           </p>
           <p className={styles.text}>
-            Every artist is a superstar in the making, and we're the ones to guide them through the labyrinth of the music industry.
+            Наш состав: вокал, саксофон, фортепиано, бас гитара, ударные. 
+            Каждый из нас — профессиональный музыкант с многолетним опытом концертной деятельности.
           </p>
           <p className={styles.text}>
-            With 20+ years of expertise in talent buying and programming services, the world's best clubs, festivals, restaurants and private members clubs is our canvas.
+            Мы играем всё: от классики джаза до фьюжна. В нашем репертуаре — стандарты, 
+            свинг, мейнстрим, мировые хиты в джазовых аранжировках, авторские композиции 
+            и русская джазовая программа.
           </p>
           <p className={styles.text}>
-            We bring together the best talent, creating experiences that are nothing short of iconic. Avantgarde Artists Agency – making the ordinary extraordinary.
+            Можем составить программу под конкретное событие из имеющегося репертуара 
+            нашего коллектива. Технический и бытовой райдер согласовывается индивидуально 
+            под каждое мероприятие.
           </p>
         </div>
       </div>

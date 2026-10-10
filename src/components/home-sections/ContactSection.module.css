@@ -1,0 +1,78 @@
+.contact {
+  padding: 120px 0;
+  background-color: #ffffff;
+  color: #0a0a0a;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: clamp(36px, 5vw, 64px);
+  color: #0a0a0a;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.contactIntro {
+  font-size: 16px;
+  color: #666666;
+  margin-bottom: 60px;
+  line-height: 1.6;
+}
+
+.contactCards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.contactCard {
+  padding: 50px 40px;
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.contactCard:hover {
+  background-color: #eeeeee;
+  border-color: #cccccc;
+}
+
+.contactCardTitle {
+  font-size: 14px;
+  color: #888888;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.contactLink {
+  font-size: 24px;
+  color: #0a0a0a;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  transition: opacity 0.3s ease;
+}
+
+.contactLink:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .contactCards {
+    grid-template-columns: 1fr;
+  }
+}

@@ -2,10 +2,10 @@ import { useAppStore } from '../store/store';
 import styles from './Header.module.css';
 
 const navItems = [
-  { label: 'artists', page: 'artists' as const },
-  { label: 'booking', page: 'booking' as const },
-  { label: 'about us', page: 'about' as const },
-  { label: 'contacts', page: 'contacts' as const },
+  { label: 'О нас', page: 'home' as const },
+  { label: 'Репертуар', page: 'artists' as const },
+  { label: 'Бронирование', page: 'booking' as const },
+  { label: 'Контакты', page: 'contacts' as const },
 ];
 
 export default function Header() {
@@ -27,7 +27,7 @@ export default function Header() {
           className={styles.logo}
           onClick={() => handleNavClick('home')}
         >
-          AVANTGARDE
+          NOVA PROJECT
         </div>
         <nav className={styles.nav}>
           <ul className={styles.navList}>

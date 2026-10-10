@@ -1,22 +1,22 @@
 import { useState } from 'react';
+import { FormInput, FormSelect, FormTextarea, FormRadioCard } from '../components/form';
+import { eventTypes, bookingFormatOptions, initialBookingForm } from '../data';
 import styles from './Booking.module.css';
 
 export default function Booking() {
-  const [formData, setFormData] = useState({
-    bookingFee: 'yes',
-    flights: 'yes',
-    hotel: 'yes',
-    country: '',
-    venue: '',
-    date: '',
-    email: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState(initialBookingForm);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleFormatChange = (value: string) => {
+    setFormData({
+      ...formData,
+      format: value,
     });
   };
 
@@ -28,167 +28,85 @@ export default function Booking() {
   return (
     <section className={styles.bookingPage}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Booking Form</h1>
+        <h1 className={styles.title}>Бронирование</h1>
+        <p className={styles.subtitle}>
+          Заполните форму, и мы свяжемся с вами для обсуждения деталей
+        </p>
         <form className={styles.form} onSubmit={handleSubmit}>
+          <FormSelect
+            name="eventType"
+            value={formData.eventType}
+            onChange={handleChange}
+            options={eventTypes}
+            placeholder="Выберите тип мероприятия"
+            required
+            label="Тип мероприятия*"
+          />
+
+          <FormInput
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+            required
+            label="Дата мероприятия*"
+          />
+
+          <FormInput
+            type="text"
+            name="location"
+            value={formData.location}
+            onChange={handleChange}
+            placeholder="Липецк"
+            label="Город / площадка"
+          />
+
           <div className={styles.formGroup}>
-            <label className={styles.label}>Booking fee on top*</label>
+            <label className={styles.label}>Формат выступления*</label>
             <div className={styles.radioGroup}>
-              <label className={styles.radioLabel}>
-                <input
-                  type="radio"
-                  name="bookingFee"
-                  value="yes"
-                  checked={formData.bookingFee === 'yes'}
-                  onChange={handleChange}
-                  className={styles.radio}
+              {bookingFormatOptions.map((option) => (
+                <FormRadioCard
+                  key={option.value}
+                  name="format"
+                  value={option.value}
+                  label={option.label}
+                  checked={formData.format === option.value}
+                  onChange={handleFormatChange}
                 />
-                Yes
-              </label>
-              <label className={styles.radioLabel}>
-                <input
-                  type="radio"
-                  name="bookingFee"
-                  value="no"
-                  checked={formData.bookingFee === 'no'}
-                  onChange={handleChange}
-                  className={styles.radio}
-                />
-                No
-              </label>
+              ))}
             </div>
           </div>
 
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Flights on top*</label>
-            <div className={styles.radioGroup}>
-              <label className={styles.radioLabel}>
-                <input
-                  type="radio"
-                  name="flights"
-                  value="yes"
-                  checked={formData.flights === 'yes'}
-                  onChange={handleChange}
-                  className={styles.radio}
-                />
-                Yes
-              </label>
-              <label className={styles.radioLabel}>
-                <input
-                  type="radio"
-                  name="flights"
-                  value="no"
-                  checked={formData.flights === 'no'}
-                  onChange={handleChange}
-                  className={styles.radio}
-                />
-                No
-              </label>
-            </div>
-          </div>
+          <FormInput
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="your@email.com"
+            required
+            label="Email*"
+          />
 
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Hotel on top*</label>
-            <div className={styles.radioGroup}>
-              <label className={styles.radioLabel}>
-                <input
-                  type="radio"
-                  name="hotel"
-                  value="yes"
-                  checked={formData.hotel === 'yes'}
-                  onChange={handleChange}
-                  className={styles.radio}
-                />
-                Yes
-              </label>
-              <label className={styles.radioLabel}>
-                <input
-                  type="radio"
-                  name="hotel"
-                  value="no"
-                  checked={formData.hotel === 'no'}
-                  onChange={handleChange}
-                  className={styles.radio}
-                />
-                No
-              </label>
-            </div>
-          </div>
+          <FormInput
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="+7 (___) ___-__-__"
+            required
+            label="Телефон*"
+          />
 
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Country*</label>
-            <select
-              name="country"
-              value={formData.country}
-              onChange={handleChange}
-              className={styles.select}
-            >
-              <option value="">Select country</option>
-              <option value="GB">United Kingdom</option>
-              <option value="US">United States</option>
-              <option value="DE">Germany</option>
-              <option value="FR">France</option>
-              <option value="IT">Italy</option>
-              <option value="ES">Spain</option>
-              <option value="NL">Netherlands</option>
-              <option value="BE">Belgium</option>
-              <option value="CH">Switzerland</option>
-              <option value="AT">Austria</option>
-              <option value="PL">Poland</option>
-              <option value="UA">Ukraine</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Venue</label>
-            <input
-              type="text"
-              name="venue"
-              value={formData.venue}
-              onChange={handleChange}
-              placeholder="Venue name"
-              className={styles.input}
-            />
-          </div>
-
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Date</label>
-            <input
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              className={styles.input}
-            />
-          </div>
-
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Email*</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="your@email.com"
-              className={styles.input}
-              required
-            />
-          </div>
-
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Additional Information</label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Any additional details..."
-              className={styles.textarea}
-              rows={5}
-            />
-          </div>
+          <FormTextarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Укажите пожелания по программе, времени, технике..."
+            label="Дополнительная информация"
+          />
 
           <button type="submit" className={styles.submitBtn}>
-            Submit
+            Отправить заявку
           </button>
         </form>
       </div>

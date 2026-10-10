@@ -4,12 +4,15 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: transparent;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   transition: background-color 0.3s ease;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 20px 40px;
   display: flex;
@@ -18,12 +21,17 @@
 }
 
 .logo {
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: #ffffff;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #0a0a0a;
   cursor: pointer;
   text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+  opacity: 0.7;
 }
 
 .navList {
@@ -39,27 +47,42 @@
   border: none;
   font-size: 14px;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #0a0a0a;
   cursor: pointer;
   padding: 0;
   transition: opacity 0.3s ease;
+  position: relative;
 }
 
-.navLink:hover {
-  opacity: 0.7;
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #0a0a0a;
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
 }
 
 .navLink.active {
-  opacity: 1;
   font-weight: 600;
+}
+
+.navLink.active::after {
+  width: 100%;
 }
 
 .menuToggle {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
   background: none;
   border: none;
   cursor: pointer;
@@ -67,9 +90,9 @@
 }
 
 .menuToggle span {
-  width: 25px;
+  width: 24px;
   height: 2px;
-  background-color: #ffffff;
+  background-color: #0a0a0a;
   transition: all 0.3s ease;
 }
 
@@ -90,19 +113,24 @@
     padding: 15px 20px;
   }
 
+  .logo {
+    font-size: 20px;
+  }
+
   .nav {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(255, 255, 255, 0.98);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    z-index: 999;
   }
 
   .nav.open {
@@ -117,10 +145,13 @@
   }
 
   .navLink {
-    font-size: 18px;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
   }
 
   .menuToggle {
     display: flex;
+    z-index: 1001;
   }
 }

@@ -1,0 +1,39 @@
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  color: #cccccc;
+  font-size: 15px;
+  padding: 15px 20px;
+  border: 1px solid #333333;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 250px;
+}
+
+.radioLabel:hover {
+  border-color: #ffffff;
+}
+
+.radio {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #666666;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.radio:checked {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .radioLabel {
+    min-width: auto;
+  }
+}

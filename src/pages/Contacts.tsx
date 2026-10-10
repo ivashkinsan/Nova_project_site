@@ -23,25 +23,25 @@ export default function Contacts() {
   return (
     <section className={styles.contactsPage}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Contacts</h1>
+        <h1 className={styles.title}>Контакты</h1>
         <div className={styles.content}>
           <div className={styles.contactInfo}>
             <div className={styles.contactItem}>
-              <span className={styles.contactLabel}>E-mail</span>
-              <a href="mailto:hello@avantgardeartistsagency.com" className={styles.contactValue}>
-                hello@avantgardeartistsagency.com
+              <span className={styles.contactLabel}>Телефон:</span>
+              <a href="tel:+79205291010" className={styles.contactValue}>
+                +7 920 529-10-10 (Дмитрий)
               </a>
             </div>
             <div className={styles.contactItem}>
-              <span className={styles.contactLabel}>Mobile:</span>
-              <a href="tel:+4407878711026" className={styles.contactValue}>
-                +44 (0) 7878 711026
+              <span className={styles.contactLabel}>Соцсети / мессенджеры:</span>
+              <a href="https://vk.ru/novaprojekt" target="_blank" rel="noopener noreferrer" className={styles.contactValue}>
+                VK: NOVA PROJECT
               </a>
             </div>
           </div>
 
           <div className={styles.formSection}>
-            <h2 className={styles.formTitle}>Send Us a Message</h2>
+            <h2 className={styles.formTitle}>Отправить сообщение</h2>
             <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.formGroup}>
                 <input
@@ -49,7 +49,7 @@ export default function Contacts() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Your name"
+                  placeholder="Ваше имя"
                   className={styles.input}
                   required
                 />
@@ -60,7 +60,7 @@ export default function Contacts() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="Your email"
+                  placeholder="Ваш email"
                   className={styles.input}
                   required
                 />
@@ -70,14 +70,14 @@ export default function Contacts() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Your message"
+                  placeholder="Ваше сообщение"
                   className={styles.textarea}
                   rows={5}
                   required
                 />
               </div>
               <button type="submit" className={styles.submitBtn}>
-                Send
+                Отправить
               </button>
             </form>
           </div>
