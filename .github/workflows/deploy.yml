@@ -21,14 +21,31 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # vite.config.js перекрывает vite.config.ts (Vite загружает .js первым),
+      # поэтому в репозитории должен остаться ровно один конфиг. Если .js вернётся,
+      # сборка уедет без base и сайт на Pages откроется пустым — падаем раньше.
+      - name: Guard: единственный конфиг Vite
+        run: |
+          if [ -f vite.config.js ]; then
+            echo "::error::Найден vite.config.js — он перекрывает vite.config.ts. Удалите его (git rm vite.config.js), либо перенесите base в него и удалите vite.config.ts."
+            exit 1
+          fi
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: "npm"
+          node-version: 22
 
+      # Проверяет, что Pages реально включён (Settings → Pages → Source: GitHub Actions),
+      # и падает с понятным текстом вместо невнятного «Get Pages site failed» на деплое.
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # В репозитории нет lock-файла: pnpm-lock.yaml в .gitignore, package-lock.json
+      # не коммитился. Поэтому `npm ci` и `cache: npm` здесь не работают —
+      # оба требуют lock-файл и падают ещё до сборки.
       - name: Install dependencies
-        run: npm ci
+        run: npm install --no-audit --no-fund
 
       - name: Build
         run: npm run build
