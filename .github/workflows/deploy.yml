@@ -36,10 +36,12 @@ jobs:
         with:
           node-version: 22
 
-      # Проверяет, что Pages реально включён (Settings → Pages → Source: GitHub Actions),
-      # и падает с понятным текстом вместо невнятного «Get Pages site failed» на деплое.
+      # Пробует включить Pages автоматически (Source: GitHub Actions).
+      # Если токену не хватит прав — включите вручную: Settings → Pages → Source: GitHub Actions.
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       # В репозитории нет lock-файла: pnpm-lock.yaml в .gitignore, package-lock.json
       # не коммитился. Поэтому `npm ci` и `cache: npm` здесь не работают —
