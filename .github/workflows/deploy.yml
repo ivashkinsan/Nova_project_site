@@ -24,7 +24,7 @@ jobs:
       # vite.config.js перекрывает vite.config.ts (Vite загружает .js первым),
       # поэтому в репозитории должен остаться ровно один конфиг. Если .js вернётся,
       # сборка уедет без base и сайт на Pages откроется пустым — падаем раньше.
-      - name: Guard: единственный конфиг Vite
+      - name: Проверка единственного конфига Vite
         run: |
           if [ -f vite.config.js ]; then
             echo "::error::Найден vite.config.js — он перекрывает vite.config.ts. Удалите его (git rm vite.config.js), либо перенесите base в него и удалите vite.config.ts."
