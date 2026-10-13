@@ -1,9 +1,10 @@
 /**
  * Реестр фотографий проекта.
  *
- * Файлы лежат в папке Public/ и отдаются как /1.jpg … /28.jpg
- * (см. publicDir в vite.config.js). Чтобы заменить снимок — просто
- * положите новую версию с тем же номером, код менять не нужно.
+ * Файлы лежат в папке Public/ (см. publicDir в vite.config.ts) и отдаются
+ * по базовому пути сборки: `${BASE}N.jpg`, то есть `/1.jpg` при base = "/"
+ * и `/Nova_project_site/1.jpg` на GitHub Pages. Чтобы заменить снимок —
+ * просто положите новую версию с тем же номером, код менять не нужно.
  *
  * `src` — строка, а не импорт: это константные данные, а не объект сборки.
  * Подписи и alt описывают сцену в общем виде — уточните под конкретный кадр.
@@ -22,6 +23,13 @@ export interface PhotoAsset {
 const LANDSCAPE: PhotoAsset['orientation'] = 'landscape';
 const PORTRAIT: PhotoAsset['orientation'] = 'portrait';
 
+/**
+ * Базовый путь приложения — всегда с завершающим слэшем ("/" или "/Nova_project_site/").
+ * Абсолютные `/N.jpg` без этого префикса уходят мимо `base`: dev-сервер отвечает
+ * 404 (baseMiddleware в Vite), а на GitHub Pages снимок ищется в корне домена.
+ */
+const BASE = import.meta.env.BASE_URL;
+
 const asset = (
   index: number,
   alt: string,
@@ -29,7 +37,7 @@ const asset = (
   caption?: string,
   meta?: string
 ): PhotoAsset => ({
-  src: `/${index}.jpg`,
+  src: `${BASE}${index}.jpg`,
   alt,
   orientation,
   caption,
