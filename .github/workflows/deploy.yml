@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # vite.config.js перекрывает vite.config.ts (Vite загружает .js первым),
       # поэтому в репозитории должен остаться ровно один конфиг. Если .js вернётся,
@@ -32,16 +32,16 @@ jobs:
           fi
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 22
 
-      # Пробует включить Pages автоматически (Source: GitHub Actions).
-      # Если токену не хватит прав — включите вручную: Settings → Pages → Source: GitHub Actions.
+      # Pages нужно включить один раз вручную: Settings → Pages → Source: GitHub Actions.
+      # Автоматически включить нельзя: у токена Actions нет прав на создание сайта
+      # (HttpError: Resource not accessible by integration), поэтому enablement убран.
+      # Шаг ниже лишь проверяет, что Pages уже включён, и падает с понятным текстом.
       - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
+        uses: actions/configure-pages@v6
 
       # В репозитории нет lock-файла: pnpm-lock.yaml в .gitignore, package-lock.json
       # не коммитился. Поэтому `npm ci` и `cache: npm` здесь не работают —
@@ -53,7 +53,7 @@ jobs:
         run: npm run build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./dist
 
@@ -66,4 +66,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
