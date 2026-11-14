@@ -32,9 +32,15 @@ def tiers(w, h, portrait):
         out.append((int(round(w * scale)), int(round(h * scale))))
     return out
 
+# Ключи, реально задействованные ассетами (asset(N, …)); ключ 28 в DIMENSIONS
+# свободен по AGENTS §11 и дериватов не имеет.
+used_keys = {int(m) for m in re.findall(r"asset\((\d+),", text)}
+used = {n: d for n, d in dims.items() if n in used_keys}
+extra_keys = sorted(set(dims) - used_keys)
+
 referenced = set()
 problems = []
-for n, (w, h) in sorted(dims.items()):
+for n, (w, h) in sorted(used.items()):
     portrait = h > w
     real_path = ROOT / "Public" / f"{n}.jpg"
     real = None
@@ -60,5 +66,6 @@ for n, (w, h) in sorted(dims.items()):
 stale = sorted(p.name for p in IMG.glob("*.webp") if p.name not in referenced)
 
 print("файлов webp:", len(list(IMG.glob("*.webp"))), "; ссылок реестра:", len(referenced))
+print("свободные ключи DIMENSIONS (без ассетов):", extra_keys)
 print("проблемы:", problems if problems else "нет")
 print("лишние (реестр на них не ссылается):", stale)
