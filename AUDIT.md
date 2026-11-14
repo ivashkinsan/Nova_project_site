@@ -40,7 +40,7 @@
 | `sitemap.xml` — отсутствует | ok (исправлено) | P0 | `Public/sitemap.xml` (абсолютный URL, lastmod) |
 | JSON-LD `MusicGroup` — отсутствует | ok (исправлено) | P0 | в `index.html`: name, genre (Jazz/Neoclassical/Fusion), address Липецк, image, sameAs (VK), url, inLanguage ru |
 | Один `h1` (в hero), h2 по одному на секцию, h3 в карточках | ok | — | — |
-| Alt-тексты: есть, но обобщённые («по смыслу»), без ключей | ok (исправлено) | P1 | alt переписаны в реестре с ключами (джаз-квинтет, живые выступления, Липецк) |
+| Alt-тексты: есть, но обобщённые («по смыслу»), без ключей | ok (исправлено) | P1 | alt переписаны в реестре с ключами; затем уточнены по просмотру всех 26 кадров (подписи по фактическим ролям) |
 | Навигация — `<button>` (для SPA-скролла), поисковик не видит ссылок | ok (исправлено) | P1 | footer-навигация — `<a href="#id">` (crawlable-якоря), smooth-scroll через html+scroll-padding-top; header оставлен кнопками |
 | `rel="noopener noreferrer"` на внешних (VK в Footer/Booking/Contact) | ok | — | — |
 | Favicon = `/1.jpg` (1,1 МБ) — абсурдно тяжёлый, relative (404 на Pages без base) | ok (исправлено) | P0 | `Public/favicon.svg` (монограмма N, палитра), путь `./favicon.svg` под base |
