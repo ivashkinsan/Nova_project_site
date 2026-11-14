@@ -69,8 +69,10 @@
   → Готово: корень Photo — всегда `<figure>` (shape, ховер, `.visual figure`), внутри `<picture>`+jpg-fallback; `TIERS_PORTRAIT = [640, 1000, 2160]` (ступени-высоты, scale = edge/h) — 78 дериватов, 0 потерянных ссылок, 0 лишнего; Pillow-сверка чистая.
 - [x] P2 — package.json имя; Описание: avantgarde-artists-agency → nova-project-site; Файлы: package.json; Критерий: имя соответствует проекту.
   → Готово: `"name": "nova-project-site"` (private, npm-публикации нет, ссылок на старое имя в коде/CI не найдено).
-- [ ] P2 — итоговый контроль; Описание: ручные проверки: все styles.* в module.css; esbuild-парсинг каждого CSS; специфичность .animatedSection.animated не ниже; breakpoints 320/375/768/1024/1440; reduced-motion; git diff чистый; Файлы: src/**; Критерий: список проверок пройден, отчёт в REPORT.md.
-- [ ] P2 — фиксация легаси-решений; Описание: DECISIONS.md: avantgarde-site/, App.css, gsap/lottie, store, Home.module.css; Файлы: DECISIONS.md; Критерий: решения записаны.
+- [x] P2 — итоговый контроль; Описание: ручные проверки: все styles.* в module.css; esbuild-парсинг каждого CSS; специфичность .animatedSection.animated не ниже; breakpoints 320/375/768/1024/1440; reduced-motion; git diff чистый; Файлы: src/**; Критерий: список проверок пройден, отчёт в REPORT.md.
+  → Готово: styles.* — ни одного MISSING (23 модуля, включая `styles.media`); esbuild-парсер прошёл все 28 CSS без ошибок; `.animatedSection.animated` — 2 класса, объявлен после анимационных классов, специфичность не понижена; breakpoints: базовые 1024/768/480 во всех home-секциях и футере, точечные 1280/1100/900 (Header), 860/640/1025–1200/max-height 780 по AGENTS; reduced-motion — три блока (index.css, AnimatedSection, Marquee), print — там, где анимация; единственное нарушение §3.5 (`border-radius: 4px` у скролл-полосы) сведено к 0; git diff чистый.
+- [x] P2 — фиксация легаси-решений; Описание: DECISIONS.md: avantgarde-site/, App.css, gsap/lottie, store, Home.module.css; Файлы: DECISIONS.md; Критерий: решения записаны.
+  → Готово: сводная запись «Фиксация легаси-решений (итог)» в DECISIONS.md (avantgarde-site/, App.css, gsap/lottie/LottieAnimation/useScrollAnimation/useIntersectionObserver, src/pages/*, Home.module.css, store/store.ts, README) + запись об имени пакета.
 
 ## Итог
 - [ ] REPORT.md: что сделано, что осталось и почему.
