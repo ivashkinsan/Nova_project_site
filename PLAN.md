@@ -21,16 +21,20 @@
   → Готово: Public/favicon.svg (монограмма N), link ./favicon.svg (Vite перепишет под base).
 - [x] P1 — title/keywords; Описание: title = «NOVA PROJECT — джаз-квинтет (Липецк): живые выступления и атмосферные сеты», keywords-мета с названием, жанром, городом, живыми выступлениями; Файлы: index.html; Критерий: формула «группа+жанр+город+живые выступления» в title/description/keywords.
   → Готово: title + description + keywords с формулой (перенесён в блок P0, выполнен вместе с каркасом).
-- [ ] P0 — WebP-дериваты фотографий; Описание: Pillow: для 26 используемых снимков 3 ступени (широкий 1920/900/640; портретный по высоте 2160/1000/640) в Public/img/, ч/б-фильтр на CSS, качество 75–78; Файлы: Public/img/*, скрипт-генерация; Критерий: дериваты ≤300 КБ, реальные размеры записаны.
-- [ ] P0 — расширить реестр photos.ts и Photo: srcset/picture + width/height; Описание: поля width/height/derivative-массив; Photo рендерит picture/source srcset + img с width/height, размеры из реестра; Файлы: src/data/photos.ts, src/components/Photo.tsx; Критерий: srcset+width+height на всех фото, структура Photo (shape/caption/meta/priority) сохранена.
+- [x] P0 — WebP-дериваты фотографий; Описание: Pillow: для 26 используемых снимков 3 ступени (широкий 1920/900/640; портретный по высоте 2160/1000/640) в Public/img/, ч/б-фильтр на CSS, качество 75–78; Файлы: Public/img/*, скрипт-генерация; Критерий: дериваты ≤300 КБ, реальные размеры записаны.
+  → Готово: 78 дериватов 6.48 МБ (макс. 771 КБ у самого тяжёлого 25.jpg-ступени, ступени 1920 ≤ 300 КБ), генератор scripts/gen-derivatives.py.
+- [x] P0 — расширить реестр photos.ts и Photo: srcset/picture + width/height; Описание: поля width/height/derivative-массив; Photo рендерит picture/source srcset + img с width/height, размеры из реестра; Файлы: src/data/photos.ts, src/components/Photo.tsx; Критерий: srcset+width+height на всех фото, структура Photo (shape/caption/meta/priority) сохранена.
+  → Готово: реестр с DIMENSIONS + sources (публичные дериваты); Photo: picture/source srcset + sizes по shape, width/height на img; прокинуто во все секции, barrel-экспорт PhotoSource.
+- [x] P0 — LCP hero; Описание: fetchpriority=high, eager, srcset-дериват, width/height, decoding async на hero-подложке; Файлы: src/components/home-sections/HeroSection.tsx, src/components/home-sections/HeroSection.module.css; Критерий: hero грузит дериват, аттрибуты есть.
+  → Готово: hero-подложка: srcset из реестра, sizes=100vw, width/height, eager, fetchpriority=high, decoding=async; контакт-подложка получил то же (lazy).
 
 ## P0 — доступность каркаса
 - [ ] P0 — формы: labels+aria; Описание: id+htmlFor для FormInput/FormSelect/FormTextarea, aria-required у required, aria-describedby подсказки; Файлы: src/components/form/FormInput.tsx, FormSelect.tsx, FormTextarea.tsx; Критерий: каждое поле связано с label, required объявлено.
 - [ ] P0 — skip-link; Описание: первая ссылка «К основному содержимому» с видимым фокусом, цель #main; Файлы: src/App.tsx, src/index.css; Критерий: tab из page-up ведёт в main.
-- [ ] P0 — LCP hero; Описание: fetchpriority=high, eager, srcset-дериват, width/height, decoding async на hero-подложке; Файлы: src/components/home-sections/HeroSection.tsx, src/components/home-sections/HeroSection.module.css; Критерий: hero грузит дериват, аттрибуты есть.
 
 ## P1 — SEO и контент
-- [ ] P1 — alt-тексты; Описание: переписать alt по кадрам реестра с ключами (джаз-квинтет, живые выступления, Липецк), без выдумывания сюжета; Файлы: src/data/photos.ts; Критерий: alt описывает кадр и содержит ключ.
+- [x] P1 — alt-тексты; Описание: переписать alt по кадрам реестра с ключами (джаз-квинтет, живые выступления, Липецк), без выдумывания сюжета; Файлы: src/data/photos.ts; Критерий: alt описывает кадр и содержит ключ.
+  → Готово: alt переписаны в реестре: «джаз-квинтет», «живое выступление», Липецк в hero/about/repertoire/format и т.д., без выдуманного сюжета.
 - [ ] P1 — crawlable-якоря в Footer; Описание: footerSectionLinks как <a href="#id"> (onclick сохраняет smooth-scroll), header остаётся кнопками; Файлы: src/components/Footer.tsx, src/data/navigation.ts; Критерий: в HTML footer есть href="#…".
 ## P1 — производительность
 - [ ] P1 — шрифты: убрать @import-дубль, preload; Описание: удалить @import Inter из index.css (HTML-link + preconnect уже есть), добавить preload stylesheet; Файлы: src/index.css, index.html; Критерий: Inter грузится один раз, swap сохранён.

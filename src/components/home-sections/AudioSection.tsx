@@ -28,6 +28,9 @@ export default function AudioSection({ id = "audio" }: { id?: string }) {
             <Photo
               src={audioPhoto.src}
               alt={audioPhoto.alt}
+              width={audioPhoto.width}
+              height={audioPhoto.height}
+              sources={audioPhoto.sources}
               shape="tall"
               caption={audioPhoto.caption}
               meta={audioPhoto.meta}

@@ -11,7 +11,17 @@ export default function ContactSection({ id = 'contact' }: { id?: string }) {
     <section className={styles.contact} id={id}>
       {/* Полоса-фон: фото приглушено, чтобы текст читался */}
       <div className={styles.backdrop} aria-hidden="true">
-        <img className={styles.backdropImg} src={contactPhoto.src} alt="" />
+        <img
+          className={styles.backdropImg}
+          src={contactPhoto.src}
+          srcSet={contactPhoto.sources.map((s) => `${s.url} ${s.width}w`).join(', ')}
+          sizes="100vw"
+          width={contactPhoto.width}
+          height={contactPhoto.height}
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
         <div className={styles.scrim} />
       </div>
 

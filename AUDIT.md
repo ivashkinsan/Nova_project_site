@@ -32,26 +32,26 @@
 | `<title>` с ключами (NOVA PROJECT, джаз-квинтет, мероприятия) | ok | — | усилить формулировку: «название, жанр, город, живые выступления» |
 | `meta description` с ключами (джаз, Липецк, живые выступления) | ok | — | — |
 | `og:type/title/description/locale` | ok | — | — |
-| `og:image` = относительный `/1.jpg` — crawlers (VK, Telegram, WhatsApp) резолвят плохо; нет `og:url`, `og:image:width/height/alt` | fix | P0 | `og:image` = абсолютный URL на `Public/og-cover.jpg` (Open_Graph.jpg, 1200×630), добавить `og:image:width/height/alt`, `og:url`, `og:site_name` |
-| Twitter Cards (`twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`) — отсутствуют | fix | P0 | добавить в `index.html` |
-| `rel="canonical"` — отсутствует | fix | P0 | `<link rel="canonical" href="https://…/Nova_project_site/">` |
-| `meta robots` — отсутствует | fix | P0 | `<meta name="robots" content="index, follow">` |
-| `robots.txt` — отсутствует в `Public/` | fix | P0 | `Public/robots.txt` со sitemap и Allow |
-| `sitemap.xml` — отсутствует | fix | P0 | `Public/sitemap.xml` (абсолютный URL, lastmod) |
-| JSON-LD `MusicGroup` — отсутствует | fix | P0 | `<script type="application/ld+json">` в `index.html`: name, genre (Jazz), city (Липецк), image, sameAs (VK), url |
+| `og:image` = относительный `/1.jpg` — crawlers (VK, Telegram, WhatsApp) резолвят плохо; нет `og:url`, `og:image:width/height/alt` | ok (исправлено) | P0 | исправлено: абсолютный og:image на `Public/og-cover.jpg` + width/height/alt + og:url + og:site_name |
+| Twitter Cards (`twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`) — отсутствуют | ok (исправлено) | P0 | добавлены в `index.html` (summary_large_image, абсолютный image) |
+| `rel="canonical"` — отсутствует | ok (исправлено) | P0 | `<link rel="canonical" href="https://…/Nova_project_site/">` |
+| `meta robots` — отсутствует | ok (исправлено) | P0 | `<meta name="robots" content="index, follow">` |
+| `robots.txt` — отсутствует в `Public/` | ok (исправлено) | P0 | `Public/robots.txt` со sitemap и Allow |
+| `sitemap.xml` — отсутствует | ok (исправлено) | P0 | `Public/sitemap.xml` (абсолютный URL, lastmod) |
+| JSON-LD `MusicGroup` — отсутствует | ok (исправлено) | P0 | в `index.html`: name, genre (Jazz/Neoclassical/Fusion), address Липецк, image, sameAs (VK), url, inLanguage ru |
 | Один `h1` (в hero), h2 по одному на секцию, h3 в карточках | ok | — | — |
-| Alt-тексты: есть, но обобщённые («по смыслу»), без ключей | improve | P1 | переписать alt: группа, жанр, живые выступления, Липецк — в рамках кадров реестра |
+| Alt-тексты: есть, но обобщённые («по смыслу»), без ключей | ok (исправлено) | P1 | alt переписаны в реестре с ключами (джаз-квинтет, живые выступления, Липецк) |
 | Навигация — `<button>` (для SPA-скролла), поисковик не видит ссылок | improve | P1 | footer-навигация: `footerSectionLinks` — `<a href="#id">` с сохранением скролла (обёртка `onSubmit`), чтобы появились crawlable-якоря; header оставить кнопками (не ломать UX) |
 | `rel="noopener noreferrer"` на внешних (VK в Footer/Booking/Contact) | ok | — | — |
-| Favicon = `/1.jpg` (1,1 МБ) — абсурдно тяжёлый, relative (404 на Pages без base) | fix | P0 | маленький `favicon.svg` (монограмма N, в рамках палитры) + base-относительный путь |
+| Favicon = `/1.jpg` (1,1 МБ) — абсурдно тяжёлый, relative (404 на Pages без base) | ok (исправлено) | P0 | `Public/favicon.svg` (монограмма N, палитра), путь `./favicon.svg` под base |
 
 ## 3. Производительность
 
 | Пункт | Статус | Приоритет | Действие |
 |---|---|---|---|
-| Фото: 27 raw-JPEG по 0,38–2,7 МБ (всего ~28 МБ), без WebP, без srcset/sizes — страница грузит мегабайты | fix | P0 | дериваты WebP (широкий/портретный, 3 ступени) в `Public/img/` через Pillow; реестр `photos.ts` + `Photo.tsx` `<picture>`/srcset (структура интерфейса расширяется полями, не ломается) |
-| `Photo` без `width`/`height` → CLS при загрузке | fix | P1 | width/height из реестра на `<img>` |
-| Hero-подложка (LCP-изображение, eager) — нет `fetchpriority="high"`, нет width/height, грузит 1,1 МБ JPEG | fix | P0 | srcset-дериват, `fetchpriority="high"`, `eager`, width/height, `decoding=async` |
+| Фото: 27 raw-JPEG по 0,38–2,7 МБ (всего ~28 МБ), без WebP, без srcset/sizes — страница грузит мегабайты | ok (исправлено) | P0 | 78 WebP-дериватов в `Public/img/` (Pillow, 3 ступени по ориентации); `Photo.tsx` — `<picture>`/srcset+sizes, реестр отдаёт `sources` |
+| `Photo` без `width`/`height` → CLS при загрузке | ok (исправлено) | P1 | width/height из реестра на `<img>` — прокинуто во все секции |
+| Hero-подложка (LCP-изображение, eager) — нет `fetchpriority="high"`, нет width/height, грузит 1,1 МБ JPEG | ok (исправлено) | P0 | srcset + sizes=100vw + width/height + eager + fetchpriority=high + decoding=async (и контакт-подложка) |
 | Google Fonts: дубль — `@import` в `index.css` (render-blocking CSS) + `<link>` в `index.html` — двойная загрузка | fix | P1 | убрать `@import` из CSS (в HTML уже есть preconnect + `display=swap`), добавить `preload` для stylesheet |
 | `loading=lazy`/`decoding=async` в Photo, hero eager | ok | — | сохранить |
 | Бандл: gsap/lottie не импортируются в код → в бандл не попадают (tree-shaking по факту использования) | ok | — | не трогать |

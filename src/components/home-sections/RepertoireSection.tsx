@@ -34,6 +34,9 @@ function PhotoCell({ photo, cellClass }: PhotoCellProps) {
       <Photo
         src={photo.src}
         alt={photo.alt}
+        width={photo.width}
+        height={photo.height}
+        sources={photo.sources}
         shape="fill"
         caption={photo.caption}
         meta={photo.meta}

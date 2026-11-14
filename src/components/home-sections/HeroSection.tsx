@@ -44,7 +44,18 @@ export default function HeroSection() {
   return (
     <section className={styles.hero} id="hero">
       <div className={styles.backdrop} ref={backdropRef} aria-hidden="true">
-        <img className={styles.backdropImg} src={heroPhoto.src} alt="" />
+        <img
+          className={styles.backdropImg}
+          src={heroPhoto.src}
+          srcSet={heroPhoto.sources.map((s) => `${s.url} ${s.width}w`).join(', ')}
+          sizes="100vw"
+          width={heroPhoto.width}
+          height={heroPhoto.height}
+          alt=""
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
       </div>
       <div className={styles.scrim} aria-hidden="true" />
 

@@ -38,4 +38,4 @@ export {
   galleryPhotos,
   GALLERY_INITIAL_COUNT,
 } from './photos';
-export type { PhotoAsset } from './photos';
+export type { PhotoAsset, PhotoSource } from './photos';

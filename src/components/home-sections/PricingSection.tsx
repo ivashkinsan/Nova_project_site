@@ -19,6 +19,9 @@ export default function PricingSection({ id = 'pricing' }: { id?: string }) {
             <Photo
               src={pricingPhoto.src}
               alt={pricingPhoto.alt}
+              width={pricingPhoto.width}
+              height={pricingPhoto.height}
+              sources={pricingPhoto.sources}
               shape="tall"
               caption={pricingPhoto.caption}
               meta={pricingPhoto.meta}

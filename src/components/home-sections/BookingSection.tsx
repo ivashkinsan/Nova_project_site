@@ -66,6 +66,9 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
             <Photo
               src={bookingPhoto.src}
               alt={bookingPhoto.alt}
+              width={bookingPhoto.width}
+              height={bookingPhoto.height}
+              sources={bookingPhoto.sources}
               shape="portrait"
               caption={bookingPhoto.caption}
               meta={bookingPhoto.meta}

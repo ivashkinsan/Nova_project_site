@@ -26,6 +26,9 @@ export default function FormatSection({ id = 'format' }: { id?: string }) {
                 <Photo
                   src={photos[i].src}
                   alt={photos[i].alt}
+                  width={photos[i].width}
+                  height={photos[i].height}
+                  sources={photos[i].sources}
                   shape="wide"
                   caption={photos[i].caption}
                   meta={photos[i].meta}
