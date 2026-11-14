@@ -26,6 +26,8 @@
 - [x] P0 — расширить реестр photos.ts и Photo: srcset/picture + width/height; Описание: поля width/height/derivative-массив; Photo рендерит picture/source srcset + img с width/height, размеры из реестра; Файлы: src/data/photos.ts, src/components/Photo.tsx; Критерий: srcset+width+height на всех фото, структура Photo (shape/caption/meta/priority) сохранена.
   → Готово: реестр с DIMENSIONS + sources (публичные дериваты); Photo: picture/source srcset + sizes по shape, width/height на img; прокинуто во все секции, barrel-экспорт PhotoSource.
 - [x] P0 — LCP hero; Описание: fetchpriority=high, eager, srcset-дериват, width/height, decoding async на hero-подложке; Файлы: src/components/home-sections/HeroSection.tsx, src/components/home-sections/HeroSection.module.css; Критерий: hero грузит дериват, аттрибуты есть.
+- [x] P0 — preload hero-подложки; Описание: `link rel=preload as=image` + `fetchpriority=high` c абсолютным base-путём (`/Nova_project_site/1.jpg`) в index.html, чтобы запрос стартовал до React-гидратации; Файлы: index.html; Критерий: preload есть, путь абсолютный, атрибуты hero не тронуты.
+  → Готово: preload-блок в head перед preconnect-шрифтов; путь абсолютный, fetchpriority=high; hero-элемент (eager+high+async) не изменён.
   → Готово: hero-подложка: srcset из реестра, sizes=100vw, width/height, eager, fetchpriority=high, decoding=async; контакт-подложка получил то же (lazy).
 
 ## P0 — доступность каркаса
@@ -79,5 +81,7 @@
   → Готово: сводная запись «Фиксация легаси-решений (итог)» в DECISIONS.md (avantgarde-site/, App.css, gsap/lottie/LottieAnimation/useScrollAnimation/useIntersectionObserver, src/pages/*, Home.module.css, store/store.ts, README) + запись об имени пакета.
 
 ## Итог
+- [x] P2 — сверка дериватов по ключам ассетов; Описание: `scripts/verify-derivatives.py` considers only keys referenced by assets (свободный 28 не порождает ложных проблем); Файлы: scripts/verify-derivatives.py; Критерий: отчёт «проблемы: нет, лишние: []», файлы не создаются и не удаляются.
+  → Готово: скрипт фильтрует по `asset(N, …)`, печатает свободные ключи; прогон: 78 файлов, 78 ссылок, свободный [28], проблем нет, лишних нет.
 - [x] REPORT.md: что сделано, что осталось и почему.
   → Готово: REPORT.md — методика ручных проверок, 10 коммитов по приоритетам (P0 SEO-каркас, P0 ассеты/производительность, P1 доступность, P1 возврат подписей, P2 честность/print/код), таблица «что осталось и почему» (нет бэкенда, нет аудио-файлов, alt по смыслу, легаси по AGENTS §9/§11, внешние запуски запрещены), список артефактов.

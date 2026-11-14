@@ -63,6 +63,13 @@
     </script>
 
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <!-- LCP: hero-подложка поднимается в начало очереди загрузки (absolute-URL, base-путь) -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://ivashkinsan.github.io/Nova_project_site/1.jpg"
+      fetchpriority="high"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Шрифт: единственный источник — stylesheet ниже; preload поднимает запрос в начало очереди -->
