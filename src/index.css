@@ -15,6 +15,9 @@ html {
   scroll-padding-top: calc(var(--header-height) + 24px);
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  /* Единая тёмная подача нативных контролов (скроллбары, календарь, автозаполнение) —
+     без этого светная ОС рисует контролы в light-стиле против концепции */
+  color-scheme: dark;
 }
 
 body {
