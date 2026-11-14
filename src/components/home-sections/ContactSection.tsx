@@ -1,11 +1,10 @@
 import { contactInfo, contactPhoto } from '../../data';
 import SectionHeading from '../SectionHeading';
+import { scrollToSection } from '../../utils/scroll';
 import styles from './ContactSection.module.css';
 
 export default function ContactSection({ id = 'contact' }: { id?: string }) {
-  const scrollToBooking = () => {
-    document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const scrollToBooking = () => scrollToSection('booking');
 
   return (
     <section className={styles.contact} id={id}>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { galleryPhotos, GALLERY_INITIAL_COUNT } from "../../data";
 import SectionHeading from "../SectionHeading";
 import Photo from "../Photo";
+import { scrollToSection } from "../../utils/scroll";
 import styles from "./GallerySection.module.css";
 
 export default function GallerySection({ id = "gallery" }: { id?: string }) {
@@ -12,9 +13,7 @@ export default function GallerySection({ id = "gallery" }: { id?: string }) {
     : galleryPhotos.slice(0, GALLERY_INITIAL_COUNT);
   const hiddenCount = galleryPhotos.length - GALLERY_INITIAL_COUNT;
 
-  const scrollToBooking = () => {
-    document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const scrollToBooking = () => scrollToSection("booking");
 
   return (
     <section className={styles.gallery} id={id}>

@@ -7,6 +7,7 @@ import {
   useActiveSection,
   useScrollProgress,
 } from "../hooks/useScrollProgress";
+import { scrollToSection } from "../utils/scroll";
 
 const SECTIONS = [
   { id: "hero", label: "Начало" },
@@ -26,13 +27,6 @@ const SECTION_IDS = SECTIONS.map((section) => section.id);
 export default function VerticalSidebar() {
   const { progress } = useScrollProgress();
   const active = useActiveSection(SECTION_IDS);
-
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <div className={styles.rail}>

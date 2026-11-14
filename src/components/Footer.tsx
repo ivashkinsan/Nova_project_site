@@ -1,5 +1,6 @@
 import styles from './Footer.module.css';
 import { footerSectionLinks, contactInfo } from '../data';
+import { scrollToTop } from '../utils/scroll';
 
 const orgNotes = [
   'Выезд по Липецку и Липецкой области',
@@ -17,7 +18,7 @@ export default function Footer() {
             <button
               type="button"
               className={styles.logo}
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              onClick={scrollToTop}
             >
               <span className={styles.logoMark}>NOVA</span>
               <span className={styles.logoProject}>PROJECT</span>
@@ -75,7 +76,7 @@ export default function Footer() {
           <button
             type="button"
             className={styles.backToTop}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={scrollToTop}
           >
             Наверх
             <span className={styles.backArrow} aria-hidden="true">

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './Header.module.css';
 import { useScrollProgress } from '../hooks/useScrollProgress';
 import { sectionNavItems as navItems } from '../data';
+import { scrollToSection, scrollToTop } from '../utils/scroll';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,11 +24,10 @@ export default function Header() {
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [isMenuOpen]);
 
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
+  /* Прокрутка к секции — общий модуль utils/scroll (prefers-reduced-motion),
+     здесь только закрытие меню после перехода */
+  const goToSection = (sectionId: string) => {
+    scrollToSection(sectionId);
     setIsMenuOpen(false);
   };
 
@@ -44,7 +44,7 @@ export default function Header() {
             <li key={item.sectionId}>
               <button
                 className={styles.navLink}
-                onClick={() => scrollToSection(item.sectionId)}
+                onClick={() => goToSection(item.sectionId)}
               >
                 <span className={styles.navIndex}>{String(i + 1).padStart(2, '0')}</span>
                 {item.label}
@@ -54,7 +54,7 @@ export default function Header() {
         </ul>
         <button
           className={styles.navCta}
-          onClick={() => scrollToSection('booking')}
+          onClick={() => goToSection('booking')}
         >
           Оставить заявку
         </button>
@@ -65,7 +65,7 @@ export default function Header() {
           <button
             type="button"
             className={styles.logo}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={scrollToTop}
           >
             <span className={styles.logoMark}>NOVA</span>
             <span className={styles.logoProject}>PROJECT</span>
@@ -80,7 +80,7 @@ export default function Header() {
                 <li key={item.sectionId}>
                   <button
                     className={styles.desktopNavLink}
-                    onClick={() => scrollToSection(item.sectionId)}
+                    onClick={() => goToSection(item.sectionId)}
                   >
                     {item.label}
                   </button>
@@ -92,7 +92,7 @@ export default function Header() {
           <div className={styles.actions}>
             <button
               className={styles.cta}
-              onClick={() => scrollToSection('booking')}
+              onClick={() => goToSection('booking')}
             >
               Забронировать
               <span className={styles.ctaArrow} aria-hidden="true">

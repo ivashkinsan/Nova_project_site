@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import styles from './HeroSection.module.css';
 import Typewriter from '../Typewriter';
 import { heroPhoto, heroMeta, heroGenres } from '../../data';
+import { scrollToSection } from '../../utils/scroll';
 
 export default function HeroSection() {
   const backdropRef = useRef<HTMLDivElement>(null);
@@ -33,13 +34,6 @@ export default function HeroSection() {
       if (frame) cancelAnimationFrame(frame);
     };
   }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section className={styles.hero} id="hero">
