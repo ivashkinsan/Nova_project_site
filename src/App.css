@@ -2,6 +2,26 @@
   min-height: 100vh;
 }
 
+/* Skip-link — первая ссылка страницы, видна только на фокусе */
+.skipLink {
+  position: fixed;
+  top: 20px;
+  left: 24px;
+  z-index: var(--z-header);
+  padding: 10px 20px;
+  background-color: #111111;
+  border: 1px solid var(--border-hover);
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  transform: translateY(-160%);
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
 /* Единая физика для всех интерактивных элементов */
 a,
 button {

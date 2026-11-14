@@ -170,8 +170,8 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
                   label="Город / площадка"
                 />
 
-                <div className={styles.formGroup}>
-                  <span className={styles.label}>Формат выступления*</span>
+                <fieldset className={`${styles.formGroup} ${styles.radioFieldset}`}>
+                  <legend className={styles.label}>Формат выступления*</legend>
                   <div className={styles.radioGroup}>
                     {bookingFormatOptions.map((option) => (
                       <FormRadioCard
@@ -184,7 +184,7 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
                       />
                     ))}
                   </div>
-                </div>
+                </fieldset>
 
                 <FormInput
                   type="email"

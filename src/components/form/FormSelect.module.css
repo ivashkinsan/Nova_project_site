@@ -12,6 +12,12 @@
   font-weight: 600;
 }
 
+/* Звёздка必填-метки */
+.reqMark {
+  color: #ffffff;
+  font-weight: 700;
+}
+
 .select {
   background-color: transparent;
   border: 1px solid #333333;

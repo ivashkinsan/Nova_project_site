@@ -7,9 +7,12 @@ import './App.css';
 function App() {
   return (
     <>
+      <a href="#main" className="skipLink">
+        К основному содержимому
+      </a>
       <Header />
       <VerticalSidebar />
-      <main className="main">
+      <main className="main" id="main" aria-label="Лендинг NOVA PROJECT">
         <Home />
       </main>
       <Footer />

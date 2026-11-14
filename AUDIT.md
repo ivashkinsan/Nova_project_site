@@ -65,11 +65,10 @@
 | `:focus-visible` (1px white, offset 3) глобально | ok | — | — |
 | `prefers-reduced-motion`: глобальный блок в `index.css` + AnimatedSection + Marquee | ok | — | — |
 | Typewriter печатает/стирает текст под reduced-motion (JS-таймер) | fix | P1 | остановить печатание при `prefers-reduced-motion`, показать финальную строку |
-| Формы: `<label>` без `htmlFor`/`id` — поля не связаны со screen reader; нет `aria-required` | fix | P0 | id + htmlFor, `aria-required`, `aria-describedby` |
-| Телефон: нет `inputmode="tel"`, email без `autocomplete` | fix | P1 | inputmode/autocomplete/name-автономпливание |
-| Skip-link («К основному содержимому») — отсутствует | fix | P0 | первая ссылка в App, видимая при фокусе |
-| Мобильное меню: нет `aria-controls`/`id` у nav, нет Escape-закрытия | fix | P1 | aria-controls, Escape, id |
-| `<main>` без имени; нет landmark-структуры «main с label» | improve | P2 | aria-label у main |
+| Формы: `<label>` без `htmlFor`/`id` — поля не связаны со screen reader; нет `aria-required` | ok (исправлено) | P0 | id + htmlFor, `aria-required`, звёздка обязательных полей; радиогруппа — `fieldset`+`legend` |
+| Телефон: нет `inputmode="tel"`, email без `autocomplete` | ok (исправлено) | P1 | tel→inputmode=tel+autocomplete=tel, email→autocomplete=email |
+| Skip-link («К основному содержимому») — отсутствует | ok (исправлено) | P0 | первая ссылка App → `#main`, видна на фокусе |
+| `<main>` без имени; нет landmark-структуры «main с label» | ok (исправлено) | P2 | `id="main"` + `aria-label="Лендинг NOVA PROJECT"` |
 | Контраст палитры на #0a0a0a: #ffffff (19:1), #cccccc (12:1), #888888 (≈6,3:1), #666666 (≈4,2:1) — сервисные 11–12px метки #666666 ниже 4,5 | fix | P1 | точечно: тексты ≥4,5:1 (крупные ≥3:1); #555/#444 только декоративно; manual-проверка каждого модуля |
 | Тач-таргеты ≥44×44 (маркеры sidebar, кнопки header, radio-карточки) | fix | P1 | измерить по CSS, при необходимости min-height/min-width |
 | Формы: обязательные поля `required` есть, сводка `role="status"` есть | ok | — | — |

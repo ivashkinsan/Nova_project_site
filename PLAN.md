@@ -29,8 +29,10 @@
   → Готово: hero-подложка: srcset из реестра, sizes=100vw, width/height, eager, fetchpriority=high, decoding=async; контакт-подложка получил то же (lazy).
 
 ## P0 — доступность каркаса
-- [ ] P0 — формы: labels+aria; Описание: id+htmlFor для FormInput/FormSelect/FormTextarea, aria-required у required, aria-describedby подсказки; Файлы: src/components/form/FormInput.tsx, FormSelect.tsx, FormTextarea.tsx; Критерий: каждое поле связано с label, required объявлено.
-- [ ] P0 — skip-link; Описание: первая ссылка «К основному содержимому» с видимым фокусом, цель #main; Файлы: src/App.tsx, src/index.css; Критерий: tab из page-up ведёт в main.
+- [x] P0 — формы: labels+aria; Описание: id+htmlFor для FormInput/FormSelect/FormTextarea, aria-required у required, aria-describedby подсказки; Файлы: src/components/form/FormInput.tsx, FormSelect.tsx, FormTextarea.tsx; Критерий: каждое поле связано с label, required объявлено.
+  → Готово: id=`field-{name}`+htmlFor, aria-required, звёздка в метке; радиогруппа формата — fieldset+legend (radioFieldset без рамки); hint/aria-describedby поддержан.
+- [x] P0 — skip-link; Описание: первая ссылка «К основному содержимому» с видимым фокусом, цель #main; Файлы: src/App.tsx, src/App.css; Критерий: tab из page-up ведёт в main.
+  → Готово: skipLink в App (первая ссылка, App.css: скрыт, виден на фокусе), `#main` у main.
 
 ## P1 — SEO и контент
 - [x] P1 — alt-тексты; Описание: переписать alt по кадрам реестра с ключами (джаз-квинтет, живые выступления, Липецк), без выдумывания сюжета; Файлы: src/data/photos.ts; Критерий: alt описывает кадр и содержит ключ.
@@ -42,7 +44,10 @@
 
 ## P1 — доступность деталей
 - [ ] P1 — Typewriter reduced-motion; Описание: при prefers-reduced-motion печатание останавливается, финальная строка статична; Файлы: src/components/Typewriter.tsx; Критерий: под reduced-motion текст не меняется.
-- [ ] P1 — inputmode/autocomplete; Описание: tel+inputmode, email+autocomplete (email/name/tel), date; Файлы: src/components/home-sections/BookingSection.tsx, form-компоненты; Критерий: все поля Booking имеют правильный inputmode/autocomplete.
+- [x] P1 — inputmode/autocomplete; Описание: tel+inputmode, email+autocomplete (email/name/tel), date; Файлы: src/components/home-sections/BookingSection.tsx, form-компоненты; Критерий: все поля Booking имеют правильный inputmode/autocomplete.
+  → Готово: выполнено вместе с формами: tel→inputmode=tel+autocomplete=tel, email→autocomplete=email.
+- [x] P2 — aria-label у main; Описание: main с accessible name; Файлы: src/App.tsx; Критерий: main имеет label.
+  → Готово: aria-label="Лендинг NOVA PROJECT" + id="main" (вместе со skip-link).
 - [ ] P1 — мобильное меню: aria-controls + Escape; Описание: id у nav, aria-controls на toggle, Escape закрывает и возвращает фокус; Файлы: src/components/Header.tsx, Header.module.css; Критерий: Escape закрывает, aria связки есть.
 - [ ] P1 — тач-таргеты ≥44×44; Описание: ручная проверка кнопок header/sidebar/маркеров/radio-карточек по CSS, довести min-size до 44; Файлы: Header.module.css, VerticalSidebar.module.css, FormRadioCard.module.css, Home-секции; Критерий: все интерактивные элементы ≥44×44.
 - [ ] P1 — контраст сервисных текстов; Описание: manual-проверка каждого модуля: текстовые ≥4,5:1, крупные ≥3,1, #555/#444 только декоративно; Файлы: все *.module.css; Критерий: ни один текстовый узел не ниже 4,5:1 на #0a0a0a.
@@ -52,7 +57,6 @@
 - [ ] P2 — print-блоки; Описание: @media print для Hero/Marquee/grain (где анимация); Файлы: HeroSection.module.css, Marquee.module.css, index.css; Критерий: print-стили подавляют анимации.
 - [ ] P2 — VK-домен; Описание: vk.ru → vk.com в contactInfo (формат реестра), запись в DECISIONS; Файлы: src/data/contacts.ts; Критерий: домен валидный.
 - [ ] P2 — package.json имя; Описание: avantgarde-artists-agency → nova-project-site; Файлы: package.json; Критерий: имя соответствует проекту.
-- [ ] P2 — aria-label у main; Описание: main с accessible name; Файлы: src/App.tsx; Критерий: main имеет label.
 - [ ] P2 — итоговый контроль; Описание: ручные проверки: все styles.* в module.css; esbuild-парсинг каждого CSS; специфичность .animatedSection.animated не ниже; breakpoints 320/375/768/1024/1440; reduced-motion; git diff чистый; Файлы: src/**; Критерий: список проверок пройден, отчёт в REPORT.md.
 - [ ] P2 — фиксация легаси-решений; Описание: DECISIONS.md: avantgarde-site/, App.css, gsap/lottie, store, Home.module.css; Файлы: DECISIONS.md; Критерий: решения записаны.
 

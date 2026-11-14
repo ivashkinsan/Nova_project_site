@@ -30,3 +30,16 @@
 .input::placeholder {
   color: #444444;
 }
+
+/* Звёздка必填-метки — в рамках сервисной типографики */
+.reqMark {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* Подсказка под полем (aria-describedby) */
+.hint {
+  font-size: 12px;
+  color: #888888;
+  letter-spacing: 0.04em;
+}
