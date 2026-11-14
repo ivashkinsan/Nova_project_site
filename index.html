@@ -2,22 +2,67 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/jpeg" href="/1.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0a0a" />
-    <title>NOVA PROJECT — джаз-квинтет для ваших мероприятий</title>
+
+    <!-- SEO-каркас: canonical, robots, ключевые формулы (название + жанр + город + живые выступления) -->
+    <link rel="canonical" href="https://ivashkinsan.github.io/Nova_project_site/" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="keywords"
+      content="NOVA PROJECT, джаз-квинтет, джаз, Липецк, живые выступления, концертные программы, атмосферные сеты, музыка для мероприятий"
+    />
+    <title>NOVA PROJECT — джаз-квинтет из Липецка: живые выступления и атмосферные сеты</title>
     <meta
       name="description"
-      content="NOVA PROJECT — джаз-квинтет из Липецка. Авторские программы, атмосферные сеты и живой звук для корпоративов, свадеб, приёмов и фестивалей."
+      content="NOVA PROJECT — джаз-квинтет из Липецка. Авторские программы, атмосферные сеты и живой звук для корпоративов, свадеб, приёмов и фестивалей. Музыка — это диалог между эпохами."
     />
+
+    <!-- Open Graph: абсолютный URL обложки (1200×630), пиксельные атрибуты и alt -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="NOVA PROJECT" />
+    <meta property="og:url" content="https://ivashkinsan.github.io/Nova_project_site/" />
     <meta property="og:title" content="NOVA PROJECT — джаз-квинтет для ваших мероприятий" />
     <meta
       property="og:description"
       content="Музыка — это диалог между эпохами. Концертные программы и атмосферные сеты от джаз-квинтета из Липецка."
     />
-    <meta property="og:image" content="/1.jpg" />
+    <meta property="og:image" content="https://ivashkinsan.github.io/Nova_project_site/og-cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="NOVA PROJECT — джаз-квинтет: обложка сайта" />
     <meta property="og:locale" content="ru_RU" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NOVA PROJECT — джаз-квинтет для ваших мероприятий" />
+    <meta
+      name="twitter:description"
+      content="Концертные программы и атмосферные сеты от джаз-квинтета из Липецка. Живые выступления."
+    />
+    <meta name="twitter:image" content="https://ivashkinsan.github.io/Nova_project_site/og-cover.jpg" />
+
+    <!-- Schema.org: MusicGroup -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MusicGroup",
+        "name": "NOVA PROJECT",
+        "genre": ["Jazz", "Neoclassical", "Fusion"],
+        "description": "Джаз-квинтет из Липецка: авторские программы, атмосферные сеты и живые выступления для корпоративов, свадеб, приёмов и фестивалей.",
+        "url": "https://ivashkinsan.github.io/Nova_project_site/",
+        "image": "https://ivashkinsan.github.io/Nova_project_site/og-cover.jpg",
+        "inLanguage": "ru",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Липецк",
+          "addressCountry": "RU"
+        },
+        "sameAs": ["https://vk.com/novaprojekt"]
+      }
+    </script>
+
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

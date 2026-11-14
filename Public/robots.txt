@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ivashkinsan.github.io/Nova_project_site/sitemap.xml
