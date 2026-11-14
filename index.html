@@ -106,11 +106,14 @@
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <!-- iOS: иконка рабочего стола — монограмма N в палитре (180×180) -->
     <link rel="apple-touch-icon" href="https://ivashkinsan.github.io/Nova_project_site/apple-touch-icon.png" />
-    <!-- LCP: hero-подложка поднимается в начало очереди загрузки (absolute-URL, base-путь) -->
+    <!-- LCP: hero-подложка поднимается в начало очереди загрузки.
+         hero-элемент отдаёт srcSet из webp-ступеней — preload ведёт на 1920-ю
+         webp-ступень (181 КБ), а не на JPEG-оригинал (1,1 МБ), который браузер
+         не скачивает; JPEG остался fallback для браузеров без webp -->
     <link
       rel="preload"
       as="image"
-      href="https://ivashkinsan.github.io/Nova_project_site/1.jpg"
+      href="https://ivashkinsan.github.io/Nova_project_site/img/1-w1920.webp"
       sizes="100vw"
       fetchpriority="high"
     />
