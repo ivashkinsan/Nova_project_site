@@ -11,7 +11,8 @@
   z-index: 1;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 90px var(--container-padding) 40px;
+  /* Нижняя строка футера не залезает под домашнюю полосу iOS */
+  padding: 90px var(--container-padding) calc(40px + env(safe-area-inset-bottom));
 }
 
 /* ===== Верхняя часть: бренд + колонки ===== */
@@ -251,7 +252,7 @@
 /* ===== Планшет ===== */
 @media (max-width: 1024px) {
   .container {
-    padding: 70px 30px 32px;
+    padding: 70px 30px calc(32px + env(safe-area-inset-bottom));
   }
 
   .top {
@@ -268,7 +269,7 @@
 /* ===== Мобильный ===== */
 @media (max-width: 768px) {
   .container {
-    padding: 56px 20px 26px;
+    padding: 56px 20px calc(26px + env(safe-area-inset-bottom));
   }
 
   .top {

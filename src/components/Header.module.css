@@ -21,8 +21,10 @@
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  height: var(--header-height);
-  padding: 0 var(--container-padding);
+  /* На устройствах с вырезом хедер отодвигается от безопасной зоны:
+     height + padding-top растёт на inset, поле контента остаётся --header-height */
+  height: calc(var(--header-height) + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) var(--container-padding) 0;
   display: flex;
   align-items: center;
   gap: 28px;
@@ -331,7 +333,7 @@
   .nav {
     display: block;
     position: fixed;
-    top: var(--header-height);
+    top: calc(var(--header-height) + env(safe-area-inset-top));
     left: 0;
     right: 0;
     background: rgba(10, 10, 10, 0.98);
@@ -346,6 +348,7 @@
 
   .nav.open {
     max-height: 460px;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   .menuToggle {
