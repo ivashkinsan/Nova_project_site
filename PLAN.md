@@ -21,6 +21,8 @@
   → Готово: Event «Живые выступления NOVA PROJECT» — performer/organizer = MusicGroup, location Липецк, attendance Offline, status Scheduled, url = `/Nova_project_site/#booking`, image = og-cover. Даты не выдуманы.
 - [x] P0 — favicon; Описание: лёгкий монохромный favicon (монограмма N, палитра #0a0a0a/#ffffff) вместо /1.jpg (1,1 МБ); base-относительный путь; Файлы: Public/favicon.svg, index.html; Критерий: favicon < 1 КБ, путь проходит base.
   → Готово: Public/favicon.svg (монограмма N), link ./favicon.svg (Vite перепишет под base).
+- [x] P0 — apple-touch-icon; Описание: PNG 180×180 с монограммой N в палитре концепции (Safari/iOS не читает SVG-favicon); абсолютный base-путь; генератор на Pillow; Файлы: Public/apple-touch-icon.png, scripts/make-apple-touch-icon.py, index.html; Критерий: 180×180, ≤2 КБ, цвет и фон из палитры, скриншот подтверждает монограмму.
+  → Готово: apple-touch-icon.png 180×180, 1435 байт (фон #0a0a0a, белый N, ноль скруглений), генератор scripts/make-apple-touch-icon.py, link c абсолютным путём; кадр просмотрен.
 - [x] P1 — title/keywords; Описание: title = «NOVA PROJECT — джаз-квинтет (Липецк): живые выступления и атмосферные сеты», keywords-мета с названием, жанром, городом, живыми выступлениями; Файлы: index.html; Критерий: формула «группа+жанр+город+живые выступления» в title/description/keywords.
   → Готово: title + description + keywords с формулой (перенесён в блок P0, выполнен вместе с каркасом).
 - [x] P0 — WebP-дериваты фотографий; Описание: Pillow: для 26 используемых снимков 3 ступени (широкий 1920/900/640; портретный по высоте 2160/1000/640) в Public/img/, ч/б-фильтр на CSS, качество 75–78; Файлы: Public/img/*, скрипт-генерация; Критерий: дериваты ≤300 КБ, реальные размеры записаны.
