@@ -68,7 +68,7 @@
 - [x] P1 — og-cover честный; Описание: легаси-логотив чужой фирмы заменён монохромной карточкой NOVA в концепции; Файлы: Public/og-cover.jpg, scripts/make-og-cover.py, index.html; Критерий: карточка содержит марку NOVA PROJECT и ключевые слова, 1200×630, палитра концепции.
   → Готово: карточка 1200×630 (#0a0a0a, белый, хайрлайны, нулевые скругления, трекинг), генератор в scripts/, alt/width/height обновлены. Коммит `fd963a5`.
 - [x] P1 — crawlable-якоря в Footer; Описание: footerSectionLinks как <a href="#id"> (onclick сохраняет smooth-scroll), header остаётся кнопками; Файлы: src/components/Footer.tsx, src/data/navigation.ts; Критерий: в HTML footer есть href="#…".
-  → Готово: footer-ссылки — `<a href="#id">` (нативный якорь + scroll-padding-top из index.css), smooth-scroll全局 из html; onclick-хелпер удалён.
+  → Готово: footer-ссылки — `<a href="#id">` (нативный якорь + scroll-padding-top из index.css), smooth-scroll глобальный из html; onclick-хелпер удалён.
 - [x] P1 — шрифты: убрать @import-дубль, preload; Описание: удалить @import Inter из index.css (HTML-link + preconnect уже есть), добавить preload stylesheet; Файлы: src/index.css, index.html; Критерий: Inter грузится один раз, swap сохранён.
   → Готово: @import удалён из index.css, в index.html preload+stylesheet (один источник), display=swap сохранён.
 - [x] P1 — удалить test.jpeg; Описание: git rm test.jpeg (2,48 МБ мусор, нигде не используется); Файлы: test.jpeg; Критерий: файла нет в репозитории.

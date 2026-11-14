@@ -43,6 +43,7 @@ export default function Header() {
           {navItems.map((item, i) => (
             <li key={item.sectionId}>
               <button
+                type="button"
                 className={styles.navLink}
                 onClick={() => goToSection(item.sectionId)}
               >
@@ -53,6 +54,7 @@ export default function Header() {
           ))}
         </ul>
         <button
+          type="button"
           className={styles.navCta}
           onClick={() => goToSection('booking')}
         >
