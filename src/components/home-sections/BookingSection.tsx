@@ -13,6 +13,7 @@ import Photo from '../Photo';
 import styles from './BookingSection.module.css';
 
 export default function BookingSection({ id = 'booking' }: { id?: string }) {
+  const headingId = `${id}-title`;
   const [formData, setFormData] = useState(initialBookingForm);
   const [isReady, setIsReady] = useState(false);
 
@@ -52,12 +53,13 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
   ];
 
   return (
-    <section className={styles.booking} id={id}>
+    <section className={styles.booking} id={id} aria-labelledby={headingId}>
       <div className={styles.container}>
         <SectionHeading
           index="07"
           eyebrow="Заявка"
           title="Расскажите о вашем мероприятии"
+          titleId={headingId}
           lead="Заполните короткую форму — этого достаточно, чтобы мы предложили программу и назвали точную стоимость."
         />
 

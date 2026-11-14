@@ -4,10 +4,11 @@ import { scrollToSection } from '../../utils/scroll';
 import styles from './ContactSection.module.css';
 
 export default function ContactSection({ id = 'contact' }: { id?: string }) {
+  const headingId = `${id}-title`;
   const scrollToBooking = () => scrollToSection('booking');
 
   return (
-    <section className={styles.contact} id={id}>
+    <section className={styles.contact} id={id} aria-labelledby={headingId}>
       {/* Полоса-фон: фото приглушено, чтобы текст читался */}
       <div className={styles.backdrop} aria-hidden="true">
         <img
@@ -29,6 +30,7 @@ export default function ContactSection({ id = 'contact' }: { id?: string }) {
           index="08"
           eyebrow="Контакты"
           title="Свяжитесь с нами"
+          titleId={headingId}
           lead="Готовы обсудить дату, формат и условия. Свяжитесь удобным способом — ответим и предложим программу."
           size="display"
         />

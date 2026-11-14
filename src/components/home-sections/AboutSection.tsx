@@ -4,8 +4,9 @@ import Photo from "../Photo";
 import styles from "./AboutSection.module.css";
 
 export default function AboutSection({ id = "about" }: { id?: string }) {
+  const headingId = `${id}-title`;
   return (
-    <section className={styles.about} id={id}>
+    <section className={styles.about} id={id} aria-labelledby={headingId}>
       <div className={styles.container}>
         <div className={styles.grid}>
           {/* Левая колонка — фотографии */}
@@ -42,6 +43,7 @@ export default function AboutSection({ id = "about" }: { id?: string }) {
               index="01"
               eyebrow="О коллективе"
               title="Пять музыкантов. Один путь."
+              titleId={headingId}
             />
 
             <div className={styles.text}>

@@ -4,13 +4,15 @@ import Photo from '../Photo';
 import styles from './PricingSection.module.css';
 
 export default function PricingSection({ id = 'pricing' }: { id?: string }) {
+  const headingId = `${id}-title`;
   return (
-    <section className={styles.pricing} id={id}>
+    <section className={styles.pricing} id={id} aria-labelledby={headingId}>
       <div className={styles.container}>
         <SectionHeading
           index="06"
           eyebrow="Бюджет"
           title="Что входит в вечер"
+          titleId={headingId}
           lead="Прозрачные условия: вы видите полный список всего, что включено в выступление, ещё до подписания договора."
         />
 

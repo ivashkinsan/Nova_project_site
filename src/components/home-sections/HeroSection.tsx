@@ -36,7 +36,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className={styles.hero} id="hero">
+    <section className={styles.hero} id="hero" aria-label="Первый экран">
       <div className={styles.backdrop} ref={backdropRef} aria-hidden="true">
         <img
           className={styles.backdropImg}

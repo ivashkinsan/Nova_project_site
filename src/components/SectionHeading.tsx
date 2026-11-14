@@ -13,6 +13,8 @@ interface SectionHeadingProps {
   lead?: string;
   align?: 'left' | 'center';
   size?: 'default' | 'display';
+  /** id заголовка — на него ссылается aria-labelledby секции */
+  titleId?: string;
   className?: string;
 }
 
@@ -23,6 +25,7 @@ export default function SectionHeading({
   lead,
   align = 'left',
   size = 'default',
+  titleId,
   className = '',
 }: SectionHeadingProps) {
   return (
@@ -41,7 +44,7 @@ export default function SectionHeading({
         <span className={styles.rule} aria-hidden="true" />
         {eyebrow && <span className={styles.eyebrow}>{eyebrow}</span>}
       </div>
-      <h2 className={styles.title}>{title}</h2>
+      <h2 className={styles.title} id={titleId}>{title}</h2>
       {lead && <p className={styles.lead}>{lead}</p>}
     </div>
   );

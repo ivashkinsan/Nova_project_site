@@ -5,6 +5,7 @@ import Photo from "../Photo";
 import styles from "./AudioSection.module.css";
 
 export default function AudioSection({ id = "audio" }: { id?: string }) {
+  const headingId = `${id}-title`;
   const [playingId, setPlayingId] = useState<string | null>(null);
 
   const activeTrack = tracks.find((track) => track.id === playingId) ?? null;
@@ -14,12 +15,13 @@ export default function AudioSection({ id = "audio" }: { id?: string }) {
   };
 
   return (
-    <section className={styles.audio} id={id}>
+    <section className={styles.audio} id={id} aria-labelledby={headingId}>
       <div className={styles.container}>
         <SectionHeading
           index="03"
           eyebrow="Аудио"
           title="Живой звук"
+          titleId={headingId}
           lead="Пять фрагментов, которые дают представление о характере программы — от свинга до неоклассики."
         />
 

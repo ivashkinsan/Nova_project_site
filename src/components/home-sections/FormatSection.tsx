@@ -4,15 +4,17 @@ import Photo from '../Photo';
 import styles from './FormatSection.module.css';
 
 export default function FormatSection({ id = 'format' }: { id?: string }) {
+  const headingId = `${id}-title`;
   const photos = [formatPhotos.concert, formatPhotos.ambient];
 
   return (
-    <section className={styles.format} id={id}>
+    <section className={styles.format} id={id} aria-labelledby={headingId}>
       <div className={styles.container}>
         <SectionHeading
           index="05"
           eyebrow="Формат"
           title="Два способа провести вечер"
+          titleId={headingId}
           lead="Один и тот же состав звучит по-разному: как концерт, который слушают, и как фон, который создаёт атмосферу."
         />
 

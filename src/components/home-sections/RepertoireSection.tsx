@@ -48,13 +48,15 @@ function PhotoCell({ photo, cellClass }: PhotoCellProps) {
 }
 
 export default function RepertoireSection({ id = 'repertoire' }: { id?: string }) {
+  const headingId = `${id}-title`;
   return (
-    <section className={styles.repertoire} id={id}>
+    <section className={styles.repertoire} id={id} aria-labelledby={headingId}>
       <div className={styles.container}>
         <SectionHeading
           index="02"
           eyebrow="Репертуар"
           title="Программа, собранная под ваш вечер"
+          titleId={headingId}
           lead="От классики джаза до авторских композиций — мы выстраиваем сет так, чтобы музыка совпадала с ритмом события."
         />
 

@@ -6,6 +6,7 @@ import { scrollToSection } from "../../utils/scroll";
 import styles from "./GallerySection.module.css";
 
 export default function GallerySection({ id = "gallery" }: { id?: string }) {
+  const headingId = `${id}-title`;
   const [expanded, setExpanded] = useState(false);
 
   const visible = expanded
@@ -16,13 +17,14 @@ export default function GallerySection({ id = "gallery" }: { id?: string }) {
   const scrollToBooking = () => scrollToSection("booking");
 
   return (
-    <section className={styles.gallery} id={id}>
+    <section className={styles.gallery} id={id} aria-labelledby={headingId}>
       <div className={styles.container}>
         <div className={styles.head}>
           <SectionHeading
             index="04"
             eyebrow="Хроника"
             title="Как это было"
+            titleId={headingId}
             lead="Кадры с выступлений: сцена, свет, зал и музыка."
           />
           <p className={styles.count}>
