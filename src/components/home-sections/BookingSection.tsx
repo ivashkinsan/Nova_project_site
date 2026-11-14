@@ -70,6 +70,8 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
               height={bookingPhoto.height}
               sources={bookingPhoto.sources}
               shape="portrait"
+              /* Левая колонка 0.85fr из грида с отступом 64 */
+              sizes="(max-width: 1024px) 94vw, 40vw"
               caption={bookingPhoto.caption}
               meta={bookingPhoto.meta}
             />

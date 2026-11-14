@@ -38,6 +38,8 @@ function PhotoCell({ photo, cellClass }: PhotoCellProps) {
         height={photo.height}
         sources={photo.sources}
         shape="fill"
+        /* Карточка репертуара: 3 колонки (2 при ≤1024, 1 при ≤640) */
+        sizes="(max-width: 640px) 95vw, (max-width: 1024px) 48vw, 33vw"
         caption={photo.caption}
         meta={photo.meta}
       />

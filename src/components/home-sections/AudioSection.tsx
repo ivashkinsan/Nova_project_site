@@ -32,6 +32,8 @@ export default function AudioSection({ id = "audio" }: { id?: string }) {
               height={audioPhoto.height}
               sources={audioPhoto.sources}
               shape="tall"
+              /* Фото-колонка 0.7fr из грида с отступом 64 */
+              sizes="(max-width: 1024px) 95vw, 32vw"
               caption={audioPhoto.caption}
               meta={audioPhoto.meta}
             />

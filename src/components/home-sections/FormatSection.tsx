@@ -30,6 +30,8 @@ export default function FormatSection({ id = 'format' }: { id?: string }) {
                   height={photos[i].height}
                   sources={photos[i].sources}
                   shape="wide"
+                  /* Фото-колонка 0.95fr; при ≤860 — вся ширина контейнера */
+                  sizes="(max-width: 860px) 95vw, 44vw"
                   caption={photos[i].caption}
                   meta={photos[i].meta}
                 />

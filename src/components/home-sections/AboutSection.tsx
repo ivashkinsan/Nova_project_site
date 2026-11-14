@@ -17,6 +17,9 @@ export default function AboutSection({ id = "about" }: { id?: string }) {
               height={aboutPhotos.primary.height}
               sources={aboutPhotos.primary.sources}
               shape="tall"
+              /* Левая колонка: 0.85fr из грида с отступом 72 (при ≤1024 — вся
+                 ширина контейнера), ступень подбирается под фактический слот. */
+              sizes="(max-width: 1024px) 95vw, 40vw"
               caption={aboutPhotos.primary.caption}
               meta={aboutPhotos.primary.meta}
             />
@@ -27,6 +30,7 @@ export default function AboutSection({ id = "about" }: { id?: string }) {
               height={aboutPhotos.secondary.height}
               sources={aboutPhotos.secondary.sources}
               shape="wide"
+              sizes="(max-width: 1024px) 95vw, 40vw"
               caption={aboutPhotos.secondary.caption}
               meta={aboutPhotos.secondary.meta}
             />

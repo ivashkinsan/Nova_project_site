@@ -3,8 +3,9 @@
  * Подпись появляется поверх снимка.
  *
  * Дериваты — WebP-ступени реестра `photos.ts` (Public/img/): picture/source с
- * srcset по ширине контейнера (sizes зависят от shape), jpg-подложка как
- * fallback. width/height из реестра — защита от CLS при загрузке.
+ * srcset по ширине контейнера (sizes по умолчанию — по shape, секция может
+ * передать фактическую ширину своего слота), jpg-подложка как fallback.
+ * width/height из реестра — защита от CLS при загрузке.
  */
 import styles from './Photo.module.css';
 import type { PhotoAsset } from '../data';
@@ -33,6 +34,8 @@ interface PhotoProps {
   height?: number;
   /** WebP-дериваты по возрастанию (реестр) */
   sources?: PhotoAsset['sources'];
+  /** Ширина снимка от вьюпорта для подбора ступени; по умолчанию — по shape */
+  sizes?: string;
   className?: string;
 }
 
@@ -46,9 +49,10 @@ export default function Photo({
   width,
   height,
   sources,
+  sizes: sizesProp,
   className = '',
 }: PhotoProps) {
-  const sizes = SHAPE_SIZES[shape];
+  const sizes = sizesProp ?? SHAPE_SIZES[shape];
 
   /* Корень — всегда <figure>: на нём shape-класс, ховер-фильтр, подпись и
      aspect-ratio-переопределения секций (.visual figure). Внутри — picture с

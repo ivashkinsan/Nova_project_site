@@ -44,6 +44,9 @@ export default function GallerySection({ id = "gallery" }: { id?: string }) {
                 height={photo.height}
                 sources={photo.sources}
                 shape="fill"
+                /* Мозаика: 4 колонки (3 при ≤1024, 2 при ≤640) — ширина слота
+                   известна, ступень подбирается под неё, а не под 100vw. */
+                sizes="(max-width: 640px) 47vw, (max-width: 1024px) 32vw, 25vw"
                 caption={photo.caption}
                 meta={photo.meta}
               />

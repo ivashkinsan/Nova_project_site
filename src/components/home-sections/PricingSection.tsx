@@ -23,6 +23,8 @@ export default function PricingSection({ id = 'pricing' }: { id?: string }) {
               height={pricingPhoto.height}
               sources={pricingPhoto.sources}
               shape="tall"
+              /* Фото-колонка 0.8fr из грида с отступом 72 */
+              sizes="(max-width: 1024px) 95vw, 37vw"
               caption={pricingPhoto.caption}
               meta={pricingPhoto.meta}
             />
