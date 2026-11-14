@@ -17,6 +17,8 @@
   → Готово: Public/sitemap.xml, loc = абсолютный URL, lastmod.
 - [x] P0 — JSON-LD MusicGroup; Описание: ld+json в index.html: name NOVA PROJECT, genre Jazz, city Липецк, url, image (абсолютный og-cover), sameAs VK; Файлы: index.html; Критерий: валидный JSON-LD MusicGroup.
   → Готово: MusicGroup с genre/address/Липецк/image/sameAs(vk.com).
+- [x] P0 — JSON-LD Event (живые выступления); Описание: второй ld+json: Event с performer MusicGroup (жанры), location Липецк/RU, eventAttendanceMode Offline, eventStatus Scheduled, image og-cover, organizer, url на секцию «Заявка»; без выдуманных дат; Файлы: index.html; Критерий: валидный Event, даты не выдуманы, fields честные.
+  → Готово: Event «Живые выступления NOVA PROJECT» — performer/organizer = MusicGroup, location Липецк, attendance Offline, status Scheduled, url = `/Nova_project_site/#booking`, image = og-cover. Даты не выдуманы.
 - [x] P0 — favicon; Описание: лёгкий монохромный favicon (монограмма N, палитра #0a0a0a/#ffffff) вместо /1.jpg (1,1 МБ); base-относительный путь; Файлы: Public/favicon.svg, index.html; Критерий: favicon < 1 КБ, путь проходит base.
   → Готово: Public/favicon.svg (монограмма N), link ./favicon.svg (Vite перепишет под base).
 - [x] P1 — title/keywords; Описание: title = «NOVA PROJECT — джаз-квинтет (Липецк): живые выступления и атмосферные сеты», keywords-мета с названием, жанром, городом, живыми выступлениями; Файлы: index.html; Критерий: формула «группа+жанр+город+живые выступления» в title/description/keywords.

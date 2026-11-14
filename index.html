@@ -62,6 +62,40 @@
       }
     </script>
 
+    <!-- Schema.org: живые выступления (жанр, город, форма заявки — без выдуманных дат) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Живые выступления NOVA PROJECT",
+        "description": "Джаз-квинтет играет живые выступления в Липецке и области: авторские программы и атмосферные сеты. Заявка на дату — из раздела «Заявка».",
+        "@id": "https://ivashkinsan.github.io/Nova_project_site/#live",
+        "url": "https://ivashkinsan.github.io/Nova_project_site/#booking",
+        "performer": {
+          "@type": "MusicGroup",
+          "name": "NOVA PROJECT",
+          "genre": ["Jazz", "Neoclassical", "Fusion"]
+        },
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@type": "Place",
+          "name": "Липецк",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Липецк",
+            "addressCountry": "RU"
+          }
+        },
+        "image": "https://ivashkinsan.github.io/Nova_project_site/og-cover.jpg",
+        "organizer": {
+          "@type": "MusicGroup",
+          "name": "NOVA PROJECT",
+          "url": "https://ivashkinsan.github.io/Nova_project_site/"
+        }
+      }
+    </script>
+
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <!-- LCP: hero-подложка поднимается в начало очереди загрузки (absolute-URL, base-путь) -->
     <link
