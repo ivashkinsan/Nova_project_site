@@ -23,6 +23,9 @@ export default function AboutSection({ id = "about" }: { id?: string }) {
             <Photo
               src={aboutPhotos.secondary.src}
               alt={aboutPhotos.secondary.alt}
+              width={aboutPhotos.secondary.width}
+              height={aboutPhotos.secondary.height}
+              sources={aboutPhotos.secondary.sources}
               shape="wide"
               caption={aboutPhotos.secondary.caption}
               meta={aboutPhotos.secondary.meta}

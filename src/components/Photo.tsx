@@ -50,27 +50,43 @@ export default function Photo({
 }: PhotoProps) {
   const sizes = SHAPE_SIZES[shape];
 
-  const figure = (
+  /* Корень — всегда <figure>: на нём shape-класс, ховер-фильтр, подпись и
+     aspect-ratio-переопределения секций (.visual figure). Внутри — picture с
+     WebP-ступенями (fallback jpg) либо одиночный jpg-снимок. figcaption не может
+     быть внутри picture, поэтому он — прямой ребёнок figure. */
+  const media = sources && sources.length > 0 ? (
+    <picture className={styles.media}>
+      <source
+        type="image/webp"
+        srcSet={sources.map((s) => `${s.width}w`).join(', ')}
+        sizes={sizes}
+      />
+      <img
+        className={styles.img}
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        sizes={sizes}
+      />
+    </picture>
+  ) : (
+    <img
+      className={styles.img}
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={priority ? 'eager' : 'lazy'}
+      decoding="async"
+    />
+  );
+
+  return (
     <figure className={`${styles.photo} ${styles[shape]} ${className}`}>
-      {(width || height) ? (
-        <img
-          className={styles.img}
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          loading={priority ? 'eager' : 'lazy'}
-          decoding="async"
-        />
-      ) : (
-        <img
-          className={styles.img}
-          src={src}
-          alt={alt}
-          loading={priority ? 'eager' : 'lazy'}
-          decoding="async"
-        />
-      )}
+      {media}
       {(caption || meta) && (
         <figcaption className={styles.caption}>
           {caption && <span className={styles.captionTitle}>{caption}</span>}
@@ -78,36 +94,5 @@ export default function Photo({
         </figcaption>
       )}
     </figure>
-  );
-
-  if (!sources || sources.length === 0) return figure;
-
-  const srcset = sources.map((s) => `${s.url} ${s.width}w`).join(', ');
-
-  return (
-    <picture className={`${styles.photo} ${styles[shape]} ${className}`}>
-      <source type="image/webp" srcSet={srcset} sizes={sizes} />
-      {(width || height) ? (
-        <img
-          className={styles.img}
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          loading={priority ? 'eager' : 'lazy'}
-          decoding="async"
-          sizes={sizes}
-        />
-      ) : (
-        <img
-          className={styles.img}
-          src={src}
-          alt={alt}
-          loading={priority ? 'eager' : 'lazy'}
-          decoding="async"
-          sizes={sizes}
-        />
-      )}
-    </picture>
   );
 }

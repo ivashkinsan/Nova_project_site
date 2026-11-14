@@ -55,9 +55,11 @@ const DIMENSIONS: Record<number, [number, number]> = {
   26: [1440, 2160], 27: [1440, 2154], 28: [1703, 2560],
 };
 
-/** Ступени дериватов: landscape — по ширине, portrait — по высоте (2:3) */
+/** Ступени дериватов: landscape — по ширине (1920/900/640), portrait — по
+ * высоте (2160/1000/640), как в scripts/gen-derivatives.py. Имя файла =
+ * результирующая ширина, поэтому для portrait scale = edge / h. */
 const TIERS_LANDSCAPE = [640, 900, 1920];
-const TIERS_PORTRAIT = [480, 750, 1440];
+const TIERS_PORTRAIT = [640, 1000, 2160];
 
 const derivatives = (index: number, w: number, h: number, portrait: boolean): PhotoSource[] => {
   const tiers = portrait ? TIERS_PORTRAIT : TIERS_LANDSCAPE;
