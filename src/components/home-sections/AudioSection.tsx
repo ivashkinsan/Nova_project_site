@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { tracks, audioPhoto } from "../../data";
+import { tracks, audioNote, audioPhoto } from "../../data";
 import SectionHeading from "../SectionHeading";
 import Photo from "../Photo";
 import styles from "./AudioSection.module.css";
@@ -49,6 +49,7 @@ export default function AudioSection({ id = "audio" }: { id?: string }) {
                   "Выберите фрагмент"
                 )}
               </span>
+              <span className={styles.playerMode}>визуальное превью</span>
               <span className={styles.playerCount}>
                 {String(tracks.length).padStart(2, "0")} фрагмента
               </span>
@@ -112,6 +113,8 @@ export default function AudioSection({ id = "audio" }: { id?: string }) {
                 );
               })}
             </ul>
+
+            <p className={styles.playerNote}>{audioNote}</p>
           </div>
         </div>
       </div>

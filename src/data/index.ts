@@ -21,7 +21,7 @@ export { aboutText, teamNote } from './about';
 export { eventTypes, formatOptions as bookingFormatOptions, initialBookingForm } from './booking';
 export type { EventType, FormatOption as BookingFormatOption, BookingFormFields } from './booking';
 
-export { tracks } from './audio';
+export { tracks, audioNote } from './audio';
 export type { Track } from './audio';
 
 export { marqueeItems, heroMeta, heroGenres, bookingSteps } from './content';

@@ -74,6 +74,26 @@
   white-space: nowrap;
 }
 
+/* Честная ремарка: кнопки — превью, звука нет */
+.playerMode {
+  font-size: var(--font-size-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+.playerNote {
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid var(--hairline-soft);
+  font-size: var(--font-size-small);
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text-tertiary);
+}
+
 .trackList {
   margin: 0;
   padding: 0;
@@ -333,9 +353,14 @@
   }
 
   .playerBar {
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: flex-start;
-    gap: 8px;
+    gap: 8px 16px;
+  }
+
+  .playerNote {
+    margin-top: 20px;
+    padding-top: 16px;
   }
 }
 
