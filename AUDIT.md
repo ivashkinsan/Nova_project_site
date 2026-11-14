@@ -50,6 +50,7 @@
 | Пункт | Статус | Приоритет | Действие |
 |---|---|---|---|
 | Фото: 27 raw-JPEG по 0,38–2,7 МБ (всего ~28 МБ), без WebP, без srcset/sizes — страница грузит мегабайты | ok (исправлено) | P0 | 78 WebP-дериватов в `Public/img/` (Pillow, 3 ступени по ориентации); `Photo.tsx` — `<picture>`/srcset+sizes, реестр отдаёт `sources` |
+| srcSet в `<source type="image/webp">` собирался из одних ширины («640w, 900w…») без адресов ступеней — кандидат без адреса читается как относительная ссылка, WebP-ветка никогда не выбиралась, каждый снимок качал JPEG-оригинал (до 1,1 МБ) | ok (исправлено) | P0 | srcSet = «адрес + дескриптор» (`url + ' ' + width + 'w'`), тот же паттерн, что в hero и Contact; комментарий в компоненте |
 | `Photo` без `width`/`height` → CLS при загрузке | ok (исправлено) | P1 | width/height из реестра на `<img>` — прокинуто во все секции |
 | Hero-подложка (LCP-изображение, eager) — нет `fetchpriority="high"`, нет width/height, грузит 1,1 МБ JPEG | ok (исправлено) | P0 | srcset + sizes=100vw + width/height + eager + fetchpriority=high + decoding=async (и контакт-подложка) |
 | Google Fonts: дубль — `@import` в `index.css` (render-blocking CSS) + `<link>` в `index.html` — двойная загрузка | ok (исправлено) | P1 | @import удалён, preload stylesheet в HTML (один источник), swap сохранён |

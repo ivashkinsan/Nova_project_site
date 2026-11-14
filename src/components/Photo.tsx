@@ -53,12 +53,15 @@ export default function Photo({
   /* Корень — всегда <figure>: на нём shape-класс, ховер-фильтр, подпись и
      aspect-ratio-переопределения секций (.visual figure). Внутри — picture с
      WebP-ступенями (fallback jpg) либо одиночный jpg-снимок. figcaption не может
-     быть внутри picture, поэтому он — прямой ребёнок figure. */
+     быть внутри picture, поэтому он — прямой ребёнок figure.
+     srcSet обязан нести URL каждой ступени («1-w640.webp 640w»), как в hero:
+     без URL кандидат «640w» читается как относительная ссылка и WebP-ветка
+     никогда не выбирается — все снимки качали JPEG-оригинал. */
   const media = sources && sources.length > 0 ? (
     <picture className={styles.media}>
       <source
         type="image/webp"
-        srcSet={sources.map((s) => `${s.width}w`).join(', ')}
+        srcSet={sources.map((s) => `${s.url} ${s.width}w`).join(', ')}
         sizes={sizes}
       />
       <img
