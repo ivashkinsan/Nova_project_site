@@ -17,7 +17,7 @@
 | Секции 01–08 + hero, нумерация совпадает с `VerticalSidebar` | ok | — | сохранить |
 | `test.jpeg` (2,48 МБ, 2000×2736) в корне, git-трекается, нигде не используется | ok (исправлено) | P1 | git rm test.jpeg — удалён из репозитория |
 | `avantgarde-site/` — легаси-папка, git-трекается | improve | P2 | оставить (вне лендинга, AGENTS не запрещает; зафиксировать в DECISIONS) |
-| `package.json`: имя `avantgarde-artists-agency` — устаревшее | fix | P2 | переименовать в `nova-project-site` |
+| `package.json`: имя `avantgarde-artists-agency` — устаревшее | ok (исправлено) | P2 | переименовано в `nova-project-site` |
 | `src/App.css`: 3 мёртвых @keyframes (fadeIn/pulse/slideIn), дубль `scroll-behavior` | improve | P2 | оставить как легаси (AGENTS), не трогать; зафиксировать в DECISIONS |
 | `src/pages/{About,Artists,Booking,Contacts}.tsx`, `Home.module.css`, `LottieAnimation.tsx`, gsap/lottie-зависимости — orphaned по AGENTS §9 | ok | — | не трогать, не импортировать |
 | `store/store.ts` (scrollPosition) фактически не используется (состояние живёт в `useScrollProgress`) | improve | P2 | оставить по AGENTS §11 |

@@ -67,7 +67,8 @@
   → Готово: `vkLink` → `https://vk.com/novaprojekt` (совпадает с sameAs в JSON-LD); запись в DECISIONS.md.
 - [x] P2 — подписи WebP-ветки Photo + сверка ступеней; Описание: figcaption вне picture (подписи и meta возвращаются во все WebP-секции), формула portrait-ступеней реестра приведена к генератору, aboutPhotos.secondary получает width/height/sources; Файлы: src/components/Photo.tsx, Photo.module.css, src/data/photos.ts, AboutSection.tsx, scripts/verify-derivatives.py; Критерий: все 81 ссылка srcset ведёт в существующий файл, подписи рендерятся.
   → Готово: корень Photo — всегда `<figure>` (shape, ховер, `.visual figure`), внутри `<picture>`+jpg-fallback; `TIERS_PORTRAIT = [640, 1000, 2160]` (ступени-высоты, scale = edge/h) — 78 дериватов, 0 потерянных ссылок, 0 лишнего; Pillow-сверка чистая.
-- [ ] P2 — package.json имя; Описание: avantgarde-artists-agency → nova-project-site; Файлы: package.json; Критерий: имя соответствует проекту.
+- [x] P2 — package.json имя; Описание: avantgarde-artists-agency → nova-project-site; Файлы: package.json; Критерий: имя соответствует проекту.
+  → Готово: `"name": "nova-project-site"` (private, npm-публикации нет, ссылок на старое имя в коде/CI не найдено).
 - [ ] P2 — итоговый контроль; Описание: ручные проверки: все styles.* в module.css; esbuild-парсинг каждого CSS; специфичность .animatedSection.animated не ниже; breakpoints 320/375/768/1024/1440; reduced-motion; git diff чистый; Файлы: src/**; Критерий: список проверок пройден, отчёт в REPORT.md.
 - [ ] P2 — фиксация легаси-решений; Описание: DECISIONS.md: avantgarde-site/, App.css, gsap/lottie, store, Home.module.css; Файлы: DECISIONS.md; Критерий: решения записаны.
 
