@@ -8,6 +8,13 @@
   pointer-events: none;
 }
 
+/* Печать: фиксированный рельс прогресса — экранная декорация */
+@media print {
+  .rail {
+    display: none;
+  }
+}
+
 /* ===== Линия прогресса ===== */
 .track {
   position: absolute;

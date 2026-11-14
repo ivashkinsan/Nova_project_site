@@ -241,6 +241,13 @@
   z-index: 0;
 }
 
+/* Печать: декоративный гигантский знак не печатается */
+@media print {
+  .watermark {
+    display: none;
+  }
+}
+
 /* ===== Планшет ===== */
 @media (max-width: 1024px) {
   .container {

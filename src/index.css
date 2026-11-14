@@ -167,3 +167,74 @@ p {
     display: none;
   }
 }
+
+/* Печать: тёмный лендинг конвертируется в светлую черновую версию — белая подложка,
+   чёрный текст, фиксированные декорации (зерно, рельс, шапка, бегущая строка, курсор)
+   убираются, анимации и параллакс останавливаются, блоки не разрываются между страницами. */
+@media print {
+  :root {
+    --text-primary: #111111;
+    --text-secondary: #333333;
+    --text-tertiary: #333333;
+    --text-muted: #333333;
+    --photo-filter: grayscale(1);
+    --photo-filter-active: grayscale(1);
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #111111;
+    overflow: visible;
+  }
+
+  body::after,
+  .skipLink,
+  header,
+  #mobile-nav,
+  .marquee,
+  main .rail {
+    display: none !important;
+  }
+
+  section,
+  main,
+  footer,
+  footer * {
+    background-color: transparent;
+    color: #111111;
+    border-color: #cccccc;
+  }
+
+  section {
+    padding: 48px 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+    color: #111111;
+  }
+
+  li,
+  figure,
+  form,
+  fieldset {
+    break-inside: avoid;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transform: none !important;
+  }
+}

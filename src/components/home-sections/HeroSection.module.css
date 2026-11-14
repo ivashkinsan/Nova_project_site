@@ -431,3 +431,28 @@
     margin-top: 32px;
   }
 }
+
+/* Печать: hero печатается как титульная страница — подложка, параллакс и скролл-подсказка
+   убираются, градиентный NOVA становится сплошным чёрным (принтер фоны печатает редко) */
+@media print {
+  .hero {
+    min-height: 0;
+    padding: 40px 0;
+    display: block;
+  }
+
+  .backdrop,
+  .scrim,
+  .scrollIndicator {
+    display: none;
+  }
+
+  .titleNova {
+    -webkit-text-fill-color: #111111;
+  }
+
+  .actions,
+  .metaList {
+    margin-top: 24px;
+  }
+}

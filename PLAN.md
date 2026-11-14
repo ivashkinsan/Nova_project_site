@@ -59,9 +59,12 @@
   → Готово: #666 (3,45:1) поднят до #888 (5,58:1) во всех рабочих модулях (footer, header, marquee, section-heading, секции, placeholders форм); #444 остались только декоративные bullets/wave/counter; легаси-файлы не тронуты.
 
 ## P2 — полировка и код
-- [ ] P2 — честная ремарка аудио; Описание: курсивная строка «Записи в производстве…» в playerBar (в рамках концепции), кнопки остаются превью; Файлы: src/components/home-sections/AudioSection.tsx, .module.css, src/data/audio.ts; Критерий: секция честно объявляет визуальное превью.
-- [ ] P2 — print-блоки; Описание: @media print для Hero/Marquee/grain (где анимация); Файлы: HeroSection.module.css, Marquee.module.css, index.css; Критерий: print-стили подавляют анимации.
-- [ ] P2 — VK-домен; Описание: vk.ru → vk.com в contactInfo (формат реестра), запись в DECISIONS; Файлы: src/data/contacts.ts; Критерий: домен валидный.
+- [x] P2 — честная ремарка аудио; Описание: курсивная строка «Записи в производстве…» в playerBar (в рамках концепции), кнопки остаются превью; Файлы: src/components/home-sections/AudioSection.tsx, .module.css, src/data/audio.ts; Критерий: секция честно объявляет визуальное превью.
+  → Готово: `audioNote` в audio.ts (курсивная строка под списком, тонкая линия сверху), метка «визуальное превью» в playerBar, экспорт через barrel; коммит `1d7020e`.
+- [x] P2 — print-блоки; Описание: @media print для Hero/Marquee/grain (где анимация); Файлы: HeroSection.module.css, Marquee.module.css, index.css; Критерий: print-стили подавляют анимации.
+  → Готово: глобальный print в index.css (светлая конверсия: white/#111 через токены, зерно/шапка/skip-link/бегущая строка/рельс/водяной знак скрыты, все animation/transition/transform выключены, блоки break-inside: avoid), точечные блоки Hero (подложка+скрим+скролл-подсказка, NOVA — сплошной чёрный), Marquee, VerticalSidebar, Footer-водяной знак, Photo (серая подача, подпись скрыта).
+- [x] P2 — VK-домен; Описание: vk.ru → vk.com в contactInfo (формат реестра), запись в DECISIONS; Файлы: src/data/contacts.ts; Критерий: домен валидный.
+  → Готово: `vkLink` → `https://vk.com/novaprojekt` (совпадает с sameAs в JSON-LD); запись в DECISIONS.md.
 - [ ] P2 — package.json имя; Описание: avantgarde-artists-agency → nova-project-site; Файлы: package.json; Критерий: имя соответствует проекту.
 - [ ] P2 — итоговый контроль; Описание: ручные проверки: все styles.* в module.css; esbuild-парсинг каждого CSS; специфичность .animatedSection.animated не ниже; breakpoints 320/375/768/1024/1440; reduced-motion; git diff чистый; Файлы: src/**; Критерий: список проверок пройден, отчёт в REPORT.md.
 - [ ] P2 — фиксация легаси-решений; Описание: DECISIONS.md: avantgarde-site/, App.css, gsap/lottie, store, Home.module.css; Файлы: DECISIONS.md; Критерий: решения записаны.

@@ -5,6 +5,6 @@ export const contactInfo = {
   phoneDisplay: '+7 920 529-10-10 (Дмитрий)',
   phoneLink: 'tel:+79205291010',
   vkName: 'NOVA PROJECT',
-  vkLink: 'https://vk.ru/novaprojekt',
+  vkLink: 'https://vk.com/novaprojekt',
   contactPerson: 'Дмитрий',
 };
