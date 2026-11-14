@@ -225,6 +225,9 @@
 .waveBar {
   flex: 1 1 0;
   min-width: 0;
+  /* Высота и задержка задаются секцией через CSS-переменные (--h, --delay),
+     по §9: динамика только через переменные, а не через inline-стили. */
+  height: var(--h, 40%);
   background-color: #333333;
   border-radius: 1px;
   transform-origin: center;
@@ -238,6 +241,7 @@
 .waveBarActive {
   background-color: #ffffff;
   animation: equalize 1.1s ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
 }
 
 .trackActive .waveBar {

@@ -43,7 +43,7 @@ export default function AudioSection({ id = "audio" }: { id?: string }) {
 
           <div className={styles.player}>
             <div className={styles.playerBar}>
-              <span className={styles.playerState}>
+              <span className={styles.playerState} aria-live="polite">
                 {activeTrack ? (
                   <>
                     <span className={styles.pulse} aria-hidden="true" />
@@ -101,8 +101,8 @@ export default function AudioSection({ id = "audio" }: { id?: string }) {
                             className={`${styles.waveBar} ${isActive ? styles.waveBarActive : ""}`}
                             style={
                               {
-                                height: `${height}%`,
-                                animationDelay: `${(index % 14) * 0.07}s`,
+                                "--h": `${height}%`,
+                                "--delay": `${(index % 14) * 0.07}s`,
                               } as React.CSSProperties
                             }
                           />
