@@ -31,7 +31,7 @@
   → Готово: реестр с DIMENSIONS + sources (публичные дериваты); Photo: picture/source srcset + sizes по shape, width/height на img; прокинуто во все секции, barrel-экспорт PhotoSource.
 - [x] P0 — LCP hero; Описание: fetchpriority=high, eager, srcset-дериват, width/height, decoding async на hero-подложке; Файлы: src/components/home-sections/HeroSection.tsx, src/components/home-sections/HeroSection.module.css; Критерий: hero грузит дериват, аттрибуты есть.
 - [x] P0 — preload hero-подложки; Описание: `link rel=preload as=image` + `fetchpriority=high` c абсолютным base-путём (`/Nova_project_site/1.jpg`) в index.html, чтобы запрос стартовал до React-гидратации; Файлы: index.html; Критерий: preload есть, путь абсолютный, атрибуты hero не тронуты.
-  → Готово: preload-блок в head перед preconnect-шрифтов; путь абсолютный, fetchpriority=high; hero-элемент (eager+high+async) не изменён.
+  → Готово: preload-блок в head перед preconnect-шрифтов; путь абсолютный, `sizes=100vw` (совпадает с `sizes` hero-элемента), fetchpriority=high; hero-элемент (eager+high+async) не изменён.
 - [x] P0 — color-scheme + iOS-мета; Описание: `color-scheme: dark` на html (нативные контролы и pickers идут за тёмной концепцией), `format-detection telephone=no` (телефон не авто-ссылка), apple-статус-бар black-translucent; Файлы: src/index.css, index.html; Критерий: цвет из палитры, контролы не светлеют.
   → Готово: `color-scheme: dark` в `html` (без нового цвета), `format-detection telephone=no`, apple-мета; статус-бар в цвет `#0a0a0a`.
   → Готово: hero-подложка: srcset из реестра, sizes=100vw, width/height, eager, fetchpriority=high, decoding=async; контакт-подложка получил то же (lazy).
