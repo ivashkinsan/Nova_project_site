@@ -37,10 +37,12 @@
 ## P1 — SEO и контент
 - [x] P1 — alt-тексты; Описание: переписать alt по кадрам реестра с ключами (джаз-квинтет, живые выступления, Липецк), без выдумывания сюжета; Файлы: src/data/photos.ts; Критерий: alt описывает кадр и содержит ключ.
   → Готово: alt переписаны в реестре: «джаз-квинтет», «живое выступление», Липецк в hero/about/repertoire/format и т.д., без выдуманного сюжета.
-- [ ] P1 — crawlable-якоря в Footer; Описание: footerSectionLinks как <a href="#id"> (onclick сохраняет smooth-scroll), header остаётся кнопками; Файлы: src/components/Footer.tsx, src/data/navigation.ts; Критерий: в HTML footer есть href="#…".
-## P1 — производительность
-- [ ] P1 — шрифты: убрать @import-дубль, preload; Описание: удалить @import Inter из index.css (HTML-link + preconnect уже есть), добавить preload stylesheet; Файлы: src/index.css, index.html; Критерий: Inter грузится один раз, swap сохранён.
-- [ ] P1 — удалить test.jpeg; Описание: git rm test.jpeg (2,48 МБ мусор, нигде не используется); Файлы: test.jpeg; Критерий: файла нет в репозитории.
+- [x] P1 — crawlable-якоря в Footer; Описание: footerSectionLinks как <a href="#id"> (onclick сохраняет smooth-scroll), header остаётся кнопками; Файлы: src/components/Footer.tsx, src/data/navigation.ts; Критерий: в HTML footer есть href="#…".
+  → Готово: footer-ссылки — `<a href="#id">` (нативный якорь + scroll-padding-top из index.css), smooth-scroll全局 из html; onclick-хелпер удалён.
+- [x] P1 — шрифты: убрать @import-дубль, preload; Описание: удалить @import Inter из index.css (HTML-link + preconnect уже есть), добавить preload stylesheet; Файлы: src/index.css, index.html; Критерий: Inter грузится один раз, swap сохранён.
+  → Готово: @import удалён из index.css, в index.html preload+stylesheet (один источник), display=swap сохранён.
+- [x] P1 — удалить test.jpeg; Описание: git rm test.jpeg (2,48 МБ мусор, нигде не используется); Файлы: test.jpeg; Критерий: файла нет в репозитории.
+  → Готово: git rm test.jpeg, ссылок в src нет.
 
 ## P1 — доступность деталей
 - [ ] P1 — Typewriter reduced-motion; Описание: при prefers-reduced-motion печатание останавливается, финальная строка статична; Файлы: src/components/Typewriter.tsx; Критерий: под reduced-motion текст не меняется.

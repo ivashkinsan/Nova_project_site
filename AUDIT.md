@@ -15,7 +15,7 @@
 | Стек: React 18, Vite 5, TS strict, CSS Modules, Zustand, pnpm; единый живой конфиг `vite.config.ts` (`.js` отсутствует, workflow проверяет) | ok | — | не трогать |
 | Навигация якорями `scrollIntoView` + `scroll-padding-top` в `index.css` (не удалён) | ok | — | сохранить |
 | Секции 01–08 + hero, нумерация совпадает с `VerticalSidebar` | ok | — | сохранить |
-| `test.jpeg` (2,48 МБ, 2000×2736) в корне, git-трекается, нигде не используется | fix | P1 | удалить из репозитория (мусор, раздувает репозиторий) |
+| `test.jpeg` (2,48 МБ, 2000×2736) в корне, git-трекается, нигде не используется | ok (исправлено) | P1 | git rm test.jpeg — удалён из репозитория |
 | `avantgarde-site/` — легаси-папка, git-трекается | improve | P2 | оставить (вне лендинга, AGENTS не запрещает; зафиксировать в DECISIONS) |
 | `package.json`: имя `avantgarde-artists-agency` — устаревшее | fix | P2 | переименовать в `nova-project-site` |
 | `src/App.css`: 3 мёртвых @keyframes (fadeIn/pulse/slideIn), дубль `scroll-behavior` | improve | P2 | оставить как легаси (AGENTS), не трогать; зафиксировать в DECISIONS |
@@ -41,7 +41,7 @@
 | JSON-LD `MusicGroup` — отсутствует | ok (исправлено) | P0 | в `index.html`: name, genre (Jazz/Neoclassical/Fusion), address Липецк, image, sameAs (VK), url, inLanguage ru |
 | Один `h1` (в hero), h2 по одному на секцию, h3 в карточках | ok | — | — |
 | Alt-тексты: есть, но обобщённые («по смыслу»), без ключей | ok (исправлено) | P1 | alt переписаны в реестре с ключами (джаз-квинтет, живые выступления, Липецк) |
-| Навигация — `<button>` (для SPA-скролла), поисковик не видит ссылок | improve | P1 | footer-навигация: `footerSectionLinks` — `<a href="#id">` с сохранением скролла (обёртка `onSubmit`), чтобы появились crawlable-якоря; header оставить кнопками (не ломать UX) |
+| Навигация — `<button>` (для SPA-скролла), поисковик не видит ссылок | ok (исправлено) | P1 | footer-навигация — `<a href="#id">` (crawlable-якоря), smooth-scroll через html+scroll-padding-top; header оставлен кнопками |
 | `rel="noopener noreferrer"` на внешних (VK в Footer/Booking/Contact) | ok | — | — |
 | Favicon = `/1.jpg` (1,1 МБ) — абсурдно тяжёлый, relative (404 на Pages без base) | ok (исправлено) | P0 | `Public/favicon.svg` (монограмма N, палитра), путь `./favicon.svg` под base |
 
@@ -52,7 +52,7 @@
 | Фото: 27 raw-JPEG по 0,38–2,7 МБ (всего ~28 МБ), без WebP, без srcset/sizes — страница грузит мегабайты | ok (исправлено) | P0 | 78 WebP-дериватов в `Public/img/` (Pillow, 3 ступени по ориентации); `Photo.tsx` — `<picture>`/srcset+sizes, реестр отдаёт `sources` |
 | `Photo` без `width`/`height` → CLS при загрузке | ok (исправлено) | P1 | width/height из реестра на `<img>` — прокинуто во все секции |
 | Hero-подложка (LCP-изображение, eager) — нет `fetchpriority="high"`, нет width/height, грузит 1,1 МБ JPEG | ok (исправлено) | P0 | srcset + sizes=100vw + width/height + eager + fetchpriority=high + decoding=async (и контакт-подложка) |
-| Google Fonts: дубль — `@import` в `index.css` (render-blocking CSS) + `<link>` в `index.html` — двойная загрузка | fix | P1 | убрать `@import` из CSS (в HTML уже есть preconnect + `display=swap`), добавить `preload` для stylesheet |
+| Google Fonts: дубль — `@import` в `index.css` (render-blocking CSS) + `<link>` в `index.html` — двойная загрузка | ok (исправлено) | P1 | @import удалён, preload stylesheet в HTML (один источник), swap сохранён |
 | `loading=lazy`/`decoding=async` в Photo, hero eager | ok | — | сохранить |
 | Бандл: gsap/lottie не импортируются в код → в бандл не попадают (tree-shaking по факту использования) | ok | — | не трогать |
 | Зерно — инлайн-SVG (data URI), Marquee на CSS-анимации, параллакс на rAF | ok | — | — |

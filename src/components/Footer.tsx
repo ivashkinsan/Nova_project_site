@@ -9,13 +9,6 @@ const orgNotes = [
 ];
 
 export default function Footer() {
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -53,12 +46,10 @@ export default function Footer() {
             <ul className={styles.links}>
               {footerSectionLinks.map((link) => (
                 <li key={link.sectionId}>
-                  <button
-                    className={styles.link}
-                    onClick={() => scrollToSection(link.sectionId)}
-                  >
+                  {/* Нативный якорь — crawlable-навигация; scroll-padding-top в index.css не прячет секцию под шапкой */}
+                  <a href={`#${link.sectionId}`} className={styles.link}>
                     {link.label}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
