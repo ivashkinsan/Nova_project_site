@@ -58,6 +58,10 @@
 | смена играющего фрагмента не объявлялась скринридеру | ok (исправлено) | P2 | статус плеера (`playerState`) в `aria-live="polite"` |
 | телефон и VK в блоке «Или сразу» — цели меньше 24×24, разнесены на 10px (WCAG 2.5.8) | ok (исправлено) | P2 | `.quick { gap: 24px }`, `line-height: 1.5` у телефона — цель 30px по высоте |
 | аудио- и hero-секции содержат `@keyframes`, но локального `prefers-reduced-motion`-блока нет (§5 требует его там, где есть анимация) | ok (исправлено) | P2 | пульс, волна-эквалайзер, дрейф подложки и стрелка прокрутки гасятся явно; глобальный блок index.css сохранён |
+| рельс секций — `<div>` без роли: девять маркеров не образуют навигационного landmark | ok (исправлено) | P1 | корень — `<nav aria-label="Секции страницы">` |
+| боковая колонка секции «Заявка» — `<aside>` без имени (complementary без имени) | ok (исправлено) | P1 | `aria-label="Путь от заявки до вечера"` |
+| skip-link не переносит фокус: `<main>` без `tabIndex` не фокусируется | ok (исправлено) | P1 | `tabIndex={-1}` на `main` |
+| без JavaScript страница полностью пуста (React-SPA), посетитель ничего не узнаёт | ok (исправлено) | P1 | noscript-заглушка в `index.html`: заголовок, телефон, VK; глобальный класс `.noscript` на существующих токенах |
 | Hero-подложка (LCP-изображение, eager) — нет `fetchpriority="high"`, нет width/height, грузит 1,1 МБ JPEG | ok (исправлено) | P0 | srcset + sizes=100vw + width/height + eager + fetchpriority=high + decoding=async (и контакт-подложка) |
 | Google Fonts: дубль — `@import` в `index.css` (render-blocking CSS) + `<link>` в `index.html` — двойная загрузка | ok (исправлено) | P1 | @import удалён, preload stylesheet в HTML (один источник), swap сохранён |
 | `loading=lazy`/`decoding=async` в Photo, hero eager | ok | — | сохранить |

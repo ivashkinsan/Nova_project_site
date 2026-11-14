@@ -241,3 +241,27 @@ p {
     transform: none !important;
   }
 }
+
+/* Заглушка для браузера без JavaScript: лендинг — SPA на React, контент
+   появляется скриптом. Класс глобальный (в index.html нет CSS-модулей),
+   токены — из variables.css, подача та же, что и в секциях. */
+.noscript {
+  max-width: var(--max-width-narrow);
+  padding: calc(var(--header-height) + 64px) var(--container-padding) 64px;
+  color: var(--text-secondary);
+  font-size: var(--font-size-body);
+  line-height: 1.7;
+}
+
+.noscript h1 {
+  margin-bottom: 24px;
+  font-size: var(--font-size-title);
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-tight);
+}
+
+.noscript a {
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--hairline-strong);
+}

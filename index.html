@@ -131,6 +131,23 @@
     />
   </head>
   <body>
+    <!-- Без JavaScript React ничего не рендерит: заглушка говорит, что включить,
+         и сразу даёт телефон и группу — посетитель не остаётся на пустой странице. -->
+    <noscript>
+      <div class="noscript">
+        <h1>NOVA PROJECT — джаз-квинтет из Липецка</h1>
+        <p>
+          Живые выступления и атмосферные сеты. Лендинг собран на React, поэтому
+          для просмотра нужен JavaScript — включите его в браузере.
+        </p>
+        <p>
+          Телефон:
+          <a href="tel:+79205291010">+7 920 529-10-10</a>
+          · Группа ВКонтакте:
+          <a href="https://vk.com/novaprojekt">NOVA PROJECT</a>
+        </p>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

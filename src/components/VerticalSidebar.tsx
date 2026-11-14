@@ -29,7 +29,9 @@ export default function VerticalSidebar() {
   const active = useActiveSection(SECTION_IDS);
 
   return (
-    <div className={styles.rail}>
+    /* Рельс — навигация: landmark <nav> с именем, чтобы маркеры секций
+       были отдельной зоной обхода, а не разбросаны по странице. */
+    <nav className={styles.rail} aria-label="Секции страницы">
       <span className={styles.track} aria-hidden="true">
         <span
           className={styles.fill}
@@ -57,6 +59,6 @@ export default function VerticalSidebar() {
       <span className={styles.counter} aria-hidden="true">
         {String(Math.round(progress * 100)).padStart(2, "0")}
       </span>
-    </div>
+    </nav>
   );
 }

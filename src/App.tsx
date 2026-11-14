@@ -12,7 +12,9 @@ function App() {
       </a>
       <Header />
       <VerticalSidebar />
-      <main className="main" id="main" aria-label="Лендинг NOVA PROJECT">
+      {/* tabIndex={-1}: skip-link реально переносит фокус в main — сам по себе
+          <main> не фокусируется, и клавиатурный обход оставался бы на ссылке */}
+      <main className="main" id="main" tabIndex={-1} aria-label="Лендинг NOVA PROJECT">
         <Home />
       </main>
       <Footer />

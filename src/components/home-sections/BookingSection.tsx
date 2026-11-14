@@ -64,7 +64,9 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
         />
 
         <div className={styles.grid}>
-          <aside className={styles.side}>
+          /* complementary-landmark с именем: боковая колонка объявляется
+             отдельной зоной, а не безымянным region внутри секции */
+          <aside className={styles.side} aria-label="Путь от заявки до вечера">
             <Photo
               src={bookingPhoto.src}
               alt={bookingPhoto.alt}
