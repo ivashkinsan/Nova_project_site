@@ -120,7 +120,7 @@
   font-weight: 300;
   letter-spacing: -0.04em;
   line-height: 0.85;
-  color: #888888;
+  color: var(--text-tertiary);
   text-transform: uppercase;
 }
 
@@ -139,7 +139,7 @@
   max-width: 620px;
   font-size: clamp(14px, 1.5vw, 18px);
   line-height: 1.6;
-  color: #888888;
+  color: var(--text-tertiary);
   min-height: 1.6em;
   animation: heroIn 1s var(--ease-out-expo) 0.4s both;
 }
@@ -257,7 +257,7 @@
   font-weight: 500;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: #666666;
+  color: var(--text-tertiary);
 }
 
 /* ===== Индикатор «листайте» — в потоке под кнопками ===== */
@@ -279,13 +279,13 @@
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: #666666;
+  color: var(--text-tertiary);
   transition: color 0.3s ease;
 }
 
 .scrollArrow {
   font-size: 16px;
-  color: #888888;
+  color: var(--text-tertiary);
   animation: scrollBounce 2.2s ease-in-out infinite;
   transition: color 0.3s ease;
 }

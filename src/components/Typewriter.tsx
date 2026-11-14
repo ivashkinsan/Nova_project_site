@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface TypewriterProps {
   words?: string[];
@@ -8,6 +8,11 @@ interface TypewriterProps {
   className?: string;
 }
 
+// Уважение prefers-reduced-motion: печатание не запускается, показана статичная первая строка
+function prefersReducedMotion(): boolean {
+  return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 export default function Typewriter({
   words = ['curate', 'represent', 'conceptualise'],
   typingSpeed = 100,
@@ -15,11 +20,29 @@ export default function Typewriter({
   newTextDelay = 2000,
   className,
 }: TypewriterProps) {
+  const [reduced, setReduced] = useState(prefersReducedMotion);
   const [textArrayIndex, setTextArrayIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const onChange = () => {
+      setReduced(query.matches);
+      if (query.matches) {
+        // статичное состояние: первый полный жанр, таймер не работает
+        setCharIndex(words[0].length);
+        setIsDeleting(false);
+        setTextArrayIndex(0);
+      }
+    };
+    query.addEventListener('change', onChange);
+    return () => query.removeEventListener('change', onChange);
+  }, [words]);
+
+  useEffect(() => {
+    if (reduced) return;
+
     let timeoutId: ReturnType<typeof setTimeout>;
 
     if (!isDeleting && charIndex < words[textArrayIndex].length) {
@@ -44,7 +67,9 @@ export default function Typewriter({
     };
   }, [charIndex, isDeleting, textArrayIndex, words, typingSpeed, erasingSpeed, newTextDelay]);
 
-  const currentText = words[textArrayIndex].substring(0, charIndex);
+  const currentText = reduced
+    ? words[0]
+    : words[textArrayIndex].substring(0, charIndex);
 
   return (
     <span className={className}>

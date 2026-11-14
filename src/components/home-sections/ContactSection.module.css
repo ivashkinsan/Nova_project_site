@@ -80,7 +80,7 @@
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: #666666;
+  color: var(--text-tertiary);
 }
 
 .cardValue {
@@ -129,7 +129,7 @@
   margin-top: 4px;
   font-size: 14px;
   line-height: 1.55;
-  color: #666666;
+  color: var(--text-tertiary);
 }
 
 /* ===== Планшет ===== */

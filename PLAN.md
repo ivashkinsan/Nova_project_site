@@ -45,14 +45,18 @@
   → Готово: git rm test.jpeg, ссылок в src нет.
 
 ## P1 — доступность деталей
-- [ ] P1 — Typewriter reduced-motion; Описание: при prefers-reduced-motion печатание останавливается, финальная строка статична; Файлы: src/components/Typewriter.tsx; Критерий: под reduced-motion текст не меняется.
+- [x] P1 — Typewriter reduced-motion; Описание: при prefers-reduced-motion печатание останавливается, финальная строка статична; Файлы: src/components/Typewriter.tsx; Критерий: под reduced-motion текст не меняется.
+  → Готово: reduced-проверка в компоненте (matchMedia + change-слушатель): таймер не запускается, рендерится полный первый жанр; курсор гасится глобальным reduced-блоком index.css.
 - [x] P1 — inputmode/autocomplete; Описание: tel+inputmode, email+autocomplete (email/name/tel), date; Файлы: src/components/home-sections/BookingSection.tsx, form-компоненты; Критерий: все поля Booking имеют правильный inputmode/autocomplete.
   → Готово: выполнено вместе с формами: tel→inputmode=tel+autocomplete=tel, email→autocomplete=email.
 - [x] P2 — aria-label у main; Описание: main с accessible name; Файлы: src/App.tsx; Критерий: main имеет label.
   → Готово: aria-label="Лендинг NOVA PROJECT" + id="main" (вместе со skip-link).
-- [ ] P1 — мобильное меню: aria-controls + Escape; Описание: id у nav, aria-controls на toggle, Escape закрывает и возвращает фокус; Файлы: src/components/Header.tsx, Header.module.css; Критерий: Escape закрывает, aria связки есть.
-- [ ] P1 — тач-таргеты ≥44×44; Описание: ручная проверка кнопок header/sidebar/маркеров/radio-карточек по CSS, довести min-size до 44; Файлы: Header.module.css, VerticalSidebar.module.css, FormRadioCard.module.css, Home-секции; Критерий: все интерактивные элементы ≥44×44.
-- [ ] P1 — контраст сервисных текстов; Описание: manual-проверка каждого модуля: текстовые ≥4,5:1, крупные ≥3,1, #555/#444 только декоративно; Файлы: все *.module.css; Критерий: ни один текстовый узел не ниже 4,5:1 на #0a0a0a.
+- [x] P1 — мобильное меню: aria-controls + Escape; Описание: id у nav, aria-controls на toggle, Escape закрывает и возвращает фокус; Файлы: src/components/Header.tsx, Header.module.css; Критерий: Escape закрывает, aria связки есть.
+  → Готово: nav#mobile-nav + aria-label, toggle: aria-expanded + aria-controls="mobile-nav" + ref, Escape-слушатель закрывает меню и возвращает фокус на бургер.
+- [x] P1 — тач-таргеты ≥44×44; Описание: ручная проверка кнопок header/sidebar/маркеров/radio-карточек по CSS, довести min-size до 44; Файлы: Header.module.css, VerticalSidebar.module.css, FormRadioCard.module.css, Home-секции; Критерий: все интерактивные элементы ≥44×44.
+  → Готово: бургер 44×44 (полоски на местах), .cta/.navLink min-height:44, маркеры sidebar min-height:44 (gap 14→6), radio-карточки 15px+1px=44; аудио-кнопки 44 (проверено).
+- [x] P1 — контраст сервисных текстов; Описание: manual-проверка каждого модуля: текстовые ≥4,5:1, крупные ≥3,1, #555/#444 только декоративно; Файлы: все *.module.css; Критерий: ни один текстовый узел не ниже 4,5:1 на #0a0a0a.
+  → Готово: #666 (3,45:1) поднят до #888 (5,58:1) во всех рабочих модулях (footer, header, marquee, section-heading, секции, placeholders форм); #444 остались только декоративные bullets/wave/counter; легаси-файлы не тронуты.
 
 ## P2 — полировка и код
 - [ ] P2 — честная ремарка аудио; Описание: курсивная строка «Записи в производстве…» в playerBar (в рамках концепции), кнопки остаются превью; Файлы: src/components/home-sections/AudioSection.tsx, .module.css, src/data/audio.ts; Критерий: секция честно объявляет визуальное превью.

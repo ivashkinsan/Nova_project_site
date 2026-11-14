@@ -43,7 +43,7 @@
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 6px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -51,13 +51,14 @@
   align-items: center;
 }
 
+/* Тач-таргеты маркеров ≥44px по высоте (рельс узкий, поэтому таргет растянут по ширине рельса) */
 .marker {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 30px;
-  height: 10px;
+  min-height: 44px;
   padding: 0;
   background: none;
   border: none;

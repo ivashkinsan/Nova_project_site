@@ -146,7 +146,7 @@ p {
 .typewriter-cursor {
   display: inline-block;
   margin-left: 2px;
-  color: #888888;
+  color: var(--text-tertiary);
   animation: blink 1s steps(1) infinite;
 }
 

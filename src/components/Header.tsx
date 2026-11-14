@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './Header.module.css';
 import { useScrollProgress } from '../hooks/useScrollProgress';
 import { sectionNavItems as navItems } from '../data';
@@ -6,6 +6,22 @@ import { sectionNavItems as navItems } from '../data';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { progress, scrolled } = useScrollProgress();
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  // Escape закрывает мобильное меню и возвращает фокус на кнопку-бургер
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isMenuOpen]);
 
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -18,7 +34,11 @@ export default function Header() {
   return (
     <>
       {/* Mobile nav dropdown — rendered outside header for independent z-index */}
-      <nav className={`${styles.nav} ${isMenuOpen ? styles.open : ''}`}>
+      <nav
+        id="mobile-nav"
+        className={`${styles.nav} ${isMenuOpen ? styles.open : ''}`}
+        aria-label="Меню секций"
+      >
         <ul className={styles.navList}>
           {navItems.map((item, i) => (
             <li key={item.sectionId}>
@@ -82,10 +102,12 @@ export default function Header() {
 
             <button
               type="button"
+              ref={toggleRef}
               className={`${styles.menuToggle} ${isMenuOpen ? styles.open : ''}`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={isMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
               aria-expanded={isMenuOpen}
+              aria-controls="mobile-nav"
             >
               <span></span>
               <span></span>

@@ -81,7 +81,7 @@
   font-size: var(--font-size-micro);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: #888888;
+  color: var(--text-tertiary);
   white-space: nowrap;
 }
 

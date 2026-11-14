@@ -57,7 +57,7 @@
   font-size: 22px;
   font-weight: 300;
   letter-spacing: 0.14em;
-  color: #666666;
+  color: var(--text-tertiary);
   text-transform: uppercase;
 }
 
@@ -70,7 +70,7 @@
   font-weight: 500;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: #666666;
+  color: var(--text-tertiary);
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -98,7 +98,7 @@
   font-weight: 500;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: #888888;
+  color: var(--text-tertiary);
   cursor: pointer;
   transition: color 0.3s ease;
 }
@@ -134,6 +134,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  min-height: 44px;
   padding: 12px 22px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -202,7 +203,8 @@
   align-items: center;
   gap: 16px;
   width: 100%;
-  padding: 15px 0;
+  min-height: 44px;
+  padding: 14px 0;
   background: none;
   border: none;
   border-bottom: 1px solid var(--hairline-soft);
@@ -225,7 +227,7 @@
   font-size: var(--font-size-micro);
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
-  color: #666666;
+  color: var(--text-tertiary);
   font-variant-numeric: tabular-nums;
 }
 
@@ -245,15 +247,17 @@
 }
 
 /* ===== Гамбургер ===== */
+/* Тач-таргет ≥44×44: зона увеличена, сами полоски остались на прежних местах */
 .menuToggle {
   display: none;
   position: relative;
-  width: 28px;
-  height: 22px;
+  width: 44px;
+  height: 44px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
+  padding: 11px 10px;
+  box-sizing: border-box;
   flex-shrink: 0;
 }
 

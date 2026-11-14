@@ -50,7 +50,7 @@
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: #888888;
+  color: var(--text-tertiary);
 }
 
 .notes {
@@ -64,7 +64,7 @@
   margin: 0;
   font-size: 15px;
   line-height: 1.7;
-  color: #666666;
+  color: var(--text-tertiary);
   max-width: 56ch;
 }
 
@@ -75,7 +75,7 @@
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: #888888;
+  color: var(--text-tertiary);
 }
 
 .list {
@@ -104,7 +104,7 @@
   font-size: var(--font-size-micro);
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
-  color: #666666;
+  color: var(--text-tertiary);
   font-variant-numeric: tabular-nums;
   transition: color 0.3s ease;
 }
@@ -126,7 +126,7 @@
   font-size: 14px;
   font-style: italic;
   line-height: 1.65;
-  color: #666666;
+  color: var(--text-tertiary);
   max-width: 56ch;
 }
 

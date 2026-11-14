@@ -62,7 +62,7 @@
   font-size: var(--font-size-micro);
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
-  color: #666666;
+  color: var(--text-tertiary);
   font-variant-numeric: tabular-nums;
   transition: color 0.35s ease;
 }
@@ -85,13 +85,13 @@
   margin: 0;
   font-size: 15px;
   line-height: 1.6;
-  color: #666666;
+  color: var(--text-tertiary);
   max-width: 34ch;
   transition: color 0.35s ease;
 }
 
 .card:hover .cardDesc {
-  color: #888888;
+  color: var(--text-tertiary);
 }
 
 .cardMark {
@@ -99,7 +99,7 @@
   right: 30px;
   bottom: 34px;
   font-size: 16px;
-  color: #666666;
+  color: var(--text-tertiary);
   opacity: 0;
   transform: translate(-6px, 6px);
   transition: opacity 0.4s ease, transform 0.5s var(--ease-out-expo), color 0.4s ease;
@@ -177,7 +177,7 @@
   font-size: 15px;
   font-style: italic;
   line-height: 1.7;
-  color: #666666;
+  color: var(--text-tertiary);
 }
 
 /* ===== Планшет ===== */

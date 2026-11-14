@@ -24,7 +24,7 @@
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: #666666;
+  color: var(--text-tertiary);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -73,7 +73,7 @@
   font-size: 15px;
   font-style: italic;
   line-height: 1.7;
-  color: #666666;
+  color: var(--text-tertiary);
 }
 
 .footActions {

@@ -6,7 +6,7 @@
 
 .label {
   font-size: 12px;
-  color: #888888;
+  color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 600;
@@ -30,5 +30,5 @@
 }
 
 .textarea::placeholder {
-  color: #444444;
+  color: var(--text-tertiary);
 }

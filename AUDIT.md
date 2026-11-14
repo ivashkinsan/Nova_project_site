@@ -64,13 +64,14 @@
 |---|---|---|---|
 | `:focus-visible` (1px white, offset 3) глобально | ok | — | — |
 | `prefers-reduced-motion`: глобальный блок в `index.css` + AnimatedSection + Marquee | ok | — | — |
-| Typewriter печатает/стирает текст под reduced-motion (JS-таймер) | fix | P1 | остановить печатание при `prefers-reduced-motion`, показать финальную строку |
+| Typewriter печатает/стирает текст под reduced-motion (JS-таймер) | ok (исправлено) | P1 | печатание не запускается, показан полный первый жанр; курсор гасится reduced-блоком |
 | Формы: `<label>` без `htmlFor`/`id` — поля не связаны со screen reader; нет `aria-required` | ok (исправлено) | P0 | id + htmlFor, `aria-required`, звёздка обязательных полей; радиогруппа — `fieldset`+`legend` |
 | Телефон: нет `inputmode="tel"`, email без `autocomplete` | ok (исправлено) | P1 | tel→inputmode=tel+autocomplete=tel, email→autocomplete=email |
 | Skip-link («К основному содержимому») — отсутствует | ok (исправлено) | P0 | первая ссылка App → `#main`, видна на фокусе |
 | `<main>` без имени; нет landmark-структуры «main с label» | ok (исправлено) | P2 | `id="main"` + `aria-label="Лендинг NOVA PROJECT"` |
-| Контраст палитры на #0a0a0a: #ffffff (19:1), #cccccc (12:1), #888888 (≈6,3:1), #666666 (≈4,2:1) — сервисные 11–12px метки #666666 ниже 4,5 | fix | P1 | точечно: тексты ≥4,5:1 (крупные ≥3:1); #555/#444 только декоративно; manual-проверка каждого модуля |
-| Тач-таргеты ≥44×44 (маркеры sidebar, кнопки header, radio-карточки) | fix | P1 | измерить по CSS, при необходимости min-height/min-width |
+| Контраст палитры на #0a0a0a: #ffffff (19:1), #cccccc (12:1), #888888 (≈6,3:1), #666666 (≈4,2:1) — сервисные 11–12px метки #666666 ниже 4,5 | ok (исправлено) | P1 | посчитано: #666 = 3,45:1 → сервисные тексты и placeholders подняты к #888 (5,58:1) через токен `--text-tertiary`; #444 только декоративно (bullets, wave, counter) |
+| Мобильное меню: nav без id/имени, toggle без aria-controls, Escape не закрывает | ok (исправлено) | P1 | `nav#mobile-nav` + aria-label, toggle: aria-expanded + aria-controls + ref, Escape закрывает и возвращает фокус |
+| Тач-таргеты ≥44×44 (маркеры sidebar, кнопки header, radio-карточки) | ok (исправлено) | P1 | бургер 44×44 (полоски прежние), .cta/.navLink min-height 44, маркеры sidebar min-height 44 (gap 14→6), radio-карточки 44, аудио-кнопки 44 |
 | Формы: обязательные поля `required` есть, сводка `role="status"` есть | ok | — | — |
 | Кнопки audio: `aria-pressed` + aria-label | ok | — | — |
 | Marquee, зерно, watermark, hero-подложка: aria-hidden | ok | — | — |

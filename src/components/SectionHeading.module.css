@@ -25,7 +25,7 @@
   font-size: var(--font-size-micro);
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
-  color: #666666;
+  color: var(--text-tertiary);
   font-variant-numeric: tabular-nums;
   flex-shrink: 0;
 }
@@ -43,7 +43,7 @@
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: #888888;
+  color: var(--text-tertiary);
 }
 
 .title {
@@ -71,7 +71,7 @@
   margin-top: 24px;
   font-size: 17px;
   line-height: 1.7;
-  color: #888888;
+  color: var(--text-tertiary);
   max-width: 60ch;
 }
 

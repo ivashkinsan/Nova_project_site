@@ -42,7 +42,7 @@
   margin: 0;
   font-size: 17px;
   line-height: 1.75;
-  color: #888888;
+  color: var(--text-tertiary);
 }
 
 /* Первый абзац — акцентный, крупнее */
@@ -90,7 +90,7 @@
   font-size: var(--font-size-micro);
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
-  color: #666666;
+  color: var(--text-tertiary);
   font-variant-numeric: tabular-nums;
   transition: color 0.3s ease;
 }
@@ -109,12 +109,12 @@
 .rosterDesc {
   font-size: 14px;
   line-height: 1.6;
-  color: #666666;
+  color: var(--text-tertiary);
   transition: color 0.3s ease;
 }
 
 .rosterItem:hover .rosterDesc {
-  color: #888888;
+  color: var(--text-tertiary);
 }
 
 /* ===== Планшет ===== */
