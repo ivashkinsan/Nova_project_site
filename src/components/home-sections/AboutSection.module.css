@@ -1,7 +1,7 @@
 .about {
   padding: var(--section-padding) 0;
-  background-color: #0a0a0a;
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--text-primary);
 }
 
 .container {
@@ -45,22 +45,23 @@
   color: var(--text-tertiary);
 }
 
-/* Первый абзац — акцентный, крупнее */
+/* Первый абзац — акцентный, крупнее: 18px, верхняя граница body-полосы
+   14–18px (AGENTS §5); 19px стоял вне регламентной шкалы размеров. */
 .paragraph:first-child {
-  font-size: 19px;
+  font-size: var(--font-size-text);
   line-height: 1.7;
-  color: #cccccc;
+  color: var(--text-secondary);
 }
 
 .quote {
   position: relative;
   margin: 0 0 48px;
   padding: 4px 0 4px 28px;
-  border-left: 1px solid #333333;
+  border-left: 1px solid var(--border-hover);
   font-size: 17px;
   font-style: italic;
   line-height: 1.75;
-  color: #cccccc;
+  color: var(--text-secondary);
 }
 
 /* ===== Состав ===== */
@@ -82,7 +83,7 @@
 }
 
 .rosterItem:hover {
-  background-color: #111111;
+  background-color: var(--card-bg);
   padding-left: 12px;
 }
 
@@ -96,14 +97,14 @@
 }
 
 .rosterItem:hover .rosterIndex {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .rosterName {
   font-size: 17px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .rosterDesc {
@@ -174,31 +175,25 @@
      ниже нижней границы тела (14–18px) и читалось мелким на узком телефоне. */
 }
 
-/* Печатная подача: тёмная подложка и плашки состава уходят, текст печатается чёрным;
-   колонка со снимком становится обычным блоком над текстом. */
+/* Печатная подача: колонка со снимком становится обычным блоком над текстом.
+   Фон и цвет секции, а также границы самой секции задаёт глобальный печатный
+   блок index.css; переменные --text-* там переназначены, поэтому ручные
+   печатные цвета текста в этом модуле не нужны — все они на токенах.
+   Границы потомков глобальный блок не перекрашивает, поэтому рельсы состава
+   (полупрозрачный белый, на белой бумаге невидимый) задаём вручную. */
 @media print {
-  .about {
-    background-color: transparent;
-    color: #111111;
-  }
-
   .grid {
     display: block;
   }
 
-  .paragraph,
-  .quote,
-  .rosterDesc {
-    color: #333333;
-  }
-
+  .roster,
   .rosterItem {
-    background-color: transparent;
     border-color: #cccccc;
   }
 
-  .rosterIndex,
-  .rosterName {
+  /* Индекс состава печатается темнее служебного текста: remap даёт #333333,
+     а номер — часть типографической сетки, он должен читаться крупнее. */
+  .rosterIndex {
     color: #111111;
   }
 }
