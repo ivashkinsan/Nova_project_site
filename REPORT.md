@@ -20,7 +20,7 @@
 
 ---
 
-## Что сделано (35 коммита этого цикла)
+## Что сделано (36 коммита этого цикла)
 
 ### P0 — SEO-каркас (`b3919eb`)
 `lang="ru"`; уникальный title `NOVA PROJECT — джаз-квинтет из Липецка: живые выступления и атмосферные сеты`; description, keywords («название группы, жанр, город, живые выступления, джаз»), canonical; Open Graph с абсолютным `og:image` + `og:image:width/height/alt/type` + `og:locale ru_RU`; Twitter Cards `summary_large_image` c `twitter:image:alt`; JSON-LD `MusicGroup` (жанры, город, `inLanguage: ru`, `sameAs` VK) и второй блок `Event` «Живые выступления NOVA PROJECT» (performer = MusicGroup, location Липецк/RU, attendance Offline, status Scheduled, url на секцию «Заявка», даты не выдуманы); `robots.txt`, `sitemap.xml`; лёгкий SVG-favicon «N» и `apple-touch-icon.png` (монограмма N, 180×180, 1,4 КБ, генератор `scripts/make-apple-touch-icon.py`); `theme-color` `#0a0a0a`, `format-detection telephone=no`, apple-статус-бар black-translucent, `color-scheme: dark` на `html` (нативные контролы и pickers идут за тёмной концепцией); preconnect + preload шрифта Inter (один источник, `@import` из CSS убран).
@@ -54,6 +54,9 @@
 
 ### P1 — подпись снимка: фокус с клавиатуры и тач-устройства
 В `Photo.module.css` подпись открывалась по наведению и по правилу `.photo:focus-within`, но фокус внутрь снимка попасть не мог: у `figure` не было `tabIndex`, а внутри нет фокусируемых элементов — правило никогда не срабатывало. С клавиатуры подпись была недоступна, а на устройствах без наведения (тач-планшеты и сенсорные экраны шире 768px) не открывалась вовсе. Теперь `figure` с подписью фокусируется (`tabIndex={0}`; без подписи лишной таб-точки нет), а в медиа-запросе `hover: none` + `pointer: coarse` подпись показана постоянно. Поведение на десктопном наведении не изменено, печатная подача (`.caption { display: none }`) сохранена.
+
+### P1 — высококонтрастный режим (forced-colors)
+Добавлен глобальный `@media (forced-colors: active)` (в `index.css`, сразу после блока `prefers-reduced-motion`). В Windows High Contrast системные цвета перекрашивают фон, текст и границы: тёмная подложка исчезает, а светлый текст поверх фото-подложки становится невидимым. `forced-color-adjust: none` на `html` наследуется всеми элементами, поэтому авторская палитра концепции сохраняется целиком и правок по модулям не понадобилось; зерно плёнки в таком режиме шумит поверх текста и убирается. Белая рамка `:focus-visible`, grayscale-фильтр снимков и печатная подача не затронуты.
 
 ---
 
