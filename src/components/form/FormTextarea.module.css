@@ -19,6 +19,9 @@
   color: var(--text-primary);
   padding: 18px 20px;
   font-size: 16px;
+  /* Вводимый текст многострочный: межстрочность в body-полосе 14–18px (1.6) —
+     по §5 и ради читаемости того, что пользователь набрал */
+  line-height: 1.6;
   font-family: inherit;
   outline: none;
   transition: border-color 0.3s ease;

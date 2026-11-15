@@ -10,15 +10,21 @@
   padding: 0 var(--container-padding);
 }
 
+/* Колонки: снимок + шаги (левая) и форма (правая). Форма шире (1.3fr) — ей нужна
+   вся строка полей; колонка снимка 0.7fr — узкая редакторская полоса, на которой
+   portrait 3/4 даёт ≈440×586, а не 502×670 (колонка разъезжалась с формой).
+   align-items: stretch: колонка растягивается на высоту строки, и «ИЛИ СРАЗУ»
+   встает по нижней границе формы (margin-top: auto), а не повисает в середине. */
 .grid {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
+  grid-template-columns: 0.7fr 1.3fr;
   gap: 64px;
-  align-items: start;
+  align-items: stretch;
 }
 
 /* ===== Левая колонка =====
-   Без position: sticky — колонка задаёт высоту строки грида, хода нет. */
+   Без position: sticky — колонка задаёт высоту строки грида, хода нет
+   (AGENTS §6): липкость здесь не нужна, колонка ниже формы. */
 .side {
   display: flex;
   flex-direction: column;
@@ -46,6 +52,11 @@
 
 .stepIndex {
   font-size: var(--font-size-micro);
+  /* Межстрочность 1.2 фиксирована: базовая 1.6 на body (index.css) подняла бы
+     строку индекса и съела компенсацию padding-top: 3px — номер «01» встал бы
+     ниже заголовка шага. Служебная метка 11px (§5), body-полоса к ней не
+     применяется */
+  line-height: 1.2;
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
   color: var(--text-tertiary);
@@ -59,7 +70,8 @@
 
 .stepTitle {
   margin: 0 0 6px;
-  font-size: 16px;
+  /* 16px — на токене --font-size-body */
+  font-size: var(--font-size-body);
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--text-primary);
@@ -67,7 +79,8 @@
 
 .stepText {
   margin: 0;
-  font-size: 14px;
+  /* 14px — на токене --font-size-small */
+  font-size: var(--font-size-small);
   line-height: 1.6;
   color: var(--text-tertiary);
 }
@@ -81,6 +94,9 @@
   gap: 24px;
   padding-top: 24px;
   border-top: 1px solid var(--hairline);
+  /* Контактная строка живёт у нижней границы колонки: на stretch-ной колонке
+     она прижата к ней, и обе колонки секции заканчиваются одной линией. */
+  margin-top: auto;
 }
 
 .quickLabel {
@@ -132,7 +148,9 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: 48px 44px;
+  /* Отступы одинаковые по обеим осям: при 1.2fr поля формы шире, чем высота
+     групп, и боковой отступ 44px читался как «вдавливание» полей в рамки. */
+  padding: 48px;
   border: 1px solid var(--hairline);
   background-color: var(--bg);
 }
@@ -160,7 +178,7 @@
 
 .radioGroup {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
@@ -202,7 +220,9 @@
 
 /* ===== Итог заявки ===== */
 .summary {
-  padding: 48px 44px;
+  /* Отступы как у формы: панель сводки встает в ту же колонку и должна
+     читаться тем же блоком, что и заполненная форма */
+  padding: 48px;
   border: 1px solid var(--hairline);
   background-color: var(--bg);
 }
@@ -259,8 +279,10 @@
 
 .summaryValue {
   margin: 0;
+  /* 15px — числами: ступени 15px в шкале variables.css нет. Межстрочность
+     поднята до 1.6 — нижняя граница body-полосы 14–18px (§5). */
   font-size: 15px;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--text-primary);
   overflow-wrap: anywhere;
 }
@@ -269,7 +291,8 @@
   margin: 0 0 28px;
   padding-left: 16px;
   border-left: 1px solid var(--border-hover);
-  font-size: 14px;
+  /* 14px — на токене --font-size-small */
+  font-size: var(--font-size-small);
   font-style: italic;
   line-height: 1.65;
   color: var(--text-tertiary);

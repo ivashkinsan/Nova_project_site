@@ -82,6 +82,9 @@
 .phone {
   /* 18px — ступень текста шкалы, плотный трекинг — var(--tracking-tight) */
   font-size: var(--font-size-text);
+  /* Межстрочность в нижней границе body-полосы 14–18px (§5); на мобильном
+     номер 16px наследует её же */
+  line-height: 1.6;
   font-weight: 600;
   letter-spacing: var(--tracking-tight);
   color: var(--text-primary);
@@ -170,7 +173,8 @@
 .metaItem {
   position: relative;
   padding-left: 18px;
-  font-size: 14px;
+  /* 14px — на токене --font-size-small; межстрочность 1.6 в body-полосе */
+  font-size: var(--font-size-small);
   line-height: 1.6;
   color: var(--text-tertiary);
 }

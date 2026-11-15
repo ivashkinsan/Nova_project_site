@@ -65,10 +65,12 @@ export default function AboutSection({ id = "about" }: { id?: string }) {
               становится частью истории.
             </blockquote>
 
-            {/* Состав: типографический список вместо иконок */}
-            <ul className={styles.roster}>
+            {/* Состав: типографический список вместо иконок. list-style: none
+                снимает семантику списка в WebKit, поэтому роль списка и роль
+                элемента возвращаем явно (WCAG — программа чтения объявит состав). */}
+            <ul className={styles.roster} role="list">
               {homeBandMembers.map((member, i) => (
-                <li key={member.name} className={styles.rosterItem}>
+                <li key={member.name} className={styles.rosterItem} role="listitem">
                   <span className={styles.rosterIndex}>
                     {String(i + 1).padStart(2, "0")}
                   </span>

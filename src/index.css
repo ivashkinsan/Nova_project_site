@@ -30,6 +30,10 @@ html {
 
 body {
   font-family: var(--font-family);
+  /* Базовая межстрочность — нижняя граница body-полосы 14–18px (§5). Без неё
+     текст вне <p> (испан, подписи, ячейки) наследует браузерный normal ≈ 1.2.
+     Заголовки (1.1) и <p> (1.6) переопределяют её своими правилами. */
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

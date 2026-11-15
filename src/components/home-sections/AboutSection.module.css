@@ -101,14 +101,18 @@
 }
 
 .rosterName {
+  /* 17px — числами: ступени 17px в шкале variables.css нет; межстрочность
+     в body-полосе (§5) — имя участника может развернуться на узком экране */
   font-size: 17px;
+  line-height: 1.6;
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--text-primary);
 }
 
 .rosterDesc {
-  font-size: 14px;
+  /* 14px — на токене --font-size-small */
+  font-size: var(--font-size-small);
   line-height: 1.6;
   color: var(--text-tertiary);
 }
@@ -140,13 +144,14 @@
 
   .paragraph,
   .paragraph:first-child {
-    font-size: 16px;
+    /* 16px — на токене --font-size-body */
+    font-size: var(--font-size-body);
   }
 
   .quote {
     margin-bottom: 36px;
     padding-left: 20px;
-    font-size: 16px;
+    font-size: var(--font-size-body);
   }
 
   .rosterItem {
@@ -168,7 +173,8 @@
 
 @media (max-width: 480px) {
   .rosterName {
-    font-size: 16px;
+    /* 16px — на токене --font-size-body */
+    font-size: var(--font-size-body);
   }
 
   /* .rosterDesc на малых экранах остаётся 14px: сужение до 13px опускалось

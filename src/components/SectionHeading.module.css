@@ -96,7 +96,9 @@
 
   .lead {
     margin-top: 18px;
-    font-size: 16px;
+    /* 16px — на токене --font-size-body; десктопные 17px числами: ступени 17px
+       в шкале variables.css нет */
+    font-size: var(--font-size-body);
   }
 }
 

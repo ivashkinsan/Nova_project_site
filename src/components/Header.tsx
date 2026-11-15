@@ -39,9 +39,11 @@ export default function Header() {
         className={`${styles.nav} ${isMenuOpen ? styles.open : ''}`}
         aria-label="Меню секций"
       >
-        <ul className={styles.navList}>
+        {/* Список секций: list-style: none снимает семантику списка в WebKit,
+            поэтому роль списка и роль элемента возвращаем явно (WCAG). */}
+        <ul className={styles.navList} role="list">
           {navItems.map((item, i) => (
-            <li key={item.sectionId}>
+            <li key={item.sectionId} role="listitem">
               <button
                 type="button"
                 className={styles.navLink}
@@ -76,11 +78,11 @@ export default function Header() {
 
           <p className={styles.tagline}>Джаз-квинтет · Липецк</p>
 
-          {/* Desktop nav */}
+          {/* Desktop nav — роль списка возвращена из-за list-style: none */}
           <nav className={styles.desktopNav} aria-label="Основная навигация">
-            <ul className={styles.desktopNavList}>
+            <ul className={styles.desktopNavList} role="list">
               {navItems.map((item) => (
-                <li key={item.sectionId}>
+                <li key={item.sectionId} role="listitem">
                   <button
                     type="button"
                     className={styles.desktopNavLink}

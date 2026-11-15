@@ -31,7 +31,9 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
     if (isReady) {
       summaryRef.current?.focus();
     } else {
-      formRef.current?.querySelector('select, input, textarea')?.focus();
+      /* Параметр-тип обязателен: без него querySelector возвращает Element,
+         у которого .focus() нет (tsc: Property 'focus' does not exist) */
+      formRef.current?.querySelector<HTMLElement>('select, input, textarea')?.focus();
     }
   }, [isReady]);
 
@@ -81,9 +83,9 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
           lead="Заполните короткую форму — этого достаточно, чтобы мы предложили программу и назвали точную стоимость."
         />
 
+        {/* complementary-landmark с именем: боковая колонка объявляется
+            отдельной зоной, а не безымянным region внутри секции */}
         <div className={styles.grid}>
-          /* complementary-landmark с именем: боковая колонка объявляется
-             отдельной зоной, а не безымянным region внутри секции */
           <aside className={styles.side} aria-label="Путь от заявки до вечера">
             <Photo
               src={bookingPhoto.src}
@@ -92,15 +94,19 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
               height={bookingPhoto.height}
               sources={bookingPhoto.sources}
               shape="portrait"
-              /* Левая колонка 0.85fr из грида с отступом 64 */
-              sizes="(max-width: 1024px) 94vw, 40vw"
+              /* Левая колонка 0.7fr из грида с отступом 64 (≈440px при 1440);
+                 при ≤1024 — широкая полоса на всю контейнерную ширину */
+              sizes="(max-width: 1024px) 96vw, 31vw"
               caption={bookingPhoto.caption}
               meta={bookingPhoto.meta}
             />
 
-            <ol className={styles.steps}>
+            {/* Шаги работы: list-style: none снимает семантику списка в WebKit
+                (нумерация рисуется вручную), поэтому роль списка и роль элемента
+                возвращаем явно (WCAG — программа чтения объявит пять шагов). */}
+            <ol className={styles.steps} role="list">
               {bookingSteps.map((step, i) => (
-                <li key={step.title} className={styles.step}>
+                <li key={step.title} className={styles.step} role="listitem">
                   <span className={styles.stepIndex}>
                     {String(i + 1).padStart(2, '0')}
                   </span>

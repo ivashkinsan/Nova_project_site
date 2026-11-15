@@ -5,6 +5,9 @@
   cursor: pointer;
   color: var(--text-secondary);
   font-size: 15px;
+  /* 15px — числами: ступени 15px в шкале variables.css нет; межстрочность
+     в нижней границе body-полосы 14–18px (§5) — текст карточки может развернуться */
+  line-height: 1.6;
   padding: 15px 20px;
   border: 1px solid var(--border-hover);
   /* Переход сужаем до того, что реально меняется под курсором: `all` переводило

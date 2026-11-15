@@ -218,6 +218,9 @@
   border: none;
   border-bottom: 1px solid var(--hairline-soft);
   font-size: var(--font-size-body);
+  /* Межстрочность в нижней границе body-полосы 14–18px (§5); на 480px пункт
+     15px числами — ступени 15px в шкале нет — наследует её же */
+  line-height: 1.6;
   font-weight: 300;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
@@ -376,7 +379,9 @@
 @media (max-width: 480px) {
   .logoMark,
   .logoProject {
-    font-size: 18px;
+    /* 18px — на токене --font-size-text; трекинг 0.1em числами: ступени 0.1em
+       в шкале variables.css нет, это точечная компактность лого на малом экране */
+    font-size: var(--font-size-text);
     letter-spacing: 0.1em;
   }
 

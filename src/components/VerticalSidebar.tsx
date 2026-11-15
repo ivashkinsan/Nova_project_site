@@ -39,9 +39,11 @@ export default function VerticalSidebar() {
         />
       </span>
 
-      <ul className={styles.markers}>
+      {/* Маркеры секций: list-style: none снимает семантику списка в WebKit,
+          поэтому роль списка и роль элемента возвращаем явно (WCAG). */}
+      <ul className={styles.markers} role="list">
         {SECTIONS.map((section) => (
-          <li key={section.id}>
+          <li key={section.id} role="listitem">
             <button
               type="button"
               className={`${styles.marker} ${active === section.id ? styles.active : ""}`}

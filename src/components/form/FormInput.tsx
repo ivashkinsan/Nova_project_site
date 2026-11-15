@@ -50,7 +50,9 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(function FormInpu
         required={required}
         aria-required={required || undefined}
         aria-describedby={hint ? `${id}-hint` : undefined}
-        autocomplete={autocomplete ?? (label ? AUTOCOMPLETE_BY_NAME[name] : undefined)}
+        /* autoComplete — регистр важен: React знает только camelCase-проп,
+           строчный autocomplete тип не проходит */
+        autoComplete={autocomplete ?? (label ? AUTOCOMPLETE_BY_NAME[name] : undefined)}
         inputMode={INPUT_MODE_BY_TYPE[type] as 'tel' | 'email' | undefined}
         ref={ref}
       />

@@ -47,9 +47,11 @@ export default function Footer() {
 
           <nav className={styles.nav} aria-label="Разделы сайта">
             <h3 className={styles.colTitle}>Разделы</h3>
-            <ul className={styles.links}>
+            {/* Список разделов: list-style: none снимает семантику списка в WebKit,
+                поэтому роль списка и роль элемента возвращаем явно (WCAG). */}
+            <ul className={styles.links} role="list">
               {footerSectionLinks.map((link) => (
-                <li key={link.sectionId}>
+                <li key={link.sectionId} role="listitem">
                   {/* Нативный якорь — crawlable-навигация; scroll-padding-top в index.css не прячет секцию под шапкой */}
                   <a href={`#${link.sectionId}`} className={styles.link}>
                     {link.label}
@@ -61,9 +63,10 @@ export default function Footer() {
 
           <div className={styles.meta}>
             <h3 className={styles.colTitle}>Организация</h3>
-            <ul className={styles.metaList}>
+            {/* Примечания об организации — тоже список без маркеров: роль возвращаем. */}
+            <ul className={styles.metaList} role="list">
               {orgNotes.map((note) => (
-                <li key={note} className={styles.metaItem}>
+                <li key={note} className={styles.metaItem} role="listitem">
                   {note}
                 </li>
               ))}
