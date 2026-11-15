@@ -8,14 +8,15 @@
   font-size: 12px;
   color: var(--text-tertiary);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  /* Сервисная метка: 12px + регламентный широкий трекинг (AGENTS §5). */
+  letter-spacing: var(--tracking-eyebrow);
   font-weight: 600;
 }
 
 .input {
   background-color: transparent;
-  border: 1px solid #333333;
-  color: #ffffff;
+  border: 1px solid var(--border-hover);
+  color: var(--text-primary);
   padding: 18px 20px;
   font-size: 16px;
   font-family: inherit;
@@ -24,7 +25,7 @@
 }
 
 .input:focus {
-  border-color: #ffffff;
+  border-color: var(--text-primary);
 }
 
 .input::placeholder {
@@ -33,14 +34,14 @@
 
 /* Звёздка обязательной метки — в рамках сервисной типографики */
 .reqMark {
-  color: #ffffff;
+  color: var(--text-primary);
   font-weight: 700;
 }
 
 /* Кольцо фокуса возвращаем явно: `outline: none` выше перекрывает глобальное
    :focus-visible, и у поля не остаётся видимого фокуса (WCAG 2.4.7). */
 .input:focus-visible {
-  outline: 1px solid #ffffff;
+  outline: 1px solid var(--text-primary);
   outline-offset: 3px;
 }
 

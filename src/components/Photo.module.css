@@ -2,7 +2,7 @@
   position: relative;
   display: block;
   overflow: hidden;
-  background-color: #111111;
+  background-color: var(--card-bg);
   border: 1px solid var(--hairline-soft);
 }
 
@@ -81,7 +81,7 @@
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .captionMeta {

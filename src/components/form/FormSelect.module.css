@@ -8,20 +8,21 @@
   font-size: 12px;
   color: var(--text-tertiary);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  /* Сервисная метка: 12px + регламентный широкий трекинг (AGENTS §5). */
+  letter-spacing: var(--tracking-eyebrow);
   font-weight: 600;
 }
 
 /* Звёздка обязательной метки */
 .reqMark {
-  color: #ffffff;
+  color: var(--text-primary);
   font-weight: 700;
 }
 
 .select {
   background-color: transparent;
-  border: 1px solid #333333;
-  color: #ffffff;
+  border: 1px solid var(--border-hover);
+  color: var(--text-primary);
   padding: 18px 20px;
   font-size: 16px;
   font-family: inherit;
@@ -29,18 +30,20 @@
   transition: border-color 0.3s ease;
   appearance: none;
   cursor: pointer;
+  /* Стрелка: data-URI не может обращаться к CSS-переменным, поэтому ступень
+     --text-tertiary (#888888) продублирована числом. */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L2 4h8z' fill='%23888888'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 20px center;
 }
 
 .select:focus {
-  border-color: #ffffff;
+  border-color: var(--text-primary);
 }
 
 /* Кольцо фокуса возвращаем явно: `outline: none` выше перекрывает глобальное
    :focus-visible, и у поля не остаётся видимого фокуса (WCAG 2.4.7). */
 .select:focus-visible {
-  outline: 1px solid #ffffff;
+  outline: 1px solid var(--text-primary);
   outline-offset: 3px;
 }

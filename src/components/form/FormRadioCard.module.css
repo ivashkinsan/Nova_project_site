@@ -3,33 +3,39 @@
   align-items: center;
   gap: 12px;
   cursor: pointer;
-  color: #cccccc;
+  color: var(--text-secondary);
   font-size: 15px;
   padding: 15px 20px;
-  border: 1px solid #333333;
-  transition: all 0.3s ease;
+  border: 1px solid var(--border-hover);
+  /* Переход сужаем до того, что реально меняется под курсором: `all` переводило
+     бы все свойства карточки, включая раскладку. */
+  transition: border-color 0.3s ease;
   flex: 1;
   min-width: 250px;
 }
 
 .radioLabel:hover {
-  border-color: #ffffff;
+  border-color: var(--text-primary);
 }
 
 .radio {
   appearance: none;
   width: 18px;
   height: 18px;
-  border: 1px solid #666666;
+  /* Граница маркера — ступень выше порога WCAG 1.4.11 (3.45:1 по фону). */
+  border: 1px solid var(--text-muted);
   border-radius: 50%;
   cursor: pointer;
   position: relative;
   flex-shrink: 0;
 }
 
+/* Отметка выбора: тот же токенизированный шаг, что и текст, — на бумаге
+   remap --text-primary делает её тёмным кружком, а белым кружком она была бы
+   невидимой. */
 .radio:checked {
-  background-color: #ffffff;
-  border-color: #ffffff;
+  background-color: var(--text-primary);
+  border-color: var(--text-primary);
 }
 
 @media (max-width: 768px) {
