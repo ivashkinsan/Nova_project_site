@@ -20,7 +20,7 @@
 
 ---
 
-## Что сделано (38 коммита этого цикла)
+## Что сделано (39 коммитов этого цикла)
 
 ### P0 — SEO-каркас (`b3919eb`)
 `lang="ru"`; уникальный title `NOVA PROJECT — джаз-квинтет из Липецка: живые выступления и атмосферные сеты`; description, keywords («название группы, жанр, город, живые выступления, джаз»), canonical; Open Graph с абсолютным `og:image` + `og:image:width/height/alt/type` + `og:locale ru_RU`; Twitter Cards `summary_large_image` c `twitter:image:alt`; JSON-LD `MusicGroup` (жанры, город, `inLanguage: ru`, `sameAs` VK) и второй блок `Event` «Живые выступления NOVA PROJECT» (performer = MusicGroup, location Липецк/RU, attendance Offline, status Scheduled, url на секцию «Заявка», даты не выдуманы); `robots.txt`, `sitemap.xml`; лёгкий SVG-favicon «N» и `apple-touch-icon.png` (монограмма N, 180×180, 1,4 КБ, генератор `scripts/make-apple-touch-icon.py`); `theme-color` `#0a0a0a`, `format-detection telephone=no`, apple-статус-бар black-translucent, `color-scheme: dark` на `html` (нативные контролы и pickers идут за тёмной концепцией); preconnect + preload шрифта Inter (один источник, `@import` из CSS убран).
@@ -64,6 +64,9 @@
 ### P1 — alt и подписи снимков сверены с реальными кадрами
 Просмотрены все 26 снимков реестра (файлы `Public/1.jpg…23.jpg`, `25.jpg…27.jpg`). Описания переписаны так, чтобы alt называл то, что в кадре видно: инструмент, свет, положение, число людей. Исправлены расхождения: подпись «Семь на сцене» — в кадре пятеро, «тёмный бархат» — бордовый чехол кофра, «Свет и ноты» — съёмка со спины музыкантов со светящимся экраном ноутбука, «Установки» → «Ударные». Подписи внутри галереи стали уникальными (три снимка с саксофоном больше не подписаны одним словом «Саксофон»). Снята строка «(Липецк)» — город в кадре не подтверждён.
 
+### P2 — PWA-манифест и иконки
+Манифеста не было: на мобильных страница не давала ни иконок, ни цвета системных панелей, подложку подбирал браузер. Добавлен `Public/manifest.webmanifest` (цвета `theme_color`/`background_color` — существующий фон `#0a0a0a`, нового цвета нет; `start_url` и `scope` относительные, чтобы складывались с `base`), иконки 192 и 512 — та же монограмма N, что и у iOS-иконки, полнопостонная, знак вписан в безопасную зону 80% (один файл годится и как обычная, и как maskedable), и `<link rel="manifest">` в `index.html`. Пул снимков, дериваты и экранные правила не затронуты.
+
 ---
 
 ## Что осталось и почему
@@ -78,6 +81,6 @@
 | Пул фото: снимок 28 свободен, номера 24 нет | AGENTS §11: не ссылаться на `/24.jpg`; 28 оставлен свободным, его дериваты не генерируются (пул = 78 файлов). |
 
 ## Артефакты цикла
-`AUDIT.md` (107 строк, все `fix`-строки закрыты), `PLAN.md` (все P0/P1/P2 `[x]` + `→ Готово:`, включая просмотр alt и og-cover), `DECISIONS.md` (журнал автономных решений, включая фиксацию легаси, инцидент ассетной сверки, alt и og-cover), `scripts/gen-derivatives.py` (генератор дериватов), `scripts/verify-derivatives.py` (отчётная сверка), `scripts/make-og-cover.py` (генератор обложки), `scripts/make-apple-touch-icon.py` (генератор iOS-иконки), `src/utils/scroll.ts` (общая прокрутка с reduced-motion), `REPORT.md`.
+`AUDIT.md` (все `fix`-строки закрыты), `PLAN.md` (все P0/P1/P2 `[x]` + `→ Готово:`, включая просмотр alt, og-cover и PWA-манифест), `DECISIONS.md` (журнал автономных решений, включая фиксацию легаси, инцидент ассетной сверки, alt, og-cover и PWA), `scripts/gen-derivatives.py` (генератор дериватов), `scripts/verify-derivatives.py` (отчётная сверка), `scripts/make-og-cover.py` (генератор обложки), `scripts/make-apple-touch-icon.py` (генератор iOS-иконки), `scripts/make-pwa-icons.py` (генератор PWA-иконок), `Public/manifest.webmanifest` (манифест), `src/utils/scroll.ts` (общая прокрутка с reduced-motion), `REPORT.md`.
 
 Визуальная концепция не изменена: монохром, Inter, hairlines, ч/б-фото с цветным hover, зерно, бегущие строки, zero-radius, существующая палитра без новых цветов. Карточка og-cover построена из той же палитры и тех же приёмов (трекинг, хайрлайны, ноль скруглений).

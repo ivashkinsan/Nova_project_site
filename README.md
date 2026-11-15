@@ -56,13 +56,17 @@ Dev-сервер: [http://localhost:5173](http://localhost:5173) (стандар
 Public/                          # publicDir: пул снимков + ассеты шапки страницы
 ├── 1.jpg … 28.jpg               # снимки: 1–23 и 25–28 (номера 24 в пуле нет)
 ├── img/                         # webp-ступени: {номер}-w{ширина}.webp
+├── icons/                       # PWA-иконки: icon-192.png, icon-512.png (монограмма N)
 ├── favicon.svg, apple-touch-icon.png, og-cover.jpg
+├── manifest.webmanifest         # PWA-манифест: фон #0a0a0a, Minimal UI, иконки
 └── robots.txt, sitemap.xml      # для поисковых систем
 
 avantgarde-site/                 # референсный статический сайт (HTML/CSS/лотти), к лендингу не подключён
 
 scripts/
 ├── gen-derivatives.py           # генерация webp-ступеней в Public/img
+├── make-apple-touch-icon.py     # apple-touch-icon.png: монограмма N (180×180)
+├── make-pwa-icons.py            # Public/icons: PWA-иконки 192 и 512
 └── verify-derivatives.py        # сверка файлов и ссылок реестра (только отчёт)
 
 src/

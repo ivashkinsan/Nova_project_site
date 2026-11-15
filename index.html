@@ -106,6 +106,9 @@
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <!-- iOS: иконка рабочего стола — монограмма N в палитре (180×180) -->
     <link rel="apple-touch-icon" href="https://ivashkinsan.github.io/Nova_project_site/apple-touch-icon.png" />
+    <!-- PWA-манифест: относительный путь, чтобы путь складывался с base
+         («/Nova_project_site/») — абсолютный путь в публичной папке Vite не переписывает -->
+    <link rel="manifest" href="./manifest.webmanifest" />
     <!-- LCP: hero-подложка поднимается в начало очереди загрузки.
          hero-элемент отдаёт srcSet из webp-ступеней — preload ведёт на 1920-ю
          webp-ступень (181 КБ), а не на JPEG-оригинал (1,1 МБ), который браузер
