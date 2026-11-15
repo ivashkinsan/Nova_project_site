@@ -133,11 +133,12 @@ export default function HeroSection() {
         </button>
       </div>
 
-      {/* Метрики вечера — тонкая строка-подвал героя */}
+      {/* Метрики вечера — тонкая строка-подвал героя. list-style: none снимает
+          семантику списка в WebKit, поэтому роль списка возвращаем явно. */}
       <div className={styles.metaStrip}>
-        <ul className={styles.metaList}>
+        <ul className={styles.metaList} role="list">
           {heroMeta.map((item) => (
-            <li key={item.label} className={styles.metaItem}>
+            <li key={item.label} className={styles.metaItem} role="listitem">
               <span className={styles.metaValue}>{item.value}</span>
               <span className={styles.metaLabel}>{item.label}</span>
             </li>

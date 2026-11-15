@@ -63,12 +63,15 @@ export default function AudioSection({ id = "audio" }: { id?: string }) {
               </span>
             </div>
 
-            <ul className={styles.trackList}>
+            {/* Список треков: list-style: none снимает семантику списка в WebKit,
+                поэтому роль списка возвращаем явно (WCAG — программа чтения
+                объявит список из пяти строк). */}
+            <ul className={styles.trackList} role="list">
               {tracks.map((track, i) => {
                 const isActive = playingId === track.id;
 
                 return (
-                  <li key={track.id}>
+                  <li key={track.id} role="listitem">
                     <button
                       type="button"
                       className={`${styles.track} ${isActive ? styles.trackActive : ""}`}

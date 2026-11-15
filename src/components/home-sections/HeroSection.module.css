@@ -7,8 +7,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: #0a0a0a;
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--text-primary);
   padding: calc(var(--header-height) + 60px) var(--container-padding) 200px;
 }
 
@@ -51,7 +51,7 @@
       rgba(10, 10, 10, 0.55) 28%,
       rgba(10, 10, 10, 0.62) 62%,
       rgba(10, 10, 10, 0.97) 92%,
-      #0a0a0a 100%
+      var(--bg) 100%
     ),
     radial-gradient(
       120% 80% at 50% 45%,
@@ -81,7 +81,7 @@
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: #cccccc;
+  color: var(--text-secondary);
   animation: heroIn 0.9s var(--ease-out-expo) 0.05s both;
 }
 
@@ -109,7 +109,8 @@
   letter-spacing: -0.04em;
   line-height: 0.85;
   text-transform: uppercase;
-  background: linear-gradient(180deg, #ffffff 0%, #cccccc 100%);
+  /* Градиент букв NOVA — ступени палитры на токенах, значения те же. */
+  background: linear-gradient(180deg, var(--text-primary) 0%, var(--text-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -130,7 +131,7 @@
   font-weight: 300;
   letter-spacing: -0.01em;
   line-height: 1.3;
-  color: #cccccc;
+  color: var(--text-secondary);
   animation: heroIn 1s var(--ease-out-expo) 0.3s both;
 }
 
@@ -149,7 +150,7 @@
   display: inline-block;
   min-width: 11ch;
   text-align: left;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .actions {
@@ -167,6 +168,10 @@
   align-items: center;
   gap: 12px;
   padding: 20px 38px;
+  /* Инвертированная кнопка: белая плашка и чёрный текст — литералы.
+     На токенах глобальный печатный remap красил бы плашку #111111 с
+     почти чёрным текстом (контраст ~1.13:1) — печать ломается.
+     Печатное правило ниже снимает фон, поэтому экранный литерал остаётся. */
   background-color: #ffffff;
   border: 1px solid #ffffff;
   color: #0a0a0a;
@@ -179,8 +184,10 @@
 }
 
 .ctaPrimary:hover {
-  background-color: #e0e0e0;
-  border-color: #e0e0e0;
+  /* Ховер-ступень #e0e0e0 = --color-grey-lighter; печатный remap
+     на ховеры не действует — ховерные правила в печати не применяются. */
+  background-color: var(--color-grey-lighter);
+  border-color: var(--color-grey-lighter);
   transform: translateY(-3px);
 }
 
@@ -196,7 +203,7 @@
   padding: 20px 34px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: var(--font-size-xs);
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
@@ -206,9 +213,11 @@
 }
 
 .ctaGhost:hover {
-  background-color: #ffffff;
-  border-color: #ffffff;
-  color: #0a0a0a;
+  /* Инверсия под курсором: правила ховера в печати не применяются,
+     поэтому перевод на токены безопасен (значения совпадают). */
+  background-color: var(--text-primary);
+  border-color: var(--text-primary);
+  color: var(--bg);
 }
 
 /* ===== Строка метрик ===== */
@@ -250,7 +259,7 @@
   font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .metaLabel {
@@ -286,7 +295,7 @@
 }
 
 .scrollArrow {
-  font-size: 16px;
+  font-size: var(--font-size-body);
   color: var(--text-tertiary);
   animation: scrollBounce 2.2s ease-in-out infinite;
   transition: color 0.3s ease;
@@ -294,7 +303,7 @@
 
 .scrollIndicator:hover .scrollLabel,
 .scrollIndicator:hover .scrollArrow {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 @keyframes scrollBounce {
@@ -389,7 +398,7 @@
   }
 
   .metaValue {
-    font-size: 18px;
+    font-size: var(--font-size-text);
   }
 }
 
@@ -435,14 +444,17 @@
 }
 
 /* Печать: hero печатается как титульная страница — подложка, параллакс и скролл-подсказка
-   убираются, градиентный NOVA становится сплошным чёрным (принтер фоны печатает редко) */
+   убираются, градиентный NOVA становится сплошным чёрным (принтер фоны печатает редко).
+   Цвета текста локально не задаём: весь текст героя на токенах, его перекрашивает
+   глобальный печатный remap `--text-*` (правила .eyebrow/.subtitle/.typewriter/.metaValue
+   и color секции были его дублями — убраны). Разделители строки метрик — локально:
+   границы содержимого секции глобальная печать не накрывает. */
 @media print {
   .hero {
     min-height: 0;
     padding: 40px 0;
     display: block;
     background-color: transparent;
-    color: #111111;
   }
 
   .backdrop,
@@ -472,24 +484,15 @@
     border-left-color: #cccccc;
   }
 
-  .eyebrow,
-  .subtitle {
-    color: #333333;
-  }
-
-  .typewriter,
-  .metaValue,
-  .ctaGhost {
-    color: #111111;
-  }
-
   .ctaGhost {
     background-color: transparent;
     border-color: #cccccc;
   }
 
   /* Инвертированная кнопка печатается белой плашкой (фон принтер не печатает),
-     рамку делаем печатной — кнопка остаётся читаемой на бумаге. */
+     рамку делаем печатной — кнопка остаётся читаемой на бумаге. Текст:
+     экранный литерал #0a0a0a глобальный remap не перекрашивает, поэтому
+     печатный цвет задаём явно. */
   .ctaPrimary {
     background-color: transparent;
     border-color: #cccccc;
