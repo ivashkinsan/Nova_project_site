@@ -53,9 +53,17 @@ Dev-сервер: [http://localhost:5173](http://localhost:5173) (стандар
 ## Структура проекта
 
 ```
-Public/                          # Пул фотографий: 1.jpg … 28.jpg (publicDir)
-├── 1.jpg                        # hero-подложка и favicon
-└── … 28.jpg
+Public/                          # publicDir: пул снимков + ассеты шапки страницы
+├── 1.jpg … 28.jpg               # снимки: 1–23 и 25–28 (номера 24 в пуле нет)
+├── img/                         # webp-ступени: {номер}-w{ширина}.webp
+├── favicon.svg, apple-touch-icon.png, og-cover.jpg
+└── robots.txt, sitemap.xml      # для поисковых систем
+
+avantgarde-site/                 # референсный статический сайт (HTML/CSS/лотти), к лендингу не подключён
+
+scripts/
+├── gen-derivatives.py           # генерация webp-ступеней в Public/img
+└── verify-derivatives.py        # сверка файлов и ссылок реестра (только отчёт)
 
 src/
 ├── main.tsx                     # Точка входа (ReactDOM + StrictMode)
@@ -100,6 +108,9 @@ src/
 │   ├── useScrollProgress.ts     # ✅ используется (прогресс скролла + активная секция)
 │   ├── useIntersectionObserver.ts  # ⚠️ определён, но нигде не подключён
 │   └── useScrollAnimation.ts    # ⚠️ gsap, не используется
+│
+├── utils/
+│   └── scroll.ts                # scrollIntoView с учётом prefers-reduced-motion (Header, Hero, Sidebar)
 │
 ├── pages/
 │   ├── Home.tsx                 # Единственная подключённая страница — лендинг
@@ -223,6 +234,8 @@ export const galleryPhotos: PhotoAsset[] = [asset(7, '…', LANDSCAPE, 'Полн
 Из 27 файлов задействованы 26 — свободен только `28.jpg`, его можно использовать в новом блоке.
 
 **Подача:** `--photo-filter: grayscale(1) contrast(1.06) brightness(0.82)` → `--photo-filter-active: grayscale(0) contrast(1.02) brightness(0.98)` при наведении. Снимки тёмные и насыщенные, поэтому ч/б держит монохром палитры, а цвет на hover становится наградой за взаимодействие. Hero-подложка остаётся ч/б всегда.
+
+**Веб-форматы:** у каждого снимка есть webp-ступени в `Public/img/` — `1-w1920.webp`, `1-w900.webp`, `1-w640.webp`. Имя файла = ширина полученного кадра; портретные ступени задаются по высоте (`2160 / 1000 / 640`) и называются итоговой шириной. Реестр `photos.ts` собирает из них `srcSet`, а `Photo` отдаёт его с `sizes` под конкретный слот — JPEG остаётся fallback для браузеров без webp. Генерация: `scripts/gen-derivatives.py` (повторный запуск даёт байт-идентичные файлы); сверка файлов и ссылок: `scripts/verify-derivatives.py` — он сверяет и сообщает результат, ничего не создаёт и не удаляет.
 
 > Подписи и `alt` написаны «по смыслу», без просмотра кадров — их стоит уточнить под конкретные снимки.
 
@@ -458,12 +471,12 @@ npm run build
 - [ ] Добавить Intersection Observer для отдельных элементов внутри секций
 - [ ] Добавить видео-фон в HeroSection
 - [ ] Аналитика (GA4, Яндекс.Метрика)
-- [ ] PWA-манифест
+- [ ] PWA-манифест (иконка рабочего стола и `theme-color` уже есть: `apple-touch-icon.png`, `theme-color #0a0a0a`)
 - [ ] Аудит и удаление неиспользуемых зависимостей (gsap, lottie-web, lottie-player)
 - [ ] Настроить ESLint (скрипт `npm run lint` сейчас не работает)
 - [ ] Задействовать оставшиеся снимки из `Public/` в новых блоках
 
-**Сделано:** фотографии группы (27 снимков), SEO-мета-теги и OG, favicon, `lang="ru"`, fallback-шрифты, доступность (`:focus-visible`, `aria-*`, `prefers-reduced-motion`), доступ к скроллу через `rAF` + `passive`-листенеры, `scroll-padding-top` для якорей.
+**Сделано:** фотографии группы (27 снимков + webp-ступени), SEO-мета-теги и OG (`canonical`, `robots`, JSON-LD `MusicGroup` и `Event`, `sitemap.xml`, `robots.txt`), favicon + `apple-touch-icon`, `lang="ru"`, fallback-шрифты, доступность (`:focus-visible`, skip-link, именованные landmark'ы, `aria-labelledby` у секций, `aria-live` у плеера и сводки заявки, `prefers-reduced-motion` в CSS и в скролле/печатании), `noscript`-заглушка, iOS safe-area (`viewport-fit=cover` + `env()`), доступ к скроллу через `rAF` + `passive`-листенеры, `scroll-padding-top` для якорей, `@media print` для печатной подачи.
 
 ---
 

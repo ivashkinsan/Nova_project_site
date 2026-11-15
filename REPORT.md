@@ -20,7 +20,7 @@
 
 ---
 
-## Что сделано (30 коммитов этого цикла)
+## Что сделано (32 коммита этого цикла)
 
 ### P0 — SEO-каркас (`b3919eb`)
 `lang="ru"`; уникальный title `NOVA PROJECT — джаз-квинтет из Липецка: живые выступления и атмосферные сеты`; description, keywords («название группы, жанр, город, живые выступления, джаз»), canonical; Open Graph с абсолютным `og:image` + `og:image:width/height/alt/type` + `og:locale ru_RU`; Twitter Cards `summary_large_image` c `twitter:image:alt`; JSON-LD `MusicGroup` (жанры, город, `inLanguage: ru`, `sameAs` VK) и второй блок `Event` «Живые выступления NOVA PROJECT» (performer = MusicGroup, location Липецк/RU, attendance Offline, status Scheduled, url на секцию «Заявка», даты не выдуманы); `robots.txt`, `sitemap.xml`; лёгкий SVG-favicon «N» и `apple-touch-icon.png` (монограмма N, 180×180, 1,4 КБ, генератор `scripts/make-apple-touch-icon.py`); `theme-color` `#0a0a0a`, `format-detection telephone=no`, apple-статус-бар black-translucent, `color-scheme: dark` на `html` (нативные контролы и pickers идут за тёмной концепцией); preconnect + preload шрифта Inter (один источник, `@import` из CSS убран).
@@ -42,6 +42,9 @@
 
 ### P2 — код (`d070d27`, `2c9b51c`)
 Имя пакета `avantgarde-artists-agency` → `nova-project-site` (правка документационная, ссылок на старое имя нет). Единственное нарушение §3.5 — скругление скролл-полосы 4px → 0. Итоговый контроль пройден (стили, парсинг, специфичность `.animatedSection.animated`, breakpoints 1024/768/480 + точечные 1280/1100/900/860/640/1025–1200/max-height 780, reduced-motion, print, чистый diff). Штрихи волны плеера больше не задаются inline-стилем: CSS принимает `--h` (высота) и `--delay` (задержка), значения идут из данных — AGENTS §9, динамика только через CSS-переменные.
+
+### P2 — документация и служебные мелочи (`e631a77` + этот коммит)
+В комментариях CSS формы CJK-опечатка в метке обязательных полей заменена русским текстом, кнопки мобильного меню и шапочного CTA получили `type="button"` (не участвуют в отправке формы). README приведён к фактическому состоянию: дерево проекта (Public с webp-ступенями в `img/`, `favicon.svg`, `apple-touch-icon.png`, `og-cover.jpg`, `robots.txt`, `sitemap.xml`, корневой `avantgarde-site/`, `scripts/`), раздел «Веб-форматы» (ступени, `srcSet`, `sizes` под слот, JPEG-fallback, генерация и отчётная сверка), `src/utils/scroll.ts` в структуре, строка «Сделано» (JSON-LD, skip-link, именованные landmark'ы, `aria-labelledby`, `aria-live`, noscript, iOS safe-area, `@media print`), оговорка про PWA-манифест в TODO. Визуальных изменений нет.
 
 ---
 
