@@ -343,11 +343,19 @@
     z-index: var(--z-mobile-nav);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.45s var(--ease-out-expo);
+    /* Закрытое меню срезано по высоте, но кнопки внутри него остаются
+       доступными с клавиатуры: фокус уходит на невидимые кнопки и пользователь
+       «застревает» в них. visibility снимает их из порядка фокуса и из дерева
+       доступности; задержка переключает видимость после схлопывания, поэтому
+       анимация закрытия не обрывается. */
+    visibility: hidden;
+    transition: max-height 0.45s var(--ease-out-expo), visibility 0s linear 0.45s;
   }
 
   .nav.open {
     max-height: 460px;
+    visibility: visible;
+    transition: max-height 0.45s var(--ease-out-expo), visibility 0s;
     padding-bottom: env(safe-area-inset-bottom);
   }
 

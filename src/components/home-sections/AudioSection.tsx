@@ -70,7 +70,10 @@ export default function AudioSection({ id = "audio" }: { id?: string }) {
                       className={`${styles.track} ${isActive ? styles.trackActive : ""}`}
                       onClick={() => handlePlay(track.id)}
                       aria-pressed={isActive}
-                      aria-label={`${isActive ? "Остановить" : "Включить"} фрагмент ${track.title}`}
+                      /* aria-label замещает весь текст кнопки (индекс, название,
+                         артист, длительность), поэтому длительность кладём в
+                         имя: читатель программы чтения получает и название, и время. */
+                      aria-label={`${isActive ? "Остановить" : "Включить"} фрагмент ${track.title}, ${track.duration}`}
                     >
                       <span className={styles.trackIndex}>
                         {String(i + 1).padStart(2, "0")}
