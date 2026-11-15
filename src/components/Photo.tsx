@@ -105,7 +105,12 @@ export default function Photo({
       {(caption || meta) && (
         <figcaption className={styles.caption}>
           {caption && <span className={styles.captionTitle}>{caption}</span>}
-          {meta && <span className={styles.captionMeta}>{meta}</span>}
+          {/* Служебная метка («Live») — латиница, язык задаём явно (WCAG 3.1.2). */}
+          {meta && (
+            <span className={styles.captionMeta} lang="en">
+              {meta}
+            </span>
+          )}
         </figcaption>
       )}
     </figure>

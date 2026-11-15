@@ -60,9 +60,11 @@ export default function HeroSection() {
           <span className={styles.eyebrowLine} aria-hidden="true" />
         </p>
 
+        {/* Название группы — латиница: язык задаём явно, чтобы читалка произнесла
+            его по английским правилам, а не по русским (WCAG 3.1.2). */}
         <h1 className={styles.title}>
-          <span className={styles.titleNova}>NOVA</span>
-          <span className={styles.titleProject}>PROJECT</span>
+          <span className={styles.titleNova} lang="en">NOVA</span>
+          <span className={styles.titleProject} lang="en">PROJECT</span>
         </h1>
 
         <p className={styles.subtitle}>Музыка — это диалог между эпохами</p>

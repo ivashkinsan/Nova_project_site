@@ -69,8 +69,9 @@ export default function Header() {
             className={styles.logo}
             onClick={scrollToTop}
           >
-            <span className={styles.logoMark}>NOVA</span>
-            <span className={styles.logoProject}>PROJECT</span>
+            {/* Название — латиница, язык задан явно (WCAG 3.1.2). */}
+            <span className={styles.logoMark} lang="en">NOVA</span>
+            <span className={styles.logoProject} lang="en">PROJECT</span>
           </button>
 
           <p className={styles.tagline}>Джаз-квинтет · Липецк</p>

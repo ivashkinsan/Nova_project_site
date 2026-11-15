@@ -90,9 +90,14 @@ export default function AudioSection({ id = "audio" }: { id?: string }) {
                         )}
                       </span>
 
+                      {/* Названия треков и исполнитель — латиница: язык задаём
+                          явно, чтобы программа чтения не читала их по русским
+                          правилам (WCAG 3.1.2). */}
                       <span className={styles.trackInfo}>
-                        <span className={styles.trackTitle}>{track.title}</span>
-                        <span className={styles.trackArtist}>
+                        <span className={styles.trackTitle} lang="en">
+                          {track.title}
+                        </span>
+                        <span className={styles.trackArtist} lang="en">
                           {track.artist}
                         </span>
                       </span>

@@ -20,8 +20,9 @@ export default function Footer() {
               className={styles.logo}
               onClick={scrollToTop}
             >
-              <span className={styles.logoMark}>NOVA</span>
-              <span className={styles.logoProject}>PROJECT</span>
+              {/* Название — латиница, язык задан явно (WCAG 3.1.2). */}
+              <span className={styles.logoMark} lang="en">NOVA</span>
+              <span className={styles.logoProject} lang="en">PROJECT</span>
             </button>
             <p className={styles.brandText}>
               Джаз-квинтет из Липецка. Концертные программы и атмосферные сеты —
@@ -37,7 +38,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className={styles.social}
               >
-                VK · {contactInfo.vkName}
+                <span lang="en">VK</span> · <span lang="en">{contactInfo.vkName}</span>
               </a>
             </div>
           </div>
@@ -70,7 +71,7 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            NOVA PROJECT &copy; {new Date().getFullYear()}
+            <span lang="en">NOVA PROJECT</span> &copy; {new Date().getFullYear()}
           </p>
           <p className={styles.credit}>Джаз-квинтет · Липецк</p>
           <button

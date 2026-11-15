@@ -52,7 +52,7 @@ export default function ContactSection({ id = 'contact' }: { id?: string }) {
               rel="noopener noreferrer"
               className={styles.cardValue}
             >
-              VK · {contactInfo.vkName}
+              <span lang="en">VK</span> · <span lang="en">{contactInfo.vkName}</span>
             </a>
             <span className={styles.cardMeta}>Записи и анонсы выступлений</span>
           </div>

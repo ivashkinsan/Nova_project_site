@@ -14,7 +14,8 @@ function RepertoireCard({ index, item, cellClass }: CardProps) {
   return (
     <article className={`${styles.card} ${cellClass}`}>
       <span className={styles.cardIndex}>{index}</span>
-      <h3 className={styles.cardTitle}>{item.title}</h3>
+      {/* lang есть только у английских заголовков; для русских атрибут не ставим. */}
+      <h3 className={styles.cardTitle} lang={item.lang}>{item.title}</h3>
       <p className={styles.cardDesc}>{item.description}</p>
       <span className={styles.cardMark} aria-hidden="true">
         ↗
