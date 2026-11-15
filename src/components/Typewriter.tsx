@@ -74,7 +74,8 @@ export default function Typewriter({
   return (
     <span className={className}>
       {currentText}
-      <span className="typewriter-cursor">|</span>
+      {/* Курсор — декоративный мигающий символ: читалка не должна озвучивать «вертикальную черту» */}
+      <span className="typewriter-cursor" aria-hidden="true">|</span>
     </span>
   );
 }

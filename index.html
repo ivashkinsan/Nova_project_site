@@ -58,7 +58,9 @@
       content="NOVA PROJECT на сцене концертного зала: саксофонист в центре, струнная группа, контрабас и световой экран с молниями над оркестром"
     />
 
-    <!-- Schema.org: MusicGroup -->
+    <!-- Schema.org: MusicGroup. Event не добавляем: дат концертов в данных нет, а выдуманные
+         даты ломают честность контента; Google для Event требует startDate, и блок без него
+         был бы невалидной разметкой. -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -75,40 +77,6 @@
           "addressCountry": "RU"
         },
         "sameAs": ["https://vk.com/novaprojekt"]
-      }
-    </script>
-
-    <!-- Schema.org: живые выступления (жанр, город, форма заявки — без выдуманных дат) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Event",
-        "name": "Живые выступления NOVA PROJECT",
-        "description": "Джаз-квинтет играет живые выступления в Липецке и области: авторские программы и атмосферные сеты. Заявка на дату — из раздела «Заявка».",
-        "@id": "https://ivashkinsan.github.io/Nova_project_site/#live",
-        "url": "https://ivashkinsan.github.io/Nova_project_site/#booking",
-        "performer": {
-          "@type": "MusicGroup",
-          "name": "NOVA PROJECT",
-          "genre": ["Jazz", "Neoclassical", "Fusion"]
-        },
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "@type": "Place",
-          "name": "Липецк",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Липецк",
-            "addressCountry": "RU"
-          }
-        },
-        "image": "https://ivashkinsan.github.io/Nova_project_site/og-cover-photo.jpg",
-        "organizer": {
-          "@type": "MusicGroup",
-          "name": "NOVA PROJECT",
-          "url": "https://ivashkinsan.github.io/Nova_project_site/"
-        }
       }
     </script>
 
@@ -131,7 +99,10 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Шрифт: единственный источник — stylesheet ниже; preload поднимает запрос в начало очереди -->
+    <!-- Шрифт: единственный источник — stylesheet ниже; preload поднимает запрос в начало
+         очереди. Сам stylesheet грузится без блокировки рендера: media="print" при загрузке
+         переключается на all, текст сначала идёт системным шрифтом и дорисовывается Inter
+         (font-display: swap в запросе). Без JavaScript ссылку даёт noscript. -->
     <link
       rel="preload"
       as="style"
@@ -140,7 +111,15 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
   </head>
   <body>
     <!-- Без JavaScript React ничего не рендерит: заглушка говорит, что включить,
