@@ -180,3 +180,32 @@
     font-size: 13px;
   }
 }
+
+/* Печатная подача: тёмная подложка и плашки состава уходят, текст печатается чёрным;
+   колонка со снимком становится обычным блоком над текстом. */
+@media print {
+  .about {
+    background-color: transparent;
+    color: #111111;
+  }
+
+  .grid {
+    display: block;
+  }
+
+  .paragraph,
+  .quote,
+  .rosterDesc {
+    color: #333333;
+  }
+
+  .rosterItem {
+    background-color: transparent;
+    border-color: #cccccc;
+  }
+
+  .rosterIndex,
+  .rosterName {
+    color: #111111;
+  }
+}

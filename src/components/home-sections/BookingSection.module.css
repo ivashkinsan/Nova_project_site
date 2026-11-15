@@ -382,7 +382,8 @@
 
   .side,
   .step,
-  .quick {
+  .quick,
+  .summary {
     border-color: #cccccc;
     background-color: transparent;
   }
@@ -390,7 +391,26 @@
   .stepIndex,
   .stepText,
   .quickLabel,
-  .label {
+  .label,
+  .summaryIndex,
+  .summaryMessage {
     color: #333333;
+  }
+
+  .booking {
+    background-color: transparent;
+    color: #111111;
+  }
+
+  .stepTitle,
+  .summaryTitle,
+  .summaryValue,
+  .quickPhone,
+  .quickLink {
+    color: #111111;
+  }
+
+  .quickPhone {
+    border-bottom-color: #cccccc;
   }
 }

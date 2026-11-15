@@ -159,3 +159,31 @@
     font-size: 14px;
   }
 }
+
+/* Печатная подача: блоки программы печатаются чёрным текстом с печатной границей,
+   тёмные подложки уходят. Фото-колонки печатаются своими правилами Photo. */
+@media print {
+  .format {
+    background-color: transparent;
+    color: #111111;
+  }
+
+  .block,
+  .blockList {
+    background-color: transparent;
+    border-color: #cccccc;
+  }
+
+  .blockDuration,
+  .blockMeta,
+  .blockNote,
+  .blockDesc,
+  .blockItem,
+  .blockIndex {
+    color: #333333;
+  }
+
+  .blockTitle {
+    color: #111111;
+  }
+}

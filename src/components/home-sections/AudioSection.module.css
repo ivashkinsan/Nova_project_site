@@ -404,7 +404,26 @@
   .playerState,
   .trackIndex,
   .trackArtist,
-  .playerNote {
+  .playerNote,
+  .trackDuration {
+    color: #333333;
+  }
+
+  .audio {
+    background-color: transparent;
+    color: #111111;
+  }
+
+  .trackTitle {
+    color: #111111;
+  }
+
+  .trackActive .trackIndex,
+  .trackActive .trackTitle {
+    color: #111111;
+  }
+
+  .trackActive .trackDuration {
     color: #333333;
   }
 }

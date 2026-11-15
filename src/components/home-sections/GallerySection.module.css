@@ -243,7 +243,13 @@
     background-color: transparent;
   }
 
-  .note {
+  .note,
+  .more {
     color: #333333;
+  }
+
+  .gallery {
+    background-color: transparent;
+    color: #111111;
   }
 }

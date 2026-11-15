@@ -247,6 +247,35 @@
   .watermark {
     display: none;
   }
+
+  .footer {
+    background-color: transparent;
+    color: #111111;
+  }
+
+  .logoMark,
+  .logoProject,
+  .phone,
+  .social,
+  .link,
+  .backToTop {
+    color: #111111;
+  }
+
+  .metaItem,
+  .colTitle,
+  .brandText,
+  .copyright,
+  .credit {
+    color: #333333;
+  }
+
+  .phone,
+  .backToTop,
+  .bottom {
+    border-color: #cccccc;
+    background-color: transparent;
+  }
 }
 
 /* ===== Планшет ===== */

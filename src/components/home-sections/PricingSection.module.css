@@ -180,3 +180,31 @@
     aspect-ratio: 4 / 3;
   }
 }
+
+/* Печатная подача: пакеты печатаются чёрным, плашки становятся прозрачными
+   с печатной границей. */
+@media print {
+  .pricing {
+    background-color: transparent;
+    color: #111111;
+  }
+
+  .item,
+  .notes {
+    background-color: transparent;
+    border-color: #cccccc;
+  }
+
+  .itemIndex,
+  .itemText,
+  .priceLocation,
+  .note,
+  .rider,
+  .listTitle {
+    color: #333333;
+  }
+
+  .price {
+    color: #111111;
+  }
+}

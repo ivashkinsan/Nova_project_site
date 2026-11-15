@@ -176,7 +176,18 @@
   }
 
   .cardLabel,
-  .cardMeta {
+  .cardMeta,
+  .cardButton {
     color: #333333;
+  }
+
+  .contact {
+    background-color: transparent;
+    color: #111111;
+  }
+
+  .cardValue {
+    color: #111111;
+    border-bottom-color: #cccccc;
   }
 }

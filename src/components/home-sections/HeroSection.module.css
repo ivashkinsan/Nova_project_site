@@ -439,6 +439,8 @@
     min-height: 0;
     padding: 40px 0;
     display: block;
+    background-color: transparent;
+    color: #111111;
   }
 
   .backdrop,
@@ -454,6 +456,22 @@
   .actions,
   .metaList {
     margin-top: 24px;
+  }
+
+  .eyebrow,
+  .subtitle {
+    color: #333333;
+  }
+
+  .typewriter,
+  .metaValue,
+  .ctaGhost {
+    color: #111111;
+  }
+
+  .ctaGhost {
+    background-color: transparent;
+    border-color: #cccccc;
   }
 }
 

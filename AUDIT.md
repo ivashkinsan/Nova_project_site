@@ -113,6 +113,7 @@
 | `FormSelect` placeholder `<option value="">` (required) — валидация native | ok | — | — |
 | Ручная проверка: все `styles.*` существуют в своих `.module.css`; CSS парсится esbuild-парсером (не запуск, а синтаксический разбор); специфичность `.animatedSection.animated` сохранена | ok (контрол) | P2 | повторять контроль после каждой правки |
 | VK-ссылка `https://vk.ru/novaprojekt` — `vk.ru` не является доменом VK (vk.com); реальная страница не подтверждена | ok (исправлено) | P1 | поправить домен на `vk.com` (формат реестра), запись в DECISIONS |
+| Хардкодные `#ffffff`/`#cccccc`/`#111111` внутри классов CSS-модулей перекрывали глобальный print-блок: белый текст печатался невидимым на белой бумаге | ok (исправлено) | P1 | печатная палитра из существующих токенов (`#111111`, `#333333`, `#cccccc`), print-блоки во всех 12 модулях |
 
 ## Итог приоритетов
 - **P0:** og:image/og:url/width/height, Twitter Cards, canonical, robots meta, robots.txt, sitemap.xml, JSON-LD, favicon, WebP-дериваты + LCP hero, формы (labels/aria-required), skip-link.
