@@ -51,7 +51,7 @@
   font-size: 22px;
   font-weight: 800;
   letter-spacing: 0.14em;
-  color: #ffffff;
+  color: var(--text-primary);
   text-transform: uppercase;
 }
 
@@ -95,7 +95,11 @@
   position: relative;
   background: none;
   border: none;
-  padding: 0;
+  /* Тач-таргет ≥24×24 (WCAG 2.5.8): поле растянуто вертикальным поляром,
+     видимый текст и подчёркивание остались на прежних местах — подчёркивание
+     прижато к нижнему краю поля (bottom: 0), как раньше было при поляре 0 */
+  padding: 6px 0;
+  min-height: 24px;
   font-size: var(--font-size-xs);
   font-weight: 500;
   letter-spacing: var(--tracking-wide);
@@ -108,16 +112,16 @@
 .desktopNavLink::after {
   content: '';
   position: absolute;
-  bottom: -6px;
+  bottom: 0;
   left: 0;
   width: 0;
   height: 1px;
-  background-color: #ffffff;
+  background-color: var(--text-primary);
   transition: width 0.35s var(--ease-out-expo);
 }
 
 .desktopNavLink:hover {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .desktopNavLink:hover::after {
@@ -140,7 +144,7 @@
   padding: 12px 22px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: var(--font-size-micro);
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
@@ -149,10 +153,13 @@
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
+/* Инвертированная цель под курсором. Шапка и мобильное меню скрыты в печати
+   глобальным правилом (header, #mobile-nav), поэтому белая подложка здесь
+   печатается не тёмной плашкой — перевод на токены безопасен. */
 .cta:hover {
-  background-color: #ffffff;
-  border-color: #ffffff;
-  color: #0a0a0a;
+  background-color: var(--text-primary);
+  border-color: var(--text-primary);
+  color: var(--bg);
 }
 
 .ctaArrow {
@@ -179,7 +186,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  background-color: #ffffff;
+  background-color: var(--text-primary);
   transform: scaleX(var(--progress, 0));
   transform-origin: left center;
   transition: transform 0.15s linear;
@@ -210,18 +217,18 @@
   background: none;
   border: none;
   border-bottom: 1px solid var(--hairline-soft);
-  font-size: 16px;
+  font-size: var(--font-size-body);
   font-weight: 300;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--text-primary);
   text-align: left;
   cursor: pointer;
   transition: color 0.3s ease, padding-left 0.3s var(--ease-out-expo);
 }
 
 .navLink:hover {
-  color: #cccccc;
+  color: var(--text-secondary);
   padding-left: 6px;
 }
 
@@ -238,9 +245,9 @@
   width: calc(100% - 40px);
   margin: 18px 20px 22px;
   padding: 15px 0;
-  background-color: #ffffff;
+  background-color: var(--text-primary);
   border: none;
-  color: #0a0a0a;
+  color: var(--bg);
   font-size: var(--font-size-micro);
   font-weight: 700;
   letter-spacing: var(--tracking-eyebrow);
@@ -269,7 +276,7 @@
   left: 0;
   width: 24px;
   height: 2px;
-  background-color: #ffffff;
+  background-color: var(--text-primary);
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -311,7 +318,9 @@
   }
 
   .desktopNavList {
-    gap: 22px;
+    /* Расстояние между соседними ссылками ≥24px (WCAG 2.5.8): при уплотнении
+       навигации разрыв не опускается ниже порога */
+    gap: 24px;
   }
 
   .cta {
@@ -390,5 +399,8 @@
   .nav {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    /* Подложка открытого меню тоже становится сплошной: блюр убран,
+       полупрозрачная подложка без блюра даёт «грязный» фон под текстом */
+    background-color: rgba(10, 10, 10, 0.98);
   }
 }

@@ -36,7 +36,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  background-color: #ffffff;
+  background-color: var(--text-primary);
   transform: scaleY(var(--progress, 0));
   transform-origin: top center;
   transition: transform 0.2s linear;
@@ -88,7 +88,7 @@
 }
 
 .active .dot {
-  background-color: #ffffff;
+  background-color: var(--text-primary);
   transform: scale(1.5);
 }
 
@@ -103,7 +103,7 @@
   font-weight: 500;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--text-primary);
   white-space: nowrap;
   opacity: 0;
   transform: translateX(-6px);
@@ -130,7 +130,9 @@
   font-size: var(--font-size-micro);
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
-  color: #444444;
+  /* Счётчик — декоративная служебная метка (рельс скрыт в печати,
+     `aria-hidden`), контраст от палитры: `#444444` = `--color-placeholder`. */
+  color: var(--color-placeholder);
   font-variant-numeric: tabular-nums;
 }
 
