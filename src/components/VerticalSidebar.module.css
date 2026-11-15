@@ -123,9 +123,13 @@
   bottom: 28px;
   width: 30px;
   text-align: center;
-  font-size: 10px;
+  /* Служебная метка: 11px + широкий трекинг — единая служба меток проекта
+     (подпись маркера выше задана теми же токенами). Максимум 3 знака
+     («100») с табличными цифрами в 11px занимают ~24px, в 30px колонку
+     помещаются. */
+  font-size: var(--font-size-micro);
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--tracking-wide);
   color: #444444;
   font-variant-numeric: tabular-nums;
 }
