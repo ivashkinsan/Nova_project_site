@@ -294,10 +294,6 @@
     gap: 40px;
   }
 
-  .visual {
-    position: static;
-  }
-
   /* Фото становится широкой полосой над списком */
   .visual figure {
     aspect-ratio: 21 / 9;

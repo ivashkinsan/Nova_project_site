@@ -110,11 +110,6 @@
   font-size: 14px;
   line-height: 1.6;
   color: var(--text-tertiary);
-  transition: color 0.3s ease;
-}
-
-.rosterItem:hover .rosterDesc {
-  color: var(--text-tertiary);
 }
 
 /* ===== Планшет ===== */
@@ -125,7 +120,6 @@
   }
 
   .visual {
-    position: static;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;

@@ -26,7 +26,10 @@
   min-width: 0;
 }
 
-/* ===== Цена ===== */
+/* ===== Строка цены =====
+   Цены в данных нет («Итоговая цена зависит от даты, формата и ваших
+   пожеланий»), поэтому в строке только географическая метка; нижняя граница
+   делит её с заметками ниже. Отдельного класса цены не заведено. */
 .priceRow {
   display: flex;
   align-items: baseline;
@@ -35,14 +38,6 @@
   padding-bottom: 26px;
   border-bottom: 1px solid var(--hairline);
   margin-bottom: 26px;
-}
-
-.price {
-  font-size: clamp(44px, 6vw, 78px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  color: #ffffff;
 }
 
 .priceLocation {
@@ -137,11 +132,7 @@
     gap: 40px;
   }
 
-  .visual {
-    position: static;
-  }
-
-  /* Фото — широкая полоса над ценой */
+  /* Фото — широкая полоса над строкой цены */
   .visual figure {
     aspect-ratio: 21 / 9;
   }
@@ -202,9 +193,5 @@
   .rider,
   .listTitle {
     color: #333333;
-  }
-
-  .price {
-    color: #111111;
   }
 }

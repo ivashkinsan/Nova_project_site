@@ -316,10 +316,6 @@
     gap: 44px;
   }
 
-  .side {
-    position: static;
-  }
-
   /* Фото — широкая полоса над шагами */
   .side figure {
     aspect-ratio: 21 / 9;
