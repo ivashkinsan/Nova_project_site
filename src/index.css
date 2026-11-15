@@ -19,9 +19,13 @@ html {
      без этого светная ОС рисует контролы в light-стиле против концепции */
   color-scheme: dark;
   /* Firefox: тонкий скроллбар в тех же серых ступенях, что и -webkit-правило ниже —
-     без этих двух строк Firefox рисует свою широкую полосу и ширина разнится */
+     без этих двух строк Firefox рисует свою широкую полосу и ширина разнится.
+     Полоса прокрутки — элемент интерфейса: её ползунок обязан читаться на фоне
+     дороги (WCAG 1.4.11, ≥3:1). #333333 по #0a0a0a давало 1.60:1, берём
+     --text-muted (#666666, 3.45:1) — единственную ступень палитры выше порога;
+     пара остаётся той же, что у -webkit-блока, паритет движков сохраняется. */
   scrollbar-width: thin;
-  scrollbar-color: #333333 #0a0a0a;
+  scrollbar-color: var(--text-muted) var(--bg);
 }
 
 body {
@@ -94,22 +98,26 @@ p {
   color: #0a0a0a;
 }
 
-/* Scrollbar */
+/* Scrollbar: ползунок 8px читается на своей дорожке (WCAG 1.4.11, ≥3:1) —
+   #333333 по #0a0a0a = 1.60:1, поэтому ползунок на --text-muted (#666666,
+   3.45:1), под курсором — на --text-tertiary (#888888, 5.56:1). Дорожка
+   остаётся фоном страницы, скругления нет (--border-radius: 0), новых
+   цветов нет; значения совпадают с Firefox-парой выше. */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333333;
+  background: var(--text-muted);
   border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555555;
+  background: var(--text-tertiary);
 }
 
 /* Общие кейфреймы проекта */
