@@ -367,3 +367,20 @@
     font-size: 15px;
   }
 }
+
+/* Пользователь просит меньше прозрачности (prefers-reduced-transparency):
+   стеклянный блюр шапки и мобильного меню убираем, подложка становится
+   сплошной — цвет берём из существующей палитры (rgba(10,10,10,0.98) уже
+   используется в открытом мобильном меню), нового цвета нет. */
+@media (prefers-reduced-transparency: reduce) {
+  .scrolled {
+    background-color: rgba(10, 10, 10, 0.98);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .nav {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
