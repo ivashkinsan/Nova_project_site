@@ -2,8 +2,8 @@
   position: relative;
   overflow: hidden;
   padding: var(--section-padding) 0;
-  background-color: #0a0a0a;
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--text-primary);
 }
 
 /* ===== Фон ===== */
@@ -26,10 +26,10 @@
   background:
     linear-gradient(
       180deg,
-      #0a0a0a 0%,
+      var(--bg) 0%,
       rgba(10, 10, 10, 0.72) 22%,
       rgba(10, 10, 10, 0.8) 70%,
-      #0a0a0a 100%
+      var(--bg) 100%
     ),
     linear-gradient(
       90deg,
@@ -49,10 +49,15 @@
 }
 
 /* ===== Карточки связи ===== */
+/* Список каналов связи: программа чтения объявляет количество пунктов.
+   Сбрасываем отступ и маркер списка — сетка остаётся прежней. */
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .card {
@@ -88,13 +93,15 @@
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  color: #ffffff;
+  /* 26px по line-height 1.2 — зона нажатия ~31px (WCAG 2.5.8: цель ≥24×24),
+     поэтому требование к зазору 24px к этим ссылкам не применяется. */
+  color: var(--text-primary);
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s ease;
 }
 
 .cardValue:hover {
-  border-bottom-color: #ffffff;
+  border-bottom-color: var(--text-primary);
 }
 
 .cardButton {
@@ -107,7 +114,8 @@
   font-size: clamp(20px, 2.2vw, 26px);
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  /* Кнопка той же ступени, что и ссылки карточек: зона нажатия ~31px (WCAG 2.5.8). */
+  color: var(--text-primary);
   cursor: pointer;
   transition: opacity 0.3s ease;
 }
@@ -128,7 +136,7 @@
 .cardMeta {
   margin-top: 4px;
   font-size: 14px;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--text-tertiary);
 }
 
@@ -160,7 +168,12 @@
 }
 
 /* Печатная подача: подложка, затемнение и стрелка — декор; контакты печатаются текстом,
-   адрес ссылки дописывает глобальное print-правило для ссылок. */
+   адрес ссылки дописывает глобальное print-правило для ссылок.
+   Цвет текста карточек перекрашивает глобальный remap `--text-*` (все классы на токенах),
+   поэтому локальных печатных цветов текста нет. Глобальные правила `section` и `footer *`
+   не достают до содержимого секции, поэтому плашки и хайрлайны задаём локально: фон
+   секции (токен --bg remap не красит, и специфичность класса выше `section`), фон и
+   граница карточки, подчёркивание значения. */
 @media print {
   .backdrop,
   .backdropImg,
@@ -169,24 +182,16 @@
     display: none;
   }
 
+  .contact {
+    background-color: transparent;
+  }
+
   .card {
     border-color: #cccccc;
     background-color: transparent;
   }
 
-  .cardLabel,
-  .cardMeta,
-  .cardButton {
-    color: #333333;
-  }
-
-  .contact {
-    background-color: transparent;
-    color: #111111;
-  }
-
   .cardValue {
-    color: #111111;
     border-bottom-color: #cccccc;
   }
 }

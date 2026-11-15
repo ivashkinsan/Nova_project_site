@@ -35,16 +35,19 @@ export default function ContactSection({ id = 'contact' }: { id?: string }) {
           size="display"
         />
 
-        <div className={styles.cards}>
-          <div className={styles.card}>
+        {/* Каналы связи — список: программа чтения объявляет количество пунктов.
+            role="list"/"listitem" возвращают семантику списка в WebKit, где
+            list-style: none её снимает; облик и сетка не меняются. */}
+        <ul className={styles.cards} role="list">
+          <li className={styles.card} role="listitem">
             <span className={styles.cardLabel}>Телефон</span>
             <a href={contactInfo.phoneLink} className={styles.cardValue}>
               {contactInfo.phone}
             </a>
             <span className={styles.cardMeta}>Спросить {contactInfo.contactPerson}</span>
-          </div>
+          </li>
 
-          <div className={styles.card}>
+          <li className={styles.card} role="listitem">
             <span className={styles.cardLabel}>Соцсети</span>
             <a
               href={contactInfo.vkLink}
@@ -55,9 +58,9 @@ export default function ContactSection({ id = 'contact' }: { id?: string }) {
               <span lang="en">VK</span> · <span lang="en">{contactInfo.vkName}</span>
             </a>
             <span className={styles.cardMeta}>Записи и анонсы выступлений</span>
-          </div>
+          </li>
 
-          <div className={styles.card}>
+          <li className={styles.card} role="listitem">
             <span className={styles.cardLabel}>Заявка</span>
             <button type="button" className={styles.cardButton} onClick={scrollToBooking}>
               Заполнить форму
@@ -66,8 +69,8 @@ export default function ContactSection({ id = 'contact' }: { id?: string }) {
               </span>
             </button>
             <span className={styles.cardMeta}>Пара минут — и мы обсудим детали</span>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </section>
   );
