@@ -89,8 +89,8 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Крупный водяной знак — фактурный финал страницы */}
-      <div className={styles.watermark} aria-hidden="true">
+      {/* Крупный водяной знак — фактурный финал страницы (латиница, язык задан явно). */}
+      <div className={styles.watermark} aria-hidden="true" lang="en">
         NOVA PROJECT
       </div>
     </footer>

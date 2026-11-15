@@ -1,8 +1,8 @@
 .footer {
   position: relative;
   overflow: hidden;
-  background-color: #0a0a0a;
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--text-primary);
   border-top: 1px solid var(--hairline);
 }
 
@@ -52,8 +52,9 @@
   font-size: 26px;
   font-weight: 800;
   letter-spacing: 0.14em;
+  /* Трекинг 0.14em — числами: фирменный знак, а не служебная метка шкалы */
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .logoProject {
@@ -79,10 +80,11 @@
 }
 
 .phone {
-  font-size: 18px;
+  /* 18px — ступень текста шкалы, плотный трекинг — var(--tracking-tight) */
+  font-size: var(--font-size-text);
   font-weight: 600;
-  letter-spacing: -0.01em;
-  color: #ffffff;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
   border-bottom: 1px solid transparent;
   /* Зона нажатия не уже 24px (WCAG 2.5.8): цель по тексту ~22px, отступы дотягивают до ~34px. */
   padding: 6px 0;
@@ -90,7 +92,7 @@
 }
 
 .phone:hover {
-  border-bottom-color: #ffffff;
+  border-bottom-color: var(--text-primary);
 }
 
 .social {
@@ -105,7 +107,7 @@
 }
 
 .social:hover {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 /* ===== Колонки ===== */
@@ -142,14 +144,16 @@
      применяется — gap:12 между строками остаётся как есть. */
   padding: 8px 0;
   font-size: 15px;
-  color: #cccccc;
+  /* 15px — числами: ступени 15px в шкале variables.css нет */
+  line-height: 1.6;
+  color: var(--text-secondary);
   text-align: left;
   cursor: pointer;
   transition: color 0.3s ease, transform 0.3s var(--ease-out-expo);
 }
 
 .link:hover {
-  color: #ffffff;
+  color: var(--text-primary);
   transform: translateX(4px);
 }
 
@@ -178,7 +182,9 @@
   top: 9px;
   width: 8px;
   height: 1px;
-  background-color: #444444;
+  /* Маркер списка — декоративный (не текст), цвет от палитры: #444444
+     = существующий токен --color-placeholder; в печати печатается тушью. */
+  background-color: var(--color-placeholder);
 }
 
 /* ===== Нижняя полоса ===== */
@@ -210,8 +216,8 @@
   gap: 10px;
   padding: 12px 22px;
   background: transparent;
-  border: 1px solid #333333;
-  color: #ffffff;
+  border: 1px solid var(--border-hover);
+  color: var(--text-primary);
   font-size: var(--font-size-micro);
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
@@ -221,9 +227,12 @@
 }
 
 .backToTop:hover {
-  background-color: #ffffff;
-  border-color: #ffffff;
-  color: #0a0a0a;
+  /* Инвертированная цель под курсором: ховер-состояния в печати не участвуют
+     (печатаются только базовые правила), поэтому перевод на токены безопасен.
+     Значения совпадают с прежними числами: белая подложка, тёмный текст. */
+  background-color: var(--text-primary);
+  border-color: var(--text-primary);
+  color: var(--bg);
 }
 
 .backArrow {
@@ -244,14 +253,24 @@
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 1;
-  color: #1a1a1a;
+  /* Водяной знак — фактура: цвет от палитры (#1a1a1a = --card-bg-hover),
+     aria-hidden, в печати скрыт. */
+  color: var(--card-bg-hover);
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
   z-index: 0;
 }
 
-/* Печать: декоративный гигантский знак не печатается */
+/* Печать: декоративный гигантский знак не печатается.
+   Фон, текст и границы потомков футера перекрашивает глобальное печатное правило
+   `footer *` (transparent, #111111, #cccccc), служебные ступени текста — глобальный
+   remap `--text-*` (--text-tertiary → #333333), поэтому локальные правила для
+   colTitle/brandText/metaItem/copyright/credit и для границ не нужны.
+   Локально остаются только два случая, где печатная иерархия отличается от
+   экранной: лого-«PROJECT», ссылка соцсети и ссылки разделов печатаются
+   заголовочной ступенью #111111, и чёрный фон футера — плашка на токене
+   --bg, которую глобальное `footer` (специфичность ниже класса) не перекрывает. */
 @media print {
   .watermark {
     display: none;
@@ -259,31 +278,16 @@
 
   .footer {
     background-color: transparent;
-    color: #111111;
   }
 
-  .logoMark,
   .logoProject,
-  .phone,
   .social,
-  .link,
-  .backToTop {
+  .link {
     color: #111111;
   }
 
-  .metaItem,
-  .colTitle,
-  .brandText,
-  .copyright,
-  .credit {
-    color: #333333;
-  }
-
-  .phone,
-  .backToTop,
-  .bottom {
-    border-color: #cccccc;
-    background-color: transparent;
+  .metaItem::before {
+    background-color: #333333;
   }
 }
 
@@ -344,6 +348,6 @@
   }
 
   .phone {
-    font-size: 16px;
+    font-size: var(--font-size-body);
   }
 }

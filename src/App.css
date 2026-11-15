@@ -11,10 +11,13 @@
   left: 24px;
   z-index: calc(var(--z-mobile-nav) + 1);
   padding: 10px 20px;
-  background-color: #111111;
+  /* Фон и текст — токены: в печати skip-link скрыт глобальным правилом,
+     кольцо фокуса даёт глобальное :focus-visible (печатается тушью через remap).
+     Зона нажатия: поляры 10px + текст 12px → цель ~32px (WCAG 2.5.8). */
+  background-color: var(--card-bg);
   border: 1px solid var(--border-hover);
-  color: #ffffff;
-  font-size: 12px;
+  color: var(--text-primary);
+  font-size: var(--font-size-xs);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   transform: translateY(-160%);
