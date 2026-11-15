@@ -91,8 +91,16 @@ export default function Photo({
     />
   );
 
+  /* Подпись открывается на наведении и на фокусе (`.photo:focus-within`).
+     Чтобы фокус открыл её с клавиатуры, figure с подписью — фокусируемый;
+     без подписи tabindex не ставим, лишной точки таб-порядка нет. */
+  const hasCaption = Boolean(caption || meta);
+
   return (
-    <figure className={`${styles.photo} ${styles[shape]} ${className}`}>
+    <figure
+      className={`${styles.photo} ${styles[shape]} ${className}`}
+      tabIndex={hasCaption ? 0 : undefined}
+    >
       {media}
       {(caption || meta) && (
         <figcaption className={styles.caption}>
