@@ -1,7 +1,7 @@
 .gallery {
   padding: var(--section-padding) 0;
-  background-color: #0a0a0a;
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--text-primary);
 }
 
 .container {
@@ -89,8 +89,8 @@
   gap: 10px;
   padding: 15px 26px;
   background: transparent;
-  border: 1px solid #333333;
-  color: #cccccc;
+  border: 1px solid var(--border-hover);
+  color: var(--text-secondary);
   font-size: var(--font-size-micro);
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
@@ -100,8 +100,8 @@
 }
 
 .more:hover {
-  color: #ffffff;
-  border-color: #ffffff;
+  color: var(--text-primary);
+  border-color: var(--text-primary);
 }
 
 .moreArrow {
@@ -113,6 +113,10 @@
   transform: translateY(2px);
 }
 
+/* Инвертированная кнопка: белая плашка, белая граница и тёмный текст — базовые
+   литералы. На токен переводить нельзя: печатный remap красит плашку #111111 с
+   почти чёрным текстом (контраст ~1.13:1), а литералы в печати печатаются тушью
+   по бумаге. Ховер-ступень `#e0e0e0` совпадает с токеном и в печати не участвует. */
 .cta {
   display: inline-flex;
   align-items: center;
@@ -130,7 +134,7 @@
 }
 
 .cta:hover {
-  background-color: #e0e0e0;
+  background-color: var(--color-grey-lighter);
   transform: translateY(-2px);
 }
 
@@ -222,7 +226,13 @@
   }
 }
 
-/* Печатная подача: мозаика печатается сеткой снимков, декоративный счётчик и стрелки убираются. */
+/* Печатная подача: мозаика печатается сеткой снимков, декоративный счётчик и стрелки
+   убираются.
+   Цвет текста перекрашивает глобальный remap `--text-*` (текст на токенах), локальных
+   печатных цветов текста нет; фон секции на токене --bg (remap его не красит) снимается
+   классом, чья специфичность выше глобального `section`. Границы содержимого секции
+   глобальная печать не накрывает — печатные хайрлайны задаём локально; белая плашка
+   инвертированной кнопки снимается, её текст печатается тушью. */
 @media print {
   .count,
   .ctaArrow,
@@ -243,13 +253,7 @@
     background-color: transparent;
   }
 
-  .note,
-  .more {
-    color: #333333;
-  }
-
   .gallery {
     background-color: transparent;
-    color: #111111;
   }
 }

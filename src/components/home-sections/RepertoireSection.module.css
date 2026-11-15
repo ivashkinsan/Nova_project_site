@@ -1,7 +1,7 @@
 .repertoire {
   padding: var(--section-padding) 0;
-  background-color: #0a0a0a;
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--text-primary);
 }
 
 .container {
@@ -28,12 +28,15 @@
   justify-content: flex-end;
   gap: 12px;
   padding: 36px 32px;
-  background-color: #0a0a0a;
+  background-color: var(--bg);
   overflow: hidden;
   transition: background-color 0.45s ease;
 }
 
-/* Тонкая подсветка по верхней грани — «активная» карточка */
+/* Тонкая подсветка по верхней грани — «активная» карточка.
+   Литерал оставлен: белая полоса — декоративный ховер, в печати она невидима;
+   на токен переводить нельзя, печатный remap красит её #111111 и полоса печатается
+   на всех карточках (в печати transform снимается, полоса становится полной ширины). */
 .card::before {
   content: '';
   position: absolute;
@@ -48,7 +51,7 @@
 }
 
 .card:hover {
-  background-color: #111111;
+  background-color: var(--card-bg);
 }
 
 .card:hover::before {
@@ -68,7 +71,7 @@
 }
 
 .card:hover .cardIndex {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .cardTitle {
@@ -77,7 +80,7 @@
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.25;
-  color: #ffffff;
+  color: var(--text-primary);
   max-width: 22ch;
 }
 
@@ -108,7 +111,7 @@
 .card:hover .cardMark {
   opacity: 1;
   transform: translate(0, 0);
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 /* ===== Фотографии в мозаике ===== */
@@ -117,7 +120,7 @@
 .photoCell {
   position: relative;
   overflow: hidden;
-  background-color: #111111;
+  background-color: var(--card-bg);
 }
 
 .photoCell figure {
@@ -277,28 +280,24 @@
   }
 }
 
-/* Печатная подача: мозаика печатается чёрным текстом, плашки карточек становятся
-   прозрачными с печатной границей. */
+/* Печатная подача: мозаика печатается чёрным текстом, плашки карточек и ячеек фото
+   становятся прозрачными.
+   Цвет текста перекрашивает глобальный remap `--text-*` (весь текст на токенах),
+   локальных печатных цветов текста нет; фон секции на токене --bg (remap его не красит)
+   снимается классом, чья специфичность выше глобального `section`. Границы содержимого
+   секции глобальная печать не накрывает — печатные хайрлайны задаём локально. */
 @media print {
   .repertoire {
     background-color: transparent;
-    color: #111111;
   }
 
   .card,
   .photoCell {
     background-color: transparent;
-    border-color: #cccccc;
   }
 
-  .cardIndex,
-  .cardMark,
-  .cardDesc,
+  .mosaic,
   .note {
-    color: #333333;
-  }
-
-  .cardTitle {
-    color: #111111;
+    border-color: #cccccc;
   }
 }

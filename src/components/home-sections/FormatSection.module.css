@@ -173,7 +173,8 @@
   }
 
   .blockList,
-  .blockItem {
+  .blockItem,
+  .blockDuration {
     border-color: #cccccc;
   }
 }
