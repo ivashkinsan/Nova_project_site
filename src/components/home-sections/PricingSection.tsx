@@ -43,9 +43,11 @@ export default function PricingSection({ id = 'pricing' }: { id?: string }) {
             </div>
 
             <h3 className={styles.listTitle}>Что включено</h3>
-            <ul className={styles.list}>
+            {/* Список включённых пунктов — семантика списка возвращена в WebKit
+                (role="list"/"listitem"), где list-style: none её снимает. */}
+            <ul className={styles.list} role="list">
               {includedItems.map((item, i) => (
-                <li key={item} className={styles.item}>
+                <li key={item} className={styles.item} role="listitem">
                   <span className={styles.itemIndex}>
                     {String(i + 1).padStart(2, '0')}
                   </span>

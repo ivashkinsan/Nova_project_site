@@ -1,7 +1,7 @@
 .format {
   padding: var(--section-padding) 0;
-  background-color: #0a0a0a;
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--text-primary);
 }
 
 .container {
@@ -65,7 +65,7 @@
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: #cccccc;
+  color: var(--text-secondary);
 }
 
 .blockTitle {
@@ -74,7 +74,7 @@
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .blockDesc {
@@ -98,8 +98,9 @@
   padding: 13px 0 13px 22px;
   border-bottom: 1px solid var(--hairline-soft);
   font-size: 15px;
-  line-height: 1.55;
-  color: #cccccc;
+  /* Межстрочность в нижней границе регламентной полосы body 14–18px (AGENTS §5) */
+  line-height: 1.6;
+  color: var(--text-secondary);
 }
 
 .blockItem::before {
@@ -115,7 +116,7 @@
 .blockNote {
   margin: 0;
   padding-left: 16px;
-  border-left: 1px solid #333333;
+  border-left: 1px solid var(--border-hover);
   font-size: 14px;
   font-style: italic;
   line-height: 1.65;
@@ -161,29 +162,18 @@
 }
 
 /* Печатная подача: блоки программы печатаются чёрным текстом с печатной границей,
-   тёмные подложки уходят. Фото-колонки печатаются своими правилами Photo. */
+   тёмные подложки уходят. Фото-колонки печатаются своими правилами Photo.
+   Цвет текста перекрашивает глобальный remap `--text-*` (текст на токенах), поэтому
+   локальных печатных цветов текста нет. Границы содержимого секции глобальная печать
+   не накрывает — хайрлайны задаём локально; фон секции на токене --bg (remap его не
+   красит) снимается классом, чья специфичность выше глобального `section`. */
 @media print {
   .format {
     background-color: transparent;
-    color: #111111;
   }
 
-  .block,
-  .blockList {
-    background-color: transparent;
+  .blockList,
+  .blockItem {
     border-color: #cccccc;
-  }
-
-  .blockDuration,
-  .blockMeta,
-  .blockNote,
-  .blockDesc,
-  .blockItem,
-  .blockIndex {
-    color: #333333;
-  }
-
-  .blockTitle {
-    color: #111111;
   }
 }

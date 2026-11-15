@@ -50,9 +50,12 @@ export default function FormatSection({ id = 'format' }: { id?: string }) {
                 <h3 className={styles.blockTitle}>{option.title}</h3>
                 <p className={styles.blockDesc}>{option.description}</p>
 
-                <ul className={styles.blockList}>
+                {/* Детали формата — список: программа чтения объявляет количество пунктов.
+                    role="list"/"listitem" возвращают семантику списка в WebKit, где
+                    list-style: none её снимает; облик и сетка не меняются. */}
+                <ul className={styles.blockList} role="list">
                   {option.details.map((detail) => (
-                    <li key={detail} className={styles.blockItem}>
+                    <li key={detail} className={styles.blockItem} role="listitem">
                       {detail}
                     </li>
                   ))}

@@ -1,7 +1,7 @@
 .pricing {
   padding: var(--section-padding) 0;
-  background-color: #0a0a0a;
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--text-primary);
 }
 
 .container {
@@ -91,7 +91,7 @@
 }
 
 .item:hover {
-  background-color: #111111;
+  background-color: var(--card-bg);
   padding-left: 12px;
 }
 
@@ -105,19 +105,20 @@
 }
 
 .item:hover .itemIndex {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .itemText {
   font-size: 16px;
-  line-height: 1.55;
-  color: #cccccc;
+  /* Межстрочность в нижней границе регламентной полосы body 14–18px (AGENTS §5) */
+  line-height: 1.6;
+  color: var(--text-secondary);
 }
 
 .rider {
   margin: 0;
   padding-left: 16px;
-  border-left: 1px solid #333333;
+  border-left: 1px solid var(--border-hover);
   font-size: 14px;
   font-style: italic;
   line-height: 1.65;
@@ -173,25 +174,18 @@
 }
 
 /* Печатная подача: пакеты печатаются чёрным, плашки становятся прозрачными
-   с печатной границей. */
+   с печатной границей.
+   Цвет текста перекрашивает глобальный remap `--text-*` (текст на токенах), локальных
+   печатных цветов текста нет; ховер-плашка строки в печати не участвует. Границы
+   содержимого секции глобальная печать не накрывает — хайрлайны задаём локально;
+   фон секции на токене --bg снимается классом, чья специфичность выше `section`. */
 @media print {
   .pricing {
     background-color: transparent;
-    color: #111111;
   }
 
-  .item,
-  .notes {
-    background-color: transparent;
+  .list,
+  .item {
     border-color: #cccccc;
-  }
-
-  .itemIndex,
-  .itemText,
-  .priceLocation,
-  .note,
-  .rider,
-  .listTitle {
-    color: #333333;
   }
 }
