@@ -194,13 +194,23 @@ p {
     overflow: visible;
   }
 
+  /* Рельс и бегущая строка убираются своими print-блоками: их классы из CSS-модулей
+     хешируются, поэтому глобальный селектор до них не достает. */
   body::after,
   .skipLink,
   header,
-  #mobile-nav,
-  .marquee,
-  main .rail {
+  #mobile-nav {
     display: none !important;
+  }
+
+  /* Адрес ссылок дописывается текстом: в печати tel: и vk-ссылки остаются читемыми. */
+  main a[href^="tel:"]::after,
+  main a[href^="https://"]::after,
+  footer a[href^="https://"]::after {
+    content: " — " attr(href);
+    font-size: 11px;
+    color: #333333;
+    word-break: break-all;
   }
 
   section,

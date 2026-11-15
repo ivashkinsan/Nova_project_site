@@ -159,3 +159,24 @@
     font-size: 13px;
   }
 }
+
+/* Печатная подача: подложка, затемнение и стрелка — декор; контакты печатаются текстом,
+   адрес ссылки дописывает глобальное print-правило для ссылок. */
+@media print {
+  .backdrop,
+  .backdropImg,
+  .scrim,
+  .cardArrow {
+    display: none;
+  }
+
+  .card {
+    border-color: #cccccc;
+    background-color: transparent;
+  }
+
+  .cardLabel,
+  .cardMeta {
+    color: #333333;
+  }
+}

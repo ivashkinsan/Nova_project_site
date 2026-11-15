@@ -221,3 +221,29 @@
     justify-content: center;
   }
 }
+
+/* Печатная подача: мозаика печатается сеткой снимков, декоративный счётчик и стрелки убираются. */
+@media print {
+  .count,
+  .ctaArrow,
+  .moreArrow {
+    display: none;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    gap: 8px;
+  }
+
+  .cta,
+  .more,
+  .foot {
+    border-color: #cccccc;
+    background-color: transparent;
+  }
+
+  .note {
+    color: #333333;
+  }
+}

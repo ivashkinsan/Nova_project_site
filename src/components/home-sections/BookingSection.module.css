@@ -372,3 +372,25 @@
     font-size: 22px;
   }
 }
+
+/* Печатная подача: форма — интерфейс, в печати остаются шаги от заявки до вечера и быстрые контакты. */
+@media print {
+  .form,
+  .summaryActions {
+    display: none;
+  }
+
+  .side,
+  .step,
+  .quick {
+    border-color: #cccccc;
+    background-color: transparent;
+  }
+
+  .stepIndex,
+  .stepText,
+  .quickLabel,
+  .label {
+    color: #333333;
+  }
+}

@@ -63,6 +63,7 @@
 | skip-link не переносит фокус: `<main>` без `tabIndex` не фокусируется | ok (исправлено) | P1 | `tabIndex={-1}` на `main` |
 | без JavaScript страница полностью пуста (React-SPA), посетитель ничего не узнаёт | ok (исправлено) | P1 | noscript-заглушка в `index.html`: заголовок, телефон, VK; глобальный класс `.noscript` на существующих токенах |
 | документация отставала от фактического состояния (webp-ступени, скрипты, `utils/scroll.ts`, ассеты шапки) | ok (исправлено) | P2 | README: дерево проекта, раздел «Веб-форматы», `utils/scroll.ts` в структуре, строка «Сделано», оговорка про PWA-манифест |
+| печатная версия секций с декором и интерактивом не покрыта (звук, хроника, заявка, контакты); в глобальном print-блоке мёртвые селекторы `main .rail` и `.marquee` (классы CSS-модулей хешируются, глобальный селектор до них не достает) | ok (исправлено) | P1 | print-блоки в четырёх модулях секций; мёртвые селекторы убраны; адреса tel/https-ссылок дописываются текстом; печатная пара `#cccccc`/`#333333` |
 | Hero-подложка (LCP-изображение, eager) — нет `fetchpriority="high"`, нет width/height, грузит 1,1 МБ JPEG | ok (исправлено) | P0 | srcset + sizes=100vw + width/height + eager + fetchpriority=high + decoding=async (и контакт-подложка) |
 | Google Fonts: дубль — `@import` в `index.css` (render-blocking CSS) + `<link>` в `index.html` — двойная загрузка | ok (исправлено) | P1 | @import удалён, preload stylesheet в HTML (один источник), swap сохранён |
 | `loading=lazy`/`decoding=async` в Photo, hero eager | ok | — | сохранить |

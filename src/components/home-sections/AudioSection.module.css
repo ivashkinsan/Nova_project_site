@@ -383,3 +383,28 @@
     animation: none;
   }
 }
+
+/* Печатная подача: плеер — интерфейс, в печати остаются номера, названия, авторы и длительности. */
+@media print {
+  .pulse,
+  .trackIcon,
+  .waveform {
+    display: none;
+  }
+
+  .player,
+  .track,
+  .trackActive {
+    border-color: #cccccc;
+    background-color: transparent;
+  }
+
+  .playerMode,
+  .playerCount,
+  .playerState,
+  .trackIndex,
+  .trackArtist,
+  .playerNote {
+    color: #333333;
+  }
+}
