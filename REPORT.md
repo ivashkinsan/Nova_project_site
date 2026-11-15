@@ -20,7 +20,7 @@
 
 ---
 
-## Что сделано (39 коммитов этого цикла)
+## Что сделано (40 коммитов этого цикла)
 
 ### P0 — SEO-каркас (`b3919eb`)
 `lang="ru"`; уникальный title `NOVA PROJECT — джаз-квинтет из Липецка: живые выступления и атмосферные сеты`; description, keywords («название группы, жанр, город, живые выступления, джаз»), canonical; Open Graph с абсолютным `og:image` + `og:image:width/height/alt/type` + `og:locale ru_RU`; Twitter Cards `summary_large_image` c `twitter:image:alt`; JSON-LD `MusicGroup` (жанры, город, `inLanguage: ru`, `sameAs` VK) и второй блок `Event` «Живые выступления NOVA PROJECT» (performer = MusicGroup, location Липецк/RU, attendance Offline, status Scheduled, url на секцию «Заявка», даты не выдуманы); `robots.txt`, `sitemap.xml`; лёгкий SVG-favicon «N» и `apple-touch-icon.png` (монограмма N, 180×180, 1,4 КБ, генератор `scripts/make-apple-touch-icon.py`); `theme-color` `#0a0a0a`, `format-detection telephone=no`, apple-статус-бар black-translucent, `color-scheme: dark` на `html` (нативные контролы и pickers идут за тёмной концепцией); preconnect + preload шрифта Inter (один источник, `@import` из CSS убран).
@@ -66,6 +66,9 @@
 
 ### P2 — PWA-манифест и иконки
 Манифеста не было: на мобильных страница не давала ни иконок, ни цвета системных панелей, подложку подбирал браузер. Добавлен `Public/manifest.webmanifest` (цвета `theme_color`/`background_color` — существующий фон `#0a0a0a`, нового цвета нет; `start_url` и `scope` относительные, чтобы складывались с `base`), иконки 192 и 512 — та же монограмма N, что и у iOS-иконки, полнопостонная, знак вписан в безопасную зону 80% (один файл годится и как обычная, и как maskedable), и `<link rel="manifest">` в `index.html`. Пул снимков, дериваты и экранные правила не затронуты.
+
+### P2 — имя оболочки, дата карты сайта и рекламные метки
+Имя для ярлыка (Windows и Chrome) нигде не объявлялось, поэтому ярлык брал имя домена; добавлена `meta application-name` с тем же именем, что `short_name` манифеста. `lastmod` в `sitemap.xml` приведён к фактической дате правок, а не к дате, когда файл был заведён. В `robots.txt` добавлен блок Яндекса с `Clean-param` — ссылки с рекламными метками и referral не плодят дубли страниц. Новые ссылки, домены и цвета не появились.
 
 ---
 

@@ -471,16 +471,16 @@ npm run build
 
 - [ ] Подключить реальную отправку формы бронирования (API) + состояния загрузки/ошибки
 - [ ] Добавить аудиофайлы и реальное воспроизведение в секции «Звук»
-- [ ] Уточнить alt-тексты и подписи под конкретные снимки
+- [x] Уточнить alt-тексты и подписи под конкретные снимки (описания сверены с кадрами пула)
 - [ ] Добавить Intersection Observer для отдельных элементов внутри секций
 - [ ] Добавить видео-фон в HeroSection
 - [ ] Аналитика (GA4, Яндекс.Метрика)
-- [ ] PWA-манифест (иконка рабочего стола и `theme-color` уже есть: `apple-touch-icon.png`, `theme-color #0a0a0a`)
+- [x] PWA-манифест (`Public/manifest.webmanifest`, иконки 192/512, `theme-color #0a0a0a`)
 - [ ] Аудит и удаление неиспользуемых зависимостей (gsap, lottie-web, lottie-player)
 - [ ] Настроить ESLint (скрипт `npm run lint` сейчас не работает)
 - [ ] Задействовать оставшиеся снимки из `Public/` в новых блоках
 
-**Сделано:** фотографии группы (27 снимков + webp-ступени), SEO-мета-теги и OG (`canonical`, `robots`, JSON-LD `MusicGroup` и `Event`, `sitemap.xml`, `robots.txt`), favicon + `apple-touch-icon`, `lang="ru"`, fallback-шрифты, доступность (`:focus-visible`, skip-link, именованные landmark'ы, `aria-labelledby` у секций, `aria-live` у плеера и сводки заявки, `prefers-reduced-motion` в CSS и в скролле/печатании), `noscript`-заглушка, iOS safe-area (`viewport-fit=cover` + `env()`), доступ к скроллу через `rAF` + `passive`-листенеры, `scroll-padding-top` для якорей, `@media print` для печатной подачи.
+**Сделано:** фотографии группы (27 снимков + webp-ступени), SEO-мета-теги и OG (`canonical`, `robots`, JSON-LD `MusicGroup` и `Event`, `sitemap.xml`, `robots.txt`, `og:image` 1200×630 + `width`/`height`/`alt`, Twitter Cards), favicon + `apple-touch-icon` + PWA-манифест с иконками 192/512, `lang="ru"`, fallback-шрифты, доступность (`:focus-visible`, skip-link, именованные landmark'ы, `aria-labelledby` у секций, `aria-live` у плеера и сводки заявки, `prefers-reduced-motion` в CSS и в скролле/печатании, `forced-colors`, `prefers-reduced-transparency`, фокус доступный с клавиатуры и на тач-устройствах открывает подпись снимка), alt и подписи сверены с кадрами пула, `width`/`height` и `srcset`/`sizes` под каждый слот, preload hero-подложки, `noscript`-заглушка, iOS safe-area (`viewport-fit=cover` + `env()`), доступ к скроллу через `rAF` + `passive`-листенеры, `scroll-padding-top` для якорей, `@media print` для печатной подачи.
 
 ---
 

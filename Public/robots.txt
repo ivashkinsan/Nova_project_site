@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# Яндекс: ссылки с рекламных меток и referral не создают отдельных страниц
+User-agent: Yandex
+Clean-param: ref utm_source ytm
+Allow: /
+
 Sitemap: https://ivashkinsan.github.io/Nova_project_site/sitemap.xml
