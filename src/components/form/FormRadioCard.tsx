@@ -6,9 +6,10 @@ interface FormRadioCardProps {
   label: string;
   checked: boolean;
   onChange: (value: string) => void;
+  required?: boolean;
 }
 
-export default function FormRadioCard({ name, value, label, checked, onChange }: FormRadioCardProps) {
+export default function FormRadioCard({ name, value, label, checked, onChange, required }: FormRadioCardProps) {
   return (
     <label className={styles.radioLabel}>
       <input
@@ -18,6 +19,8 @@ export default function FormRadioCard({ name, value, label, checked, onChange }:
         checked={checked}
         onChange={() => onChange(value)}
         className={styles.radio}
+        required={required}
+        aria-required={required || undefined}
       />
       {label}
     </label>

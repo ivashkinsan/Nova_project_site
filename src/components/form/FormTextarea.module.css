@@ -32,3 +32,10 @@
 .textarea::placeholder {
   color: var(--text-tertiary);
 }
+
+/* Кольцо фокуса возвращаем явно: `outline: none` выше перекрывает глобальное
+   :focus-visible, и у поля не остаётся видимого фокуса (WCAG 2.4.7). */
+.textarea:focus-visible {
+  outline: 1px solid #ffffff;
+  outline-offset: 3px;
+}

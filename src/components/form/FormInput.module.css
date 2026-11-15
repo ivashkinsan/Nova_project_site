@@ -37,6 +37,13 @@
   font-weight: 700;
 }
 
+/* Кольцо фокуса возвращаем явно: `outline: none` выше перекрывает глобальное
+   :focus-visible, и у поля не остаётся видимого фокуса (WCAG 2.4.7). */
+.input:focus-visible {
+  outline: 1px solid #ffffff;
+  outline-offset: 3px;
+}
+
 /* Подсказка под полем (aria-describedby) */
 .hint {
   font-size: 12px;

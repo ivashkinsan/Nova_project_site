@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FormInput, FormSelect, FormTextarea, FormRadioCard } from '../form';
 import {
   eventTypes,
@@ -16,6 +16,24 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
   const headingId = `${id}-title`;
   const [formData, setFormData] = useState(initialBookingForm);
   const [isReady, setIsReady] = useState(false);
+  const summaryRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  /* Фокус возвращаем в новую панель: форма уходит из дерева, и курсор не должен
+     падать в начало страницы (WCAG 2.4.3). Первый рендер пропускаем: при загрузке
+     страницы фокус на поле не нужен. */
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    if (isReady) {
+      summaryRef.current?.focus();
+    } else {
+      formRef.current?.querySelector('select, input, textarea')?.focus();
+    }
+  }, [isReady]);
 
   const eventTypeLabel =
     eventTypes.find((type) => type.value === formData.eventType)?.label ?? '—';
@@ -105,14 +123,14 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
                 rel="noopener noreferrer"
                 className={styles.quickLink}
               >
-                VK · {contactInfo.vkName}
+                <span lang="en">VK</span> · <span lang="en">{contactInfo.vkName}</span>
               </a>
             </div>
           </aside>
 
           <div className={styles.formWrap}>
             {isReady ? (
-              <div className={styles.summary} role="status">
+              <div ref={summaryRef} className={styles.summary} role="status" tabIndex={-1}>
                 <span className={styles.summaryIndex}>Заявка готова</span>
                 <h3 className={styles.summaryTitle}>Проверьте данные</h3>
                 <p className={styles.summaryText}>
@@ -147,7 +165,7 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
                 </div>
               </div>
             ) : (
-              <form className={styles.form} onSubmit={handleSubmit}>
+              <form ref={formRef} className={styles.form} onSubmit={handleSubmit}>
                 <FormSelect
                   name="eventType"
                   value={formData.eventType}
@@ -155,7 +173,7 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
                   options={eventTypes}
                   placeholder="Выберите тип мероприятия"
                   required
-                  label="Тип мероприятия*"
+                  label="Тип мероприятия"
                 />
 
                 <FormInput
@@ -164,7 +182,7 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
                   value={formData.date}
                   onChange={handleChange}
                   required
-                  label="Дата мероприятия*"
+                  label="Дата мероприятия"
                 />
 
                 <FormInput
@@ -177,7 +195,12 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
                 />
 
                 <fieldset className={`${styles.formGroup} ${styles.radioFieldset}`}>
-                  <legend className={styles.label}>Формат выступления*</legend>
+                  {/* Звёздка обязательной группы — только картинка, читалке её не нужно
+                      повторять: обязательность группы передаёт required у карточек */}
+                  <legend className={styles.label}>
+                    Формат выступления
+                    <span aria-hidden="true"> *</span>
+                  </legend>
                   <div className={styles.radioGroup}>
                     {bookingFormatOptions.map((option) => (
                       <FormRadioCard
@@ -187,6 +210,7 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
                         label={option.label}
                         checked={formData.format === option.value}
                         onChange={handleFormatChange}
+                        required
                       />
                     ))}
                   </div>
@@ -199,7 +223,7 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
                   onChange={handleChange}
                   placeholder="your@email.com"
                   required
-                  label="Email*"
+                  label="Email"
                 />
 
                 <FormInput
@@ -209,7 +233,7 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
                   onChange={handleChange}
                   placeholder="+7 (___) ___-__-__"
                   required
-                  label="Телефон*"
+                  label="Телефон"
                 />
 
                 <FormTextarea

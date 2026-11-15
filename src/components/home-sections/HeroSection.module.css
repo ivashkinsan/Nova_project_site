@@ -274,8 +274,9 @@
   animation: heroIn 1s var(--ease-out-expo) 0.8s both;
 }
 
+/* Служебная метка — сервисная ступень типографики (11px), как и остальные подписи */
 .scrollLabel {
-  font-size: 10px;
+  font-size: var(--font-size-micro);
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
