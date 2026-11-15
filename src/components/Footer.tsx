@@ -11,7 +11,9 @@ const orgNotes = [
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
+    /* Landmark «footer» получает имя: читалка объявляет его при прыжке,
+       как и name у header/nav-земляйндов. */
+    <footer className={styles.footer} aria-label="Контакты и дополнительная информация">
       <div className={styles.container}>
         <div className={styles.top}>
           <div className={styles.brand}>

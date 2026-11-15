@@ -7,12 +7,14 @@ import { scrollToSection } from '../../utils/scroll';
 export default function HeroSection() {
   const backdropRef = useRef<HTMLDivElement>(null);
 
-  /* Лёгкий параллакс фона. Значение пишем в CSS-переменную — без ре-рендера. */
+  /* Лёгкий параллакс фона. Значение пишем в CSS-переменную — без ре-рендера.
+     Настройку «уменьшить движение» слуаем и после монтирования: её можно
+     включить уже во время сессии, а JS-эффект глобальный CSS-блок не гасит. */
   useEffect(() => {
     const element = backdropRef.current;
     if (!element) return;
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     let frame = 0;
 
@@ -28,9 +30,28 @@ export default function HeroSection() {
       frame = requestAnimationFrame(update);
     };
 
-    window.addEventListener('scroll', onScroll, { passive: true });
+    const attach = () => {
+      if (motionQuery.matches) {
+        /* Фон возвращаем на место: смещение осталось бы зафиксированным. */
+        element.style.setProperty('--parallax', '0px');
+        return;
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    };
+
+    const detach = () => window.removeEventListener('scroll', onScroll);
+
+    const onMotionChange = () => {
+      detach();
+      attach();
+    };
+
+    attach();
+    motionQuery.addEventListener('change', onMotionChange);
+
     return () => {
-      window.removeEventListener('scroll', onScroll);
+      detach();
+      motionQuery.removeEventListener('change', onMotionChange);
       if (frame) cancelAnimationFrame(frame);
     };
   }, []);
@@ -47,7 +68,9 @@ export default function HeroSection() {
           height={heroPhoto.height}
           alt=""
           loading="eager"
-          fetchpriority="high"
+          /* camelCase: React 18 умеет fetchPriority, строчная запись даёт
+             предупреждение в консоли разработчика. */
+          fetchPriority="high"
           decoding="async"
         />
       </div>

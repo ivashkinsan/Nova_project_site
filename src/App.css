@@ -2,12 +2,14 @@
   min-height: 100vh;
 }
 
-/* Skip-link — первая ссылка страницы, видна только на фокусе */
+/* Skip-link — первая ссылка страницы, видна только на фокусе.
+   Слой выше шапки и мобильного меню: ссылка остаётся видимой и при
+   прокрутке под шапкой, и при открытом мобильном меню (WCAG 2.4.7). */
 .skipLink {
   position: fixed;
   top: 20px;
   left: 24px;
-  z-index: var(--z-header);
+  z-index: calc(var(--z-mobile-nav) + 1);
   padding: 10px 20px;
   background-color: #111111;
   border: 1px solid var(--border-hover);
@@ -59,9 +61,4 @@ button {
     transform: translateX(0);
     opacity: 1;
   }
-}
-
-/* Smooth scroll for the whole page */
-html {
-  scroll-behavior: smooth;
 }

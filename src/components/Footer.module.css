@@ -37,7 +37,9 @@
   gap: 10px;
   background: none;
   border: none;
-  padding: 0;
+  /* Размер клика — не меньше 24px (WCAG 2.5.8): текст логотипа ~26px по высоте,
+     вертикальные отступы доводят зону нажатия до ~42px, вид в покое не меняет. */
+  padding: 8px 0;
   cursor: pointer;
   transition: opacity 0.3s ease;
 }
@@ -72,7 +74,7 @@
 .brandContacts {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   align-items: flex-start;
 }
 
@@ -82,6 +84,8 @@
   letter-spacing: -0.01em;
   color: #ffffff;
   border-bottom: 1px solid transparent;
+  /* Зона нажатия не уже 24px (WCAG 2.5.8): цель по тексту ~22px, отступы дотягивают до ~34px. */
+  padding: 6px 0;
   transition: border-color 0.3s ease;
 }
 
@@ -95,6 +99,8 @@
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--text-tertiary);
+  /* Зона нажатия не уже 24px (WCAG 2.5.8): текст 12px, отступы дотягивают цель до ~30px. */
+  padding: 8px 0;
   transition: color 0.3s ease;
 }
 
@@ -131,7 +137,10 @@
 .link {
   background: none;
   border: none;
-  padding: 0;
+  /* Зона нажатия не уже 24px (WCAG 2.5.8): текст 15px, отступы дотягивают цель
+     до ~31px; цель ≥24px, поэтому требование к зазору 24px к ссылкам не
+     применяется — gap:12 между строками остаётся как есть. */
+  padding: 8px 0;
   font-size: 15px;
   color: #cccccc;
   text-align: left;

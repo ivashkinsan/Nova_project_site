@@ -224,7 +224,8 @@
 
 .metaList {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  /* Метрик три — колонки по числу метрик, иначе справа пустая четверть строки. */
+  grid-template-columns: repeat(3, 1fr);
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 26px var(--container-padding);
@@ -459,6 +460,18 @@
     margin-top: 24px;
   }
 
+  /* Подвал метрик печатается в потоке: при сжатии hero до высоты содержимого
+     absolute-подвал наезжает на текст. Разделитель строки — печатная линия. */
+  .metaStrip {
+    position: static;
+    background: none;
+    border-top-color: #cccccc;
+  }
+
+  .metaItem {
+    border-left-color: #cccccc;
+  }
+
   .eyebrow,
   .subtitle {
     color: #333333;
@@ -473,6 +486,14 @@
   .ctaGhost {
     background-color: transparent;
     border-color: #cccccc;
+  }
+
+  /* Инвертированная кнопка печатается белой плашкой (фон принтер не печатает),
+     рамку делаем печатной — кнопка остаётся читаемой на бумаге. */
+  .ctaPrimary {
+    background-color: transparent;
+    border-color: #cccccc;
+    color: #111111;
   }
 }
 

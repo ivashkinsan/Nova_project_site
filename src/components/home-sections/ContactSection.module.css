@@ -191,3 +191,20 @@
     border-bottom-color: #cccccc;
   }
 }
+
+/* Пользователь просит меньше прозрачности (prefers-reduced-transparency):
+   стеклянный блюр карточек убираем, фон становится почти сплошным — значения
+   rgba из той же палитры (0.98 уже используется в мобильном меню шапки),
+   нового цвета нет. То же самое сделано в Header.module.css. */
+@media (prefers-reduced-transparency: reduce) {
+  .card,
+  .card:hover {
+    background-color: rgba(17, 17, 17, 0.98);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .scrim {
+    background: rgba(10, 10, 10, 0.92);
+  }
+}
