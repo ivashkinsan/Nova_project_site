@@ -37,7 +37,9 @@
   gap: 8px;
   background: none;
   border: none;
-  padding: 0;
+  /* Зона нажатия лого ≥44px (WCAG 2.5.5): глифы ~26px, симметричные вертикальные
+     отступы дотягивают цель до 44px, вид в покое не меняется */
+  padding: 9px 0;
   cursor: pointer;
   flex-shrink: 0;
   transition: opacity 0.3s ease;
@@ -95,11 +97,12 @@
   position: relative;
   background: none;
   border: none;
-  /* Тач-таргет ≥24×24 (WCAG 2.5.8): поле растянуто вертикальным поляром,
+  /* Тач-таргет ≥44px по высоте (WCAG 2.5.5): поле растянуто вертикальным поляром,
      видимый текст и подчёркивание остались на прежних местах — подчёркивание
-     прижато к нижнему краю поля (bottom: 0), как раньше было при поляре 0 */
-  padding: 6px 0;
-  min-height: 24px;
+     прижато к нижнему краю поля (bottom: 0), оно идёт на 7px ниже глифов, как
+     и было при поляре 6px */
+  padding: 11px 0;
+  min-height: 44px;
   font-size: var(--font-size-xs);
   font-weight: 500;
   letter-spacing: var(--tracking-wide);
@@ -247,6 +250,7 @@
   display: block;
   width: calc(100% - 40px);
   margin: 18px 20px 22px;
+  min-height: 44px;
   padding: 15px 0;
   background-color: var(--text-primary);
   border: none;
@@ -383,6 +387,11 @@
        в шкале variables.css нет, это точечная компактность лого на малом экране */
     font-size: var(--font-size-text);
     letter-spacing: 0.1em;
+  }
+
+  .logo {
+    /* На 18px глифы ~21px: поляр дотягивает зону нажатия до 45px */
+    padding: 12px 0;
   }
 
   .navLink {

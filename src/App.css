@@ -13,7 +13,9 @@
   padding: 10px 20px;
   /* Фон и текст — токены: в печати skip-link скрыт глобальным правилом,
      кольцо фокуса даёт глобальное :focus-visible (печатается тушью через remap).
-     Зона нажатия: поляры 10px + текст 12px → цель ~32px (WCAG 2.5.8). */
+     Зона нажатия ≥44px (WCAG 2.5.5): фиксированный блок, минимальная высота
+     44px при полярах 10px и тексте 12px; видимый вид не меняется. */
+  min-height: 44px;
   background-color: var(--card-bg);
   border: 1px solid var(--border-hover);
   color: var(--text-primary);

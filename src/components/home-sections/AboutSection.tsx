@@ -8,8 +8,20 @@ export default function AboutSection({ id = "about" }: { id?: string }) {
   return (
     <section className={styles.about} id={id} aria-labelledby={headingId}>
       <div className={styles.container}>
+        {/* Заголовок — у левого края контейнера, над раскадровкой: как в 02…08.
+            Первый абзац становится лидом SectionHeading, чтобы шапка секции
+            оставалась единым примитивом (AGENTS §3.1). */}
+        <SectionHeading
+          index="01"
+          eyebrow="О коллективе"
+          title="Пять музыкантов. Один путь."
+          titleId={headingId}
+          lead="NOVA PROJECT — это не просто группа. Это пространство, где встречаются традиции джазовой музыки и современный художественный поиск. Каждая интерпретация — новая."
+        />
+
         <div className={styles.grid}>
-          {/* Левая колонка — фотографии */}
+          {/* Левая колонка 0.7fr: снимок 3/4 над широким кадром — колонка по высоте
+              равна текстовой, низ списка участников приходится на низ снимков. */}
           <div className={styles.visual}>
             <Photo
               src={aboutPhotos.primary.src}
@@ -17,10 +29,10 @@ export default function AboutSection({ id = "about" }: { id?: string }) {
               width={aboutPhotos.primary.width}
               height={aboutPhotos.primary.height}
               sources={aboutPhotos.primary.sources}
-              shape="tall"
-              /* Левая колонка: 0.85fr из грида с отступом 72 (при ≤1024 — вся
-                 ширина контейнера), ступень подбирается под фактический слот. */
-              sizes="(max-width: 1024px) 95vw, 40vw"
+              shape="portrait"
+              /* Левая колонка 0.7fr из грида с отступом 64 (≈440px при 1440);
+                 при ≤1024 — широкая полоса на всю контейнерную ширину. */
+              sizes="(max-width: 1024px) 95vw, 31vw"
               caption={aboutPhotos.primary.caption}
               meta={aboutPhotos.primary.meta}
             />
@@ -31,7 +43,7 @@ export default function AboutSection({ id = "about" }: { id?: string }) {
               height={aboutPhotos.secondary.height}
               sources={aboutPhotos.secondary.sources}
               shape="wide"
-              sizes="(max-width: 1024px) 95vw, 40vw"
+              sizes="(max-width: 1024px) 95vw, 31vw"
               caption={aboutPhotos.secondary.caption}
               meta={aboutPhotos.secondary.meta}
             />
@@ -39,19 +51,7 @@ export default function AboutSection({ id = "about" }: { id?: string }) {
 
           {/* Правая колонка — текст и состав */}
           <div className={styles.body}>
-            <SectionHeading
-              index="01"
-              eyebrow="О коллективе"
-              title="Пять музыкантов. Один путь."
-              titleId={headingId}
-            />
-
             <div className={styles.text}>
-              <p className={styles.paragraph}>
-                NOVA PROJECT — это не просто группа. Это пространство, где
-                встречаются традиции джазовой музыки и современный
-                художественный поиск. Каждая интерпретация — новая.
-              </p>
               <p className={styles.paragraph}>
                 Наш репертуар — не набор хитов, а тщательно выстроенная
                 программа, где классика джаза соседствует с авторскими

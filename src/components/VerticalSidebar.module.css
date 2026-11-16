@@ -3,7 +3,9 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 30px;
+  /* Ширина рельса = ширина тач-таргета маркера (44px, WCAG 2.5.5): рельс узкий,
+     поэтому цель растянуто на всю его ширину; линия прогресса по центру рельса */
+  width: 44px;
   z-index: var(--z-sidebar);
   pointer-events: none;
 }
@@ -18,7 +20,7 @@
 /* ===== Линия прогресса ===== */
 .track {
   position: absolute;
-  left: 14px;
+  left: 22px;
   top: 15%;
   bottom: 15%;
   width: 1px;
@@ -58,13 +60,14 @@
   align-items: center;
 }
 
-/* Тач-таргеты маркеров ≥44px по высоте (рельс узкий, поэтому таргет растянут по ширине рельса) */
+/* Тач-таргеты маркеров 44×44 (WCAG 2.5.5): цель на всю ширину рельса (44px),
+   высота 44px; точка маркера по центру рельса */
 .marker {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
+  width: 44px;
   min-height: 44px;
   padding: 0;
   background: none;
@@ -95,7 +98,7 @@
 /* Подпись появляется при наведении */
 .label {
   position: absolute;
-  left: 26px;
+  left: 36px;
   padding: 5px 10px;
   background-color: rgba(10, 10, 10, 0.95);
   border: 1px solid var(--hairline);
@@ -121,18 +124,19 @@
   position: absolute;
   left: 0;
   bottom: 28px;
-  width: 30px;
+  width: 44px;
   text-align: center;
   /* Служебная метка: 11px + широкий трекинг — единая служба меток проекта
      (подпись маркера выше задана теми же токенами). Максимум 3 знака
-     («100») с табличными цифрами в 11px занимают ~24px, в 30px колонку
+     («100») с табличными цифрами в 11px занимают ~24px, в 44px колонку
      помещаются. */
   font-size: var(--font-size-micro);
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
-  /* Счётчик — декоративная служебная метка (рельс скрыт в печати,
-     `aria-hidden`), контраст от палитры: `#444444` = `--color-placeholder`. */
-  color: var(--color-placeholder);
+  /* Счётчик — служебная метка рельса (`aria-hidden`), читается: цвет взят из
+     палитры (`--text-secondary` #cccccc), контраст ≥4.5:1 к фону #0a0a0a.
+     Темная ступень #444444 давала 2.03:1 — не проходит. */
+  color: var(--text-secondary);
   font-variant-numeric: tabular-nums;
 }
 

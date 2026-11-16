@@ -60,7 +60,7 @@ export default function Header() {
           className={styles.navCta}
           onClick={() => goToSection('booking')}
         >
-          Оставить заявку
+          Заявка
         </button>
       </nav>
 
@@ -101,7 +101,7 @@ export default function Header() {
               className={styles.cta}
               onClick={() => goToSection('booking')}
             >
-              Забронировать
+              Заявка
               <span className={styles.ctaArrow} aria-hidden="true">
                 →
               </span>

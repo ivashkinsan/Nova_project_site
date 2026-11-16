@@ -58,8 +58,8 @@ export default function GallerySection({ id = "gallery" }: { id?: string }) {
 
         <div className={styles.foot}>
           <p className={styles.note}>
-            Хотите увидеть больше или обсудить съёмку вашего вечера — напишите
-            нам.
+            Кадры из архива: концерты, фестивали, частные вечера. Часть снимков
+            здесь, остальное — по запросу.
           </p>
           <div className={styles.footActions}>
             {hiddenCount > 0 && (
@@ -80,7 +80,7 @@ export default function GallerySection({ id = "gallery" }: { id?: string }) {
               className={styles.cta}
               onClick={scrollToBooking}
             >
-              Обсудить вечер
+              К заявке
               <span className={styles.ctaArrow} aria-hidden="true">
                 →
               </span>

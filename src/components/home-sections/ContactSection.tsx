@@ -29,9 +29,9 @@ export default function ContactSection({ id = 'contact' }: { id?: string }) {
         <SectionHeading
           index="08"
           eyebrow="Контакты"
-          title="Свяжитесь с нами"
+          title="Как нас найти"
           titleId={headingId}
-          lead="Готовы обсудить дату, формат и условия. Свяжитесь удобным способом — ответим и предложим программу."
+          lead="Телефон, VK и форма о вечере. Отвечаем в рабочие дни: программа, райдер, сроки."
           size="display"
         />
 
@@ -68,7 +68,7 @@ export default function ContactSection({ id = 'contact' }: { id?: string }) {
                 →
               </span>
             </button>
-            <span className={styles.cardMeta}>Пара минут — и мы обсудим детали</span>
+            <span className={styles.cardMeta}>Тип вечера, дата, площадка, формат</span>
           </li>
         </ul>
       </div>

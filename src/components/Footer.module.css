@@ -11,8 +11,12 @@
   z-index: 1;
   max-width: var(--max-width);
   margin: 0 auto;
-  /* Нижняя строка футера не залезает под домашнюю полосу iOS */
-  padding: 90px var(--container-padding) calc(40px + env(safe-area-inset-bottom));
+  /* Нижняя строка футера не залезает под домашнюю полосу iOS.
+     Нижний отступ зарезервирован под водяной знак: знак занимает нижнюю полосу
+     футера целиком, поэтому строка копирайта и ссылки разделов стоят над его
+     верхним краем, а не внутри глифов (пересечение текста со знаком — дефект
+     наложения). */
+  padding: 90px var(--container-padding) calc(160px + env(safe-area-inset-bottom));
 }
 
 /* ===== Верхняя часть: бренд + колонки ===== */
@@ -37,9 +41,10 @@
   gap: 10px;
   background: none;
   border: none;
-  /* Размер клика — не меньше 24px (WCAG 2.5.8): текст логотипа ~26px по высоте,
-     вертикальные отступы доводят зону нажатия до ~42px, вид в покое не меняет. */
-  padding: 8px 0;
+  /* Размер клика ≥44px (WCAG 2.5.5): текст логотипа ~26px по высоте,
+     симметричные вертикальные отступы доводят зону нажатия до 44px, вид в покое
+     не меняет. */
+  padding: 9px 0;
   cursor: pointer;
   transition: opacity 0.3s ease;
 }
@@ -89,8 +94,11 @@
   letter-spacing: var(--tracking-tight);
   color: var(--text-primary);
   border-bottom: 1px solid transparent;
-  /* Зона нажатия не уже 24px (WCAG 2.5.8): цель по тексту ~22px, отступы дотягивают до ~34px. */
-  padding: 6px 0;
+  /* Зона нажатия ≥44px (WCAG 2.5.5): цель — блок с минимальной высотой 44px,
+     симметричные вертикальные отступы; вид в покое не меняет. */
+  display: block;
+  min-height: 44px;
+  padding: 8px 0;
   transition: border-color 0.3s ease;
 }
 
@@ -104,8 +112,9 @@
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--text-tertiary);
-  /* Зона нажатия не уже 24px (WCAG 2.5.8): текст 12px, отступы дотягивают цель до ~30px. */
-  padding: 8px 0;
+  /* Зона нажатия ≥44px (WCAG 2.5.5): текст 12px, симметричные вертикальные отступы
+     дотягивают цель до 45px. */
+  padding: 13px 0;
   transition: color 0.3s ease;
 }
 
@@ -142,10 +151,12 @@
 .link {
   background: none;
   border: none;
-  /* Зона нажатия не уже 24px (WCAG 2.5.8): текст 15px, отступы дотягивают цель
-     до ~31px; цель ≥24px, поэтому требование к зазору 24px к ссылкам не
-     применяется — gap:12 между строками остаётся как есть. */
-  padding: 8px 0;
+  /* Зона нажатия ≥44px (WCAG 2.5.5): цель — блок со своей строкой (line-height 1.6)
+     и симметричными вертикальными отступами, минимальная высота 44px; соседние
+     ссылки разнесены на gap 12 между полями. */
+  display: block;
+  min-height: 44px;
+  padding: 10px 0;
   font-size: 15px;
   /* 15px — числами: ступени 15px в шкале variables.css нет */
   line-height: 1.6;
@@ -218,6 +229,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  min-height: 44px;
   padding: 12px 22px;
   background: transparent;
   border: 1px solid var(--border-hover);
@@ -251,12 +263,14 @@
 .watermark {
   position: absolute;
   left: 50%;
-  bottom: -0.16em;
   transform: translateX(-50%);
-  font-size: clamp(60px, 15vw, 230px);
+  /* Высота глифов заведомо ниже зарезервированной нижней полосы (.container
+     padding-bottom), чтобы знак не пересекался с текстом футера. */
+  font-size: clamp(56px, 10vw, 140px);
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 1;
+  bottom: -0.12em;
   /* Водяной знак — фактура: цвет от палитры (#1a1a1a = --card-bg-hover),
      aria-hidden, в печати скрыт. */
   color: var(--card-bg-hover);
@@ -284,6 +298,11 @@
     background-color: transparent;
   }
 
+  .container {
+    /* Экранная полоса под водяной знак на бумаге не нужна: знак скрыт */
+    padding-bottom: 24px;
+  }
+
   .logoProject,
   .social,
   .link {
@@ -298,7 +317,7 @@
 /* ===== Планшет ===== */
 @media (max-width: 1024px) {
   .container {
-    padding: 70px 30px calc(32px + env(safe-area-inset-bottom));
+    padding: 70px 30px calc(120px + env(safe-area-inset-bottom));
   }
 
   .top {
@@ -315,7 +334,7 @@
 /* ===== Мобильный ===== */
 @media (max-width: 768px) {
   .container {
-    padding: 56px 20px calc(26px + env(safe-area-inset-bottom));
+    padding: 56px 20px calc(96px + env(safe-area-inset-bottom));
   }
 
   .top {
@@ -340,7 +359,9 @@
   }
 
   .watermark {
-    font-size: clamp(48px, 17vw, 110px);
+    /* Мобильная полоса зарезервирована ниже высоты глифов: знак остаётся в ней,
+       не дотягиваясь до строки копирайта */
+    font-size: clamp(44px, 15vw, 90px);
     bottom: -0.1em;
   }
 }

@@ -10,11 +10,14 @@
   padding: 0 var(--container-padding);
 }
 
+/* Раскадровка как в остальных секциях: 0.7fr снимок / 1.3fr текст, гутер 64px
+   (--container-padding 40 + max-width 1400 дают контент 1320: колонки 440 и 816).
+   Заголовок секции стоит над гридом, у левого края контейнера — как в 02…08. */
 .grid {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 72px;
-  align-items: start;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 64px;
+  align-items: stretch;
 }
 
 /* ===== Левая колонка: фотографии ===== */
@@ -27,8 +30,13 @@
 }
 
 /* ===== Правая колонка: текст ===== */
+/* Растянутая на всю строку колонка: свободное место распределяется между
+   абзацем, цитатой и составом, поэтому низ списка — у низа снимков. */
 .body {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .text {

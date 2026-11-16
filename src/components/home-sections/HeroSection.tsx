@@ -105,7 +105,7 @@ export default function HeroSection() {
             className={styles.ctaPrimary}
             onClick={() => scrollToSection('booking')}
           >
-            Оставить заявку
+            Заявка
             <span className={styles.ctaArrow} aria-hidden="true">
               →
             </span>

@@ -93,8 +93,13 @@
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  /* 26px по line-height 1.2 — зона нажатия ~31px (WCAG 2.5.8: цель ≥24×24),
-     поэтому требование к зазору 24px к этим ссылкам не применяется. */
+  /* Зона нажатия ≥44px (WCAG 2.5.5): цель — блок с минимальной высотой 44px,
+     текст 26px по line-height 1.2 и симметричные вертикальные отступы; вид
+     в покое не меняется, линия подчёркивания при наведении уходит на 7px ниже
+     текста. */
+  display: block;
+  min-height: 44px;
+  padding: 7px 0;
   color: var(--text-primary);
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s ease;
@@ -108,7 +113,10 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 0;
+  /* Кнопка той же ступени, что и ссылки карточек: минимальная высота и отступы
+     дают зону нажатия ≥44px (WCAG 2.5.5). */
+  min-height: 44px;
+  padding: 9px 0;
   background: none;
   border: none;
   font-size: clamp(20px, 2.2vw, 26px);

@@ -15,7 +15,7 @@ export interface FooterNavItem {
 export const headerNavItems: NavItem[] = [
   { label: "О нас", page: "home" },
   { label: "Репертуар", page: "artists" },
-  { label: "Бронирование", page: "booking" },
+  { label: "Заявка", page: "booking" },
   { label: "Контакты", page: "contacts" },
 ];
 
@@ -23,7 +23,7 @@ export const footerNavItems: FooterNavItem[] = [
   { label: "Главная", page: "home" },
   { label: "О нас", page: "about" },
   { label: "Коллектив", page: "artists" },
-  { label: "Бронирование", page: "booking" },
+  { label: "Заявка", page: "booking" },
   { label: "Контакты", page: "contacts" },
 ];
 
@@ -48,6 +48,6 @@ export const footerSectionLinks: SectionNavItem[] = [
   { label: "Хроника", sectionId: "gallery" },
   { label: "Формат вечера", sectionId: "format" },
   { label: "Стоимость", sectionId: "pricing" },
-  { label: "Оставить заявку", sectionId: "booking" },
+  { label: "Заявка", sectionId: "booking" },
   { label: "Контакты", sectionId: "contact" },
 ];

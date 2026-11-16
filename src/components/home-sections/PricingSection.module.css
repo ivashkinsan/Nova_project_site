@@ -10,11 +10,14 @@
   padding: 0 var(--container-padding);
 }
 
+/* Раскадровка как в 01, 03 и 07: 0.8fr снимок / 1.2fr текст, гутер 64px
+   (общий гутер секций). align-items: stretch — колонка растягивается на
+   высоту строки, и нижняя ремарка встает у низа снимка. */
 .grid {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
-  gap: 72px;
-  align-items: start;
+  gap: 64px;
+  align-items: stretch;
 }
 
 /* Без position: sticky — колонка задаёт высоту строки грида, хода нет. */
@@ -24,6 +27,8 @@
 
 .body {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ===== Строка цены =====
@@ -115,8 +120,11 @@
   color: var(--text-secondary);
 }
 
+/* Ремарка о райдере — нижняя строка колонки: margin-top: auto прижимает её
+   к низу растянутой колонки, низ текста приходится на низ снимка. */
 .rider {
   margin: 0;
+  margin-top: auto;
   padding-left: 16px;
   border-left: 1px solid var(--border-hover);
   font-size: 14px;

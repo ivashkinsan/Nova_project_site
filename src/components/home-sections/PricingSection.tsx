@@ -13,7 +13,7 @@ export default function PricingSection({ id = 'pricing' }: { id?: string }) {
           eyebrow="Бюджет"
           title="Что входит в вечер"
           titleId={headingId}
-          lead="Прозрачные условия: вы видите полный список всего, что включено в выступление, ещё до подписания договора."
+          lead="Список того, что входит в выступление, что считается отдельно и от чего зависит итоговая цена."
         />
 
         <div className={styles.grid}>
@@ -25,8 +25,8 @@ export default function PricingSection({ id = 'pricing' }: { id?: string }) {
               height={pricingPhoto.height}
               sources={pricingPhoto.sources}
               shape="tall"
-              /* Фото-колонка 0.8fr из грида с отступом 72 */
-              sizes="(max-width: 1024px) 95vw, 37vw"
+              /* Фото-колонка 0.8fr из грида с гутером 64 (≈502px при 1440) */
+              sizes="(max-width: 1024px) 95vw, 35vw"
               caption={pricingPhoto.caption}
               meta={pricingPhoto.meta}
             />

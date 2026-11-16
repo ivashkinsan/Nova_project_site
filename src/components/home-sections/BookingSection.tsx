@@ -80,7 +80,7 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
           eyebrow="Заявка"
           title="Расскажите о вашем мероприятии"
           titleId={headingId}
-          lead="Заполните короткую форму — этого достаточно, чтобы мы предложили программу и назвали точную стоимость."
+          lead="Форма о вечере: тип мероприятия, дата, площадка, формат и контакты. По этим данным собираем программу и называем стоимость."
         />
 
         {/* complementary-landmark с именем: боковая колонка объявляется
@@ -140,8 +140,9 @@ export default function BookingSection({ id = 'booking' }: { id?: string }) {
                 <span className={styles.summaryIndex}>Заявка готова</span>
                 <h3 className={styles.summaryTitle}>Проверьте данные</h3>
                 <p className={styles.summaryText}>
-                  Мы сохранили детали вечера. Отправьте их удобным способом — позвоните
-                  или напишите в VK, и мы вернёмся с программой и точной стоимостью.
+                  Форма никуда не уходит: бэкенда у сайта нет, данные остаются
+                  в этой сессии. Позвоните или напишите в VK — там обсуждаем
+                  программу, райдер и точную стоимость.
                 </p>
 
                 <dl className={styles.summaryList}>
